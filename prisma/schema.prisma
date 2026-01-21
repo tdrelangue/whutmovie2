@@ -1,0 +1,80 @@
+// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Movie {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  description String?  // Official IMDb-style synopsis (optional)
+  whutSummary String   // Our funny/blunt summary (required)
+  year        Int?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // many-to-many implicit
+  genres Genre[]
+
+  // ranked picks per category via join model
+  categories CategoryAssignment[]
+}
+
+model Genre {
+  id   String  @id @default(cuid())
+  name String  @unique
+  slug String  @unique
+
+  // inverse side of many-to-many
+  movies Movie[]
+}
+
+model Category {
+  id          String               @id @default(cuid())
+  title       String               @unique
+  slug        String               @unique
+  description String               // The "over-explained" humorous category text
+  createdAt   DateTime             @default(now())
+  updatedAt   DateTime             @updatedAt
+
+  assignments CategoryAssignment[]
+}
+
+model CategoryAssignment {
+  movieId    String
+  categoryId String
+
+  // rank = 1, 2, 3 for top 3 picks (required for this MVP)
+  rank Int
+
+  movie    Movie    @relation(fields: [movieId], references: [id], onDelete: Cascade)
+  category Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@id([movieId, categoryId])
+  // Enforce one movie per rank per category
+  @@unique([categoryId, rank], map: "uniq_category_rank")
+}
+
+model AdminUser {
+  id           String    @id @default(cuid())
+  username     String    @unique
+  passwordHash String
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  sessions     Session[]
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  userId    String
+  token     String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  user AdminUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
