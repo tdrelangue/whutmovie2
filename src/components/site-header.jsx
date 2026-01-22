@@ -55,14 +55,6 @@ export default function SiteHeader() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-2 md:flex">
-          <Button asChild variant="ghost" size="sm">
-            <Link href="/signin">Sign in</Link>
-          </Button>
-          <Button asChild size="sm">
-            <Link href="/get-started">Get started</Link>
-          </Button>
-        </div>
 
         {/* Mobile nav */}
         <Sheet>
@@ -96,18 +88,6 @@ export default function SiteHeader() {
                 </SheetClose>
               ))}
             </nav>
-            <div className="mt-6 grid gap-2">
-              <SheetClose asChild>
-                <Button asChild variant="outline">
-                  <Link href="/signin">Sign in</Link>
-                </Button>
-              </SheetClose>
-              <SheetClose asChild>
-                <Button asChild>
-                  <Link href="/get-started">Get started</Link>
-                </Button>
-              </SheetClose>
-            </div>
           </SheetContent>
         </Sheet>
       </div>

@@ -63,7 +63,7 @@ export default async function AdminDashboardPage() {
       {/* Quick Actions */}
       <section>
         <h2 className="text-xl font-semibold mb-4">Manage Content</h2>
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <Card>
             <CardHeader>
               <CardTitle>Categories</CardTitle>
@@ -91,22 +91,55 @@ export default async function AdminDashboardPage() {
               </Button>
             </CardContent>
           </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>Genres</CardTitle>
+              <CardDescription>
+                Manage movie genres for filtering and organization
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Button asChild>
+                <Link href="/admin/genres">Manage Genres</Link>
+              </Button>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
-      {/* External Tools */}
+      {/* Admin Settings */}
       <section>
-        <h2 className="text-xl font-semibold mb-4">Database Tools</h2>
-        <Card>
-          <CardContent className="pt-6">
-            <p className="text-sm text-muted-foreground mb-4">
-              For advanced database management, use Prisma Studio:
-            </p>
-            <code className="bg-muted px-3 py-2 rounded text-sm">
-              npx prisma studio
-            </code>
-          </CardContent>
-        </Card>
+        <h2 className="text-xl font-semibold mb-4">Admin Settings</h2>
+        <div className="grid gap-4 sm:grid-cols-2">
+          <Card>
+            <CardHeader>
+              <CardTitle>Admin Users</CardTitle>
+              <CardDescription>
+                Create, edit, and manage admin accounts and passwords
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Button asChild>
+                <Link href="/admin/users">Manage Users</Link>
+              </Button>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>Database Tools</CardTitle>
+              <CardDescription>
+                Advanced database management with Prisma Studio
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <code className="bg-muted px-3 py-2 rounded text-sm block">
+                npx prisma studio
+              </code>
+            </CardContent>
+          </Card>
+        </div>
       </section>
     </div>
   );

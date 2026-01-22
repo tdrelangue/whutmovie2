@@ -198,12 +198,17 @@ export default async function AdminCategoriesPage() {
                         {category.description}
                       </CardDescription>
                     </div>
-                    <form action={deleteCategory}>
-                      <input type="hidden" name="id" value={category.id} />
-                      <Button type="submit" variant="destructive" size="sm">
-                        Delete
+                    <div className="flex gap-2">
+                      <Button asChild variant="outline" size="sm">
+                        <Link href={`/admin/categories/${category.id}`}>Edit</Link>
                       </Button>
-                    </form>
+                      <form action={deleteCategory}>
+                        <input type="hidden" name="id" value={category.id} />
+                        <Button type="submit" variant="destructive" size="sm">
+                          Delete
+                        </Button>
+                      </form>
+                    </div>
                   </div>
                 </CardHeader>
                 <CardContent className="space-y-4">

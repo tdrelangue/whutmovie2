@@ -222,12 +222,17 @@ export default async function AdminMoviesPage() {
                         {movie.whutSummary}
                       </CardDescription>
                     </div>
-                    <form action={deleteMovie}>
-                      <input type="hidden" name="id" value={movie.id} />
-                      <Button type="submit" variant="destructive" size="sm">
-                        Delete
+                    <div className="flex gap-2">
+                      <Button asChild variant="outline" size="sm">
+                        <Link href={`/admin/movies/${movie.id}`}>Edit</Link>
                       </Button>
-                    </form>
+                      <form action={deleteMovie}>
+                        <input type="hidden" name="id" value={movie.id} />
+                        <Button type="submit" variant="destructive" size="sm">
+                          Delete
+                        </Button>
+                      </form>
+                    </div>
                   </div>
                 </CardHeader>
                 <CardContent>

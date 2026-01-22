@@ -1532,7 +1532,7 @@ If you like humor with teeth, pick here.`,
       honorableMentions: [{ movieSlug: "bienvenue-chez-les-chtis" }],
     },
     {
-      title: "French Movies taht are surprisingly good",
+      title: "French Movies that are surprisingly good",
       slug: "french-movies-not-primarily-comedy",
       description: `France is not only jokes. Sometimes it’s melancholy, memory, and the sea calling you personally.
 
