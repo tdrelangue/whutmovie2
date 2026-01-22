@@ -51,20 +51,23 @@ export default async function HomePage() {
         </h1>
         <div className="max-w-3xl space-y-4 text-lg text-muted-foreground leading-relaxed">
           <p>
-            Look, we get it. You&apos;re tired of scrolling through Netflix for 45 minutes only to
+            Look, I get it. You&apos;re tired of scrolling through Netflix for 45 minutes only to
             rewatch The Office again. Or worse, you ask a friend for a recommendation and they say
             &quot;oh you HAVE to watch this French film about a guy who stares at bread for 3 hours,
             it&apos;s really about capitalism.&quot;
           </p>
           <p>
-            That&apos;s not us. We&apos;re the friend who actually watches movies and can tell you
+            That&apos;s not us. I&apos;m the friend who actually watches movies and can tell you
             which ones are worth your precious free time. Each category is a curated list of exactly
             3 films, ranked in order of &quot;you should definitely watch this&quot; to &quot;okay this
             one&apos;s pretty good too.&quot;
           </p>
           <p>
             No algorithms. No sponsored content. No pretentious film school takes (okay, maybe a few).
-            Just honest recommendations with way too much explanation about why we picked them.
+            Just honest recommendations with way too much explanation about why I picked them. 
+          </p>
+          <p>
+            You wanna watch a movie, I tell you WhutMovie !
           </p>
         </div>
         <div className="flex gap-4 pt-4">
@@ -83,7 +86,7 @@ export default async function HomePage() {
           <div>
             <h2 className="text-2xl font-semibold">Featured Categories</h2>
             <p className="text-muted-foreground mt-1">
-              Each one has exactly 3 picks. We don&apos;t do &quot;top 10&quot; lists here.
+              Each one has exactly 3 picks. I don&apos;t do &quot;top 10&quot; lists here.
             </p>
           </div>
           <Button asChild variant="ghost">
