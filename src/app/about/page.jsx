@@ -85,6 +85,21 @@ export default function AboutPage() {
           JavaScript and deliver fast, accessible pages.
         </p>
       </section>
+
+      {/* Credits */}
+      <section className="space-y-4 border-t border-border pt-8">
+        <h2 className="text-2xl font-semibold">Credits</h2>
+        <p className="text-muted-foreground leading-relaxed">
+          WhutMovie was designed and engineered by{" "}
+          <a
+            href="https://orig-audit.netlify.app"
+            className="text-foreground font-medium underline hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm transition-colors"
+          >
+            Orig
+          </a>
+          .
+        </p>
+      </section>
     </div>
   );
 }

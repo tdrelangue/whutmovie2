@@ -15,10 +15,32 @@ import { Badge } from "@/components/ui/badge";
  * @param {number} [props.rank] - Optional rank badge (1, 2, or 3)
  * @param {boolean} [props.showOfficialSynopsis] - Whether to show official synopsis under details
  * @param {boolean} [props.showGenres] - Whether to show genre badges (default: true)
+ * @param {string} [props.fromUrl] - Optional URL for context-aware back navigation
+ * @param {string} [props.variant] - Optional variant: "default" | "secondary" (for honorable mentions)
  */
-export function MovieCard({ movie, rank, showOfficialSynopsis = false, showGenres = true }) {
+export function MovieCard({
+  movie,
+  rank,
+  showOfficialSynopsis = false,
+  showGenres = true,
+  fromUrl,
+  variant = "default",
+}) {
+  // Build movie detail URL with optional "from" param
+  const movieUrl = fromUrl
+    ? `/movies/${movie.slug}?from=${encodeURIComponent(fromUrl)}`
+    : `/movies/${movie.slug}`;
+
+  const isSecondary = variant === "secondary";
+
   return (
-    <Card className="hover:border-primary/50 transition-colors relative">
+    <Card
+      className={`transition-colors relative ${
+        isSecondary
+          ? "hover:border-muted-foreground/50 opacity-90"
+          : "hover:border-primary/50"
+      }`}
+    >
       {/* Rank Badge */}
       {rank && (
         <div className="absolute -top-3 -right-3 z-10">
@@ -31,7 +53,7 @@ export function MovieCard({ movie, rank, showOfficialSynopsis = false, showGenre
       <CardHeader>
         <CardTitle className="line-clamp-1 text-lg">
           <Link
-            href={`/movies/${movie.slug}`}
+            href={movieUrl}
             className="hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
           >
             {movie.title}

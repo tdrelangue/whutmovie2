@@ -49,14 +49,16 @@ model CategoryAssignment {
   movieId    String
   categoryId String
 
-  // rank = 1, 2, 3 for top 3 picks (required for this MVP)
-  rank Int
+  // rank = 1, 2, 3 for top 3 picks (null for honorable mentions)
+  rank               Int?
+  // true for honorable mentions, false for ranked picks
+  isHonorableMention Boolean @default(false)
 
   movie    Movie    @relation(fields: [movieId], references: [id], onDelete: Cascade)
   category Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
 
   @@id([movieId, categoryId])
-  // Enforce one movie per rank per category
+  // Enforce one movie per rank per category (only for ranked picks)
   @@unique([categoryId, rank], map: "uniq_category_rank")
 }
 

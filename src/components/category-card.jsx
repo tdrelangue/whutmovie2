@@ -14,9 +14,11 @@ import { Badge } from "@/components/ui/badge";
  * @param {Object} props.category - Category object with title, slug, description, assignments
  */
 export function CategoryCard({ category }) {
-  // Get the 3 picks sorted by rank
+  // Get only ranked picks (not honorable mentions), sorted by rank
   const picks = category.assignments
-    ? [...category.assignments].sort((a, b) => a.rank - b.rank)
+    ? [...category.assignments]
+        .filter((a) => a.rank !== null && !a.isHonorableMention)
+        .sort((a, b) => a.rank - b.rank)
     : [];
 
   return (

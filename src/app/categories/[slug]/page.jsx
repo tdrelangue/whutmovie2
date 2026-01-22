@@ -11,7 +11,6 @@ async function getCategory(slug) {
     where: { slug },
     include: {
       assignments: {
-        orderBy: { rank: "asc" },
         include: {
           movie: {
             include: {
@@ -22,6 +21,10 @@ async function getCategory(slug) {
       },
     },
   });
+}
+
+async function getGenres() {
+  return prisma.genre.findMany({ orderBy: { name: "asc" } });
 }
 
 export async function generateMetadata({ params }) {
@@ -38,17 +41,62 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default async function CategoryDetailPage({ params }) {
+export default async function CategoryDetailPage({ params, searchParams }) {
   const { slug } = await params;
-  const category = await getCategory(slug);
+  const resolvedSearchParams = await searchParams;
+  const genreFilter = resolvedSearchParams.genre || null;
+
+  const [category, genres] = await Promise.all([
+    getCategory(slug),
+    getGenres(),
+  ]);
 
   if (!category) {
     notFound();
   }
 
   const isAdmin = await isAuthenticated();
-  const picks = category.assignments;
-  const hasAllPicks = picks.length === 3;
+
+  // Separate ranked picks from honorable mentions
+  const allAssignments = category.assignments;
+
+  // Filter function for genre
+  const matchesGenre = (assignment) => {
+    if (!genreFilter) return true;
+    return assignment.movie.genres.some((g) => g.slug === genreFilter);
+  };
+
+  // Ranked picks: rank 1-3, ordered by rank
+  const rankedPicks = allAssignments
+    .filter((a) => a.rank !== null && !a.isHonorableMention)
+    .sort((a, b) => a.rank - b.rank)
+    .filter(matchesGenre);
+
+  // Honorable mentions: isHonorableMention = true, ordered by movie title
+  const honorableMentions = allAssignments
+    .filter((a) => a.isHonorableMention === true)
+    .sort((a, b) => a.movie.title.localeCompare(b.movie.title))
+    .filter(matchesGenre);
+
+  // Count unfiltered ranked picks for admin notice
+  const totalRankedPicks = allAssignments.filter(
+    (a) => a.rank !== null && !a.isHonorableMention
+  ).length;
+  const hasAllPicks = totalRankedPicks >= 3;
+
+  // Build URL for filtering
+  const buildUrl = (overrides = {}) => {
+    const newParams = new URLSearchParams();
+    const merged = { genre: genreFilter, ...overrides };
+
+    if (merged.genre) newParams.set("genre", merged.genre);
+
+    const qs = newParams.toString();
+    return qs ? `/categories/${slug}?${qs}` : `/categories/${slug}`;
+  };
+
+  // Build the current page URL for "from" context
+  const currentPageUrl = buildUrl();
 
   return (
     <article className="max-w-4xl mx-auto space-y-8">
@@ -71,12 +119,49 @@ export default async function CategoryDetailPage({ params }) {
         </p>
       </section>
 
+      {/* Genre Filter */}
+      <section className="space-y-2">
+        <label className="block text-sm font-medium" id="genre-filter-label">
+          Filter by Genre
+        </label>
+        <div
+          className="flex flex-wrap gap-2"
+          role="group"
+          aria-labelledby="genre-filter-label"
+        >
+          <Button
+            asChild
+            variant={!genreFilter ? "default" : "outline"}
+            size="sm"
+          >
+            <Link href={buildUrl({ genre: null })}>All</Link>
+          </Button>
+          {genres.map((g) => (
+            <Button
+              key={g.id}
+              asChild
+              variant={genreFilter === g.slug ? "default" : "outline"}
+              size="sm"
+            >
+              <Link href={buildUrl({ genre: g.slug })}>{g.name}</Link>
+            </Button>
+          ))}
+        </div>
+        {genreFilter && (
+          <div className="pt-2">
+            <Button asChild variant="ghost" size="sm">
+              <Link href={buildUrl({ genre: null })}>Clear filter</Link>
+            </Button>
+          </div>
+        )}
+      </section>
+
       {/* Admin warning if missing picks */}
       {isAdmin && !hasAllPicks && (
         <Card className="border-destructive">
           <CardContent className="py-4">
             <p className="text-sm text-destructive">
-              Admin notice: This category only has {picks.length}/3 picks assigned.{" "}
+              Admin notice: This category only has {totalRankedPicks}/3 picks assigned.{" "}
               <Link href="/admin/categories" className="underline hover:text-destructive/80">
                 Add more picks
               </Link>
@@ -88,26 +173,50 @@ export default async function CategoryDetailPage({ params }) {
       {/* The 3 ranked movie picks */}
       <section>
         <h2 className="text-2xl font-semibold mb-6">The Picks</h2>
-        {picks.length > 0 ? (
+        {rankedPicks.length > 0 ? (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {picks.map((assignment) => (
+            {rankedPicks.map((assignment) => (
               <MovieCard
                 key={assignment.movieId}
                 movie={assignment.movie}
                 rank={assignment.rank}
                 showOfficialSynopsis={true}
                 showGenres={true}
+                fromUrl={currentPageUrl}
               />
             ))}
           </div>
         ) : (
           <Card>
             <CardContent className="py-8 text-center text-muted-foreground">
-              <p>No picks assigned to this category yet.</p>
+              <p>
+                {genreFilter
+                  ? "No picks match the selected genre."
+                  : "No picks assigned to this category yet."}
+              </p>
             </CardContent>
           </Card>
         )}
       </section>
+
+      {/* Honorable Mentions (only if present) */}
+      {honorableMentions.length > 0 && (
+        <section>
+          <h2 className="text-2xl font-semibold mb-6">Honorable Mentions</h2>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {honorableMentions.map((assignment) => (
+              <MovieCard
+                key={assignment.movieId}
+                movie={assignment.movie}
+                showOfficialSynopsis={true}
+                showGenres={true}
+                fromUrl={currentPageUrl}
+                variant="secondary"
+              />
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Metadata */}
       <footer className="border-t border-border pt-6 text-sm text-muted-foreground">

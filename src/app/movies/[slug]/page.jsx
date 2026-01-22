@@ -19,6 +19,47 @@ async function getMovie(slug) {
   });
 }
 
+/**
+ * Sanitize and validate the "from" URL to prevent open redirect attacks.
+ * Only allows relative paths starting with "/" and no protocol/domain.
+ */
+function sanitizeFromUrl(from) {
+  if (!from || typeof from !== "string") return null;
+
+  // Decode if needed
+  let decoded;
+  try {
+    decoded = decodeURIComponent(from);
+  } catch {
+    return null;
+  }
+
+  // Must start with "/" and not contain protocol or domain
+  if (!decoded.startsWith("/")) return null;
+  if (decoded.startsWith("//")) return null;
+  if (/^\/[a-zA-Z]:/.test(decoded)) return null; // Windows path check
+
+  // Basic check for protocol injection
+  if (/[a-zA-Z][a-zA-Z0-9+.-]*:/.test(decoded)) return null;
+
+  return decoded;
+}
+
+/**
+ * Determine the back navigation label based on the "from" URL
+ */
+function getBackLabel(fromUrl) {
+  if (!fromUrl) return "Back to Movies";
+
+  if (fromUrl.startsWith("/categories/")) {
+    return "Back to category";
+  }
+  if (fromUrl.startsWith("/categories")) {
+    return "Back to categories";
+  }
+  return "Back to Movies";
+}
+
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const movie = await getMovie(slug);
@@ -33,20 +74,27 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default async function MovieDetailPage({ params }) {
+export default async function MovieDetailPage({ params, searchParams }) {
   const { slug } = await params;
+  const resolvedSearchParams = await searchParams;
   const movie = await getMovie(slug);
 
   if (!movie) {
     notFound();
   }
 
+  // Get and sanitize the "from" URL for back navigation
+  const rawFrom = resolvedSearchParams?.from || null;
+  const fromUrl = sanitizeFromUrl(rawFrom);
+  const backUrl = fromUrl || "/movies";
+  const backLabel = getBackLabel(fromUrl);
+
   return (
     <article className="max-w-3xl mx-auto space-y-8">
       {/* Back Navigation */}
       <nav>
         <Button asChild variant="ghost" size="sm">
-          <Link href="/movies">&larr; Back to Movies</Link>
+          <Link href={backUrl}>&larr; {backLabel}</Link>
         </Button>
       </nav>
 
@@ -125,7 +173,11 @@ export default async function MovieDetailPage({ params }) {
                 href={`/categories/${ca.category.slug}`}
                 className="flex items-center gap-3 p-3 rounded-lg border border-border hover:border-primary/50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
-                <Badge variant="default">#{ca.rank}</Badge>
+                {ca.isHonorableMention ? (
+                  <Badge variant="secondary">HM</Badge>
+                ) : (
+                  <Badge variant="default">#{ca.rank}</Badge>
+                )}
                 <span className="font-medium">{ca.category.title}</span>
               </Link>
             ))}

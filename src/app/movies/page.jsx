@@ -70,6 +70,9 @@ export default async function MoviesPage({ searchParams }) {
     return qs ? `/movies?${qs}` : "/movies";
   };
 
+  // Current page URL for "from" context
+  const currentPageUrl = buildUrl();
+
   return (
     <div className="space-y-8">
       <header>
@@ -132,7 +135,12 @@ export default async function MoviesPage({ searchParams }) {
       {movies.length > 0 ? (
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {movies.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} showGenres={true} />
+            <MovieCard
+              key={movie.id}
+              movie={movie}
+              showGenres={true}
+              fromUrl={currentPageUrl}
+            />
           ))}
         </div>
       ) : (
