@@ -28,16 +28,19 @@ export default function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-sm">
-      <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
-        <Link
-          href="/"
-          className="text-lg font-bold tracking-tight text-foreground hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
-        >
-          WhutMovie
-        </Link>
+      <div className="mx-auto flex h-14 max-w-6xl items-center px-4">
+        {/* Logo - fixed width to balance with spacer */}
+        <div className="w-[100px]">
+          <Link
+            href="/"
+            className="text-lg font-bold tracking-tight text-foreground hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
+          >
+            WhutMovie
+          </Link>
+        </div>
 
-        {/* Desktop nav */}
-        <nav className="hidden gap-6 md:flex" aria-label="Main navigation">
+        {/* Desktop nav - centered with flex-1 and justify-center */}
+        <nav className="hidden flex-1 justify-center gap-6 md:flex" aria-label="Main navigation">
           {links.map((l) => (
             <Link
               key={l.href}
@@ -55,6 +58,8 @@ export default function SiteHeader() {
           ))}
         </nav>
 
+        {/* Spacer to balance the logo - hidden on mobile */}
+        <div className="hidden md:block w-[100px]" aria-hidden="true" />
 
         {/* Mobile nav */}
         <Sheet>

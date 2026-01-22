@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 
 export const metadata = {
   title: "Categories - WhutMovie",
-  description: "Browse our curated movie categories - each with exactly 3 picks and way too much explanation.",
+  description: "Browse my curated movie categories - each with 3 picks and way too much explanation.",
 };
 
 async function getCategories(genreFilter) {
