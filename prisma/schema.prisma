@@ -49,19 +49,18 @@ model Category {
 model CategoryAssignment {
   movieId    String
   categoryId String
-
-  // rank = 1, 2, 3 for top 3 picks (null for honorable mentions)
-  rank               Int?
-  // true for honorable mentions, false for ranked picks
+  rank       Int?
   isHonorableMention Boolean @default(false)
+
+  angleLabel String? // NEW: “Action”, “Rom-com”, “Wildcard”, etc. (per category)
 
   movie    Movie    @relation(fields: [movieId], references: [id], onDelete: Cascade)
   category Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
 
   @@id([movieId, categoryId])
-  // Enforce one movie per rank per category (only for ranked picks)
-  @@unique([categoryId, rank], map: "uniq_category_rank")
+  @@unique([categoryId, rank])
 }
+
 
 model AdminUser {
   id           String    @id @default(cuid())

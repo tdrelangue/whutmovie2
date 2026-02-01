@@ -346,6 +346,16 @@ npx prisma migrate reset
 
 This will drop all tables, re-run migrations, and re-seed.
 
+### Production database migrations
+
+**IMPORTANT**: For production databases with real data, always use:
+
+```bash
+npx prisma migrate deploy
+```
+
+NEVER use `npx prisma migrate reset` or `npx prisma db push --force-reset` on production as it will DELETE ALL DATA. The `migrate deploy` command safely applies pending migrations without data loss.
+
 ---
 
 ## Design System

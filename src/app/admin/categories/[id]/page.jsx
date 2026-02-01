@@ -142,6 +142,31 @@ async function removePick(formData) {
   revalidatePath("/");
 }
 
+async function updateAngleLabel(formData) {
+  "use server";
+
+  const categoryId = formData.get("categoryId")?.toString();
+  const movieId = formData.get("movieId")?.toString();
+  const angleLabel = formData.get("angleLabel")?.toString().trim() || null;
+
+  if (!categoryId || !movieId) return;
+
+  await prisma.categoryAssignment.update({
+    where: {
+      movieId_categoryId: { movieId, categoryId },
+    },
+    data: {
+      angleLabel,
+    },
+  });
+
+  revalidatePath("/admin/categories");
+  revalidatePath(`/admin/categories/${categoryId}`);
+  revalidatePath("/categories");
+  revalidatePath(`/categories`);
+  revalidatePath("/");
+}
+
 async function deleteCategory(formData) {
   "use server";
 
@@ -241,19 +266,38 @@ export default async function EditCategoryPage({ params }) {
         </CardHeader>
         <CardContent className="space-y-4">
           {rankedPicks.length > 0 ? (
-            <div className="space-y-2">
+            <div className="space-y-4">
               {rankedPicks.map((a) => (
-                <div key={a.movieId} className="flex items-center gap-3 p-2 bg-muted rounded">
-                  <Badge className="w-8 justify-center">#{a.rank}</Badge>
-                  <span className="flex-1 font-medium">
-                    {a.movie.title}
-                    {a.movie.year && <span className="text-muted-foreground ml-1">({a.movie.year})</span>}
-                  </span>
-                  <form action={removePick}>
+                <div key={a.movieId} className="p-3 bg-muted rounded space-y-2">
+                  <div className="flex items-center gap-3">
+                    <Badge className="w-8 justify-center">#{a.rank}</Badge>
+                    <span className="flex-1 font-medium">
+                      {a.movie.title}
+                      {a.movie.year && <span className="text-muted-foreground ml-1">({a.movie.year})</span>}
+                    </span>
+                    <form action={removePick}>
+                      <input type="hidden" name="categoryId" value={category.id} />
+                      <input type="hidden" name="movieId" value={a.movieId} />
+                      <Button type="submit" variant="ghost" size="sm">
+                        Remove
+                      </Button>
+                    </form>
+                  </div>
+                  <form action={updateAngleLabel} className="flex items-center gap-2">
                     <input type="hidden" name="categoryId" value={category.id} />
                     <input type="hidden" name="movieId" value={a.movieId} />
-                    <Button type="submit" variant="ghost" size="sm">
-                      Remove
+                    <label htmlFor={`angleLabel-${a.movieId}`} className="text-xs text-muted-foreground whitespace-nowrap">
+                      Angle label for Rank {a.rank}:
+                    </label>
+                    <Input
+                      id={`angleLabel-${a.movieId}`}
+                      name="angleLabel"
+                      defaultValue={a.angleLabel || ""}
+                      placeholder="e.g., Action, Rom-com twist, Philosophical"
+                      className="h-8 text-sm flex-1"
+                    />
+                    <Button type="submit" size="sm" variant="outline">
+                      Save
                     </Button>
                   </form>
                 </div>
@@ -316,21 +360,37 @@ export default async function EditCategoryPage({ params }) {
         </CardHeader>
         <CardContent className="space-y-4">
           {honorableMentions.length > 0 ? (
-            <div className="flex flex-wrap gap-2">
+            <div className="space-y-3">
               {honorableMentions.map((a) => (
-                <div
-                  key={a.movieId}
-                  className="flex items-center gap-2 px-3 py-1 bg-muted rounded-full"
-                >
-                  <span className="text-sm">
-                    {a.movie.title}
-                    {a.movie.year && <span className="text-muted-foreground ml-1">({a.movie.year})</span>}
-                  </span>
-                  <form action={removePick}>
+                <div key={a.movieId} className="p-3 bg-muted rounded space-y-2">
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm font-medium flex-1">
+                      {a.movie.title}
+                      {a.movie.year && <span className="text-muted-foreground ml-1">({a.movie.year})</span>}
+                    </span>
+                    <form action={removePick}>
+                      <input type="hidden" name="categoryId" value={category.id} />
+                      <input type="hidden" name="movieId" value={a.movieId} />
+                      <Button type="submit" variant="ghost" size="sm" className="h-6 px-2">
+                        Remove
+                      </Button>
+                    </form>
+                  </div>
+                  <form action={updateAngleLabel} className="flex items-center gap-2">
                     <input type="hidden" name="categoryId" value={category.id} />
                     <input type="hidden" name="movieId" value={a.movieId} />
-                    <Button type="submit" variant="ghost" size="sm" className="h-5 w-5 p-0">
-                      &times;
+                    <label htmlFor={`angleLabel-hm-${a.movieId}`} className="text-xs text-muted-foreground whitespace-nowrap">
+                      Angle label:
+                    </label>
+                    <Input
+                      id={`angleLabel-hm-${a.movieId}`}
+                      name="angleLabel"
+                      defaultValue={a.angleLabel || ""}
+                      placeholder="e.g., Wildcard, Deep cut"
+                      className="h-8 text-sm flex-1"
+                    />
+                    <Button type="submit" size="sm" variant="outline">
+                      Save
                     </Button>
                   </form>
                 </div>

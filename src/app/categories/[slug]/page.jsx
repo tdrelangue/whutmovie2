@@ -180,6 +180,7 @@ export default async function CategoryDetailPage({ params, searchParams }) {
                 key={assignment.movieId}
                 movie={assignment.movie}
                 rank={assignment.rank}
+                angleLabel={assignment.angleLabel}
                 showOfficialSynopsis={true}
                 showGenres={true}
                 fromUrl={currentPageUrl}
@@ -208,6 +209,7 @@ export default async function CategoryDetailPage({ params, searchParams }) {
               <MovieCard
                 key={assignment.movieId}
                 movie={assignment.movie}
+                angleLabel={assignment.angleLabel}
                 showOfficialSynopsis={true}
                 showGenres={true}
                 fromUrl={currentPageUrl}

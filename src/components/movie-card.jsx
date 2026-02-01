@@ -13,6 +13,7 @@ import { Badge } from "@/components/ui/badge";
  * @param {Object} props
  * @param {Object} props.movie - Movie object with title, slug, whutSummary, description, year, genres
  * @param {number} [props.rank] - Optional rank badge (1, 2, or 3)
+ * @param {string} [props.angleLabel] - Optional angle label (e.g., "Action", "Rom-com twist") per category assignment
  * @param {boolean} [props.showOfficialSynopsis] - Whether to show official synopsis under details
  * @param {boolean} [props.showGenres] - Whether to show genre badges (default: true)
  * @param {string} [props.fromUrl] - Optional URL for context-aware back navigation
@@ -21,6 +22,7 @@ import { Badge } from "@/components/ui/badge";
 export function MovieCard({
   movie,
   rank,
+  angleLabel,
   showOfficialSynopsis = false,
   showGenres = true,
   fromUrl,
@@ -59,8 +61,13 @@ export function MovieCard({
             {movie.title}
           </Link>
         </CardTitle>
-        <CardDescription>
+        <CardDescription className="flex items-center gap-2">
           {movie.year && <span>{movie.year}</span>}
+          {angleLabel && (
+            <Badge variant="secondary" className="text-xs">
+              {angleLabel}
+            </Badge>
+          )}
         </CardDescription>
       </CardHeader>
 
