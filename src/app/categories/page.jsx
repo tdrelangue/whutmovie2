@@ -102,7 +102,7 @@ export default async function CategoriesPage({ searchParams }) {
         <h1 className="text-3xl font-bold tracking-tight mb-2">Categories</h1>
         <p className="text-muted-foreground max-w-2xl">
           Each category is a carefully curated collection of exactly 3 movies, ranked in order of
-          how much we think you should watch them. The descriptions are... thorough.
+          how much I think you should watch them. The descriptions are... thorough.
         </p>
         {(q || genreFilter) && (
           <p className="text-muted-foreground mt-2">

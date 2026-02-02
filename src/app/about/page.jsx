@@ -45,11 +45,11 @@ export default function AboutPage() {
         <div className="prose prose-invert max-w-none">
           <p className="text-muted-foreground leading-relaxed">
             WhutMovie was born from a simple frustration: finding good movies shouldn&apos;t be hard.
-            We cut through the noise of algorithm-driven recommendations and provide thoughtfully
+            I cut through the noise of algorithm-driven recommendations and provide thoughtfully
             curated selections that prioritize quality over quantity.
           </p>
           <p className="text-muted-foreground leading-relaxed">
-            Our Top Picks represent the best of the best—films that have stood the test of time
+            My Top Picks represent the best of the best, films that have stood the test of time (or at least me watching them)
             or made a lasting impact. Honorable Mentions highlight worthy films that deserve
             attention even if they didn&apos;t make the top spots.
           </p>
@@ -58,7 +58,7 @@ export default function AboutPage() {
 
       {/* Principles */}
       <section className="space-y-6">
-        <h2 className="text-2xl font-semibold">Our Principles</h2>
+        <h2 className="text-2xl font-semibold">My Principles</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           {principles.map((principle) => (
             <Card key={principle.title}>
@@ -81,7 +81,7 @@ export default function AboutPage() {
         <p className="text-muted-foreground leading-relaxed">
           WhutMovie is built with modern web technologies: Next.js for server-side rendering
           and optimal performance, Tailwind CSS for consistent styling, and PostgreSQL for
-          reliable data storage. We use React Server Components to minimize client-side
+          reliable data storage. I use React Server Components to minimize client-side
           JavaScript and deliver fast, accessible pages.
         </p>
       </section>
