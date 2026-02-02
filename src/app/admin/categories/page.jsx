@@ -250,7 +250,7 @@ export default async function AdminCategoriesPage() {
                             id={`movie-${category.id}`}
                             name="movieId"
                             required
-                            className="w-full h-9 rounded-md border border-input bg-transparent px-3 text-sm"
+                            className="w-full h-9 rounded-md border border-input select-dark px-3 text-sm"
                           >
                             <option value="">Select a movie...</option>
                             {movies
@@ -270,7 +270,7 @@ export default async function AdminCategoriesPage() {
                             id={`rank-${category.id}`}
                             name="rank"
                             required
-                            className="w-full h-9 rounded-md border border-input bg-transparent px-3 text-sm"
+                            className="w-full h-9 rounded-md border border-input select-dark px-3 text-sm"
                           >
                             {[1, 2, 3]
                               .filter((r) => !category.assignments.some((a) => a.rank === r))

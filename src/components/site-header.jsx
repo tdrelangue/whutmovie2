@@ -40,17 +40,17 @@ export default function SiteHeader() {
         </div>
 
         {/* Desktop nav - centered with flex-1 and justify-center */}
-        <nav className="hidden flex-1 justify-center gap-6 md:flex" aria-label="Main navigation">
+        <nav className="hidden flex-1 justify-center gap-2 md:flex" aria-label="Main navigation">
           {links.map((l) => (
             <Link
               key={l.href}
               href={l.href}
               aria-current={isActive(l.href) ? "page" : undefined}
               className={
-                "text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm px-1 " +
+                "text-sm font-medium transition-all focus:outline-none rounded-md px-3 py-1.5 " +
                 (isActive(l.href)
-                  ? "text-primary"
-                  : "text-muted-foreground hover:text-foreground")
+                  ? "bg-primary text-primary-foreground shadow-sm focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted/50 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background")
               }
             >
               {l.label}
@@ -75,17 +75,17 @@ export default function SiteHeader() {
                 WhutMovie
               </Link>
             </div>
-            <nav className="grid gap-3" aria-label="Mobile navigation">
+            <nav className="grid gap-2" aria-label="Mobile navigation">
               {links.map((l) => (
                 <SheetClose asChild key={l.href}>
                   <Link
                     href={l.href}
                     aria-current={isActive(l.href) ? "page" : undefined}
                     className={
-                      "text-sm font-medium py-2 px-1 rounded-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring " +
+                      "text-sm font-medium py-2 px-3 rounded-md transition-all focus:outline-none " +
                       (isActive(l.href)
-                        ? "text-primary"
-                        : "text-muted-foreground hover:text-foreground")
+                        ? "bg-primary text-primary-foreground focus-visible:ring-2 focus-visible:ring-white"
+                        : "text-muted-foreground hover:text-foreground hover:bg-muted/50 focus-visible:ring-2 focus-visible:ring-ring")
                     }
                   >
                     {l.label}

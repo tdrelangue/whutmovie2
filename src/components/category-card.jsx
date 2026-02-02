@@ -24,7 +24,7 @@ export function CategoryCard({ category }) {
   return (
     <Link
       href={`/categories/${category.slug}`}
-      className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-xl"
+      className="block group focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-xl"
     >
       <Card className="hover:border-primary/50 transition-colors h-full">
         <CardHeader>
@@ -65,9 +65,11 @@ export function CategoryCard({ category }) {
             </p>
           )}
 
-          {/* View affordance */}
-          <div className="mt-4 text-sm text-primary font-medium">
-            View category &rarr;
+          {/* View affordance - Bordeaux button with white text */}
+          <div className="mt-4">
+            <span className="inline-flex items-center gap-1 text-sm font-medium text-primary-foreground bg-primary rounded-md px-3 py-1.5 transition-all group-hover:bg-primary/90 group-hover:shadow-md">
+              View category <span aria-hidden="true">&rarr;</span>
+            </span>
           </div>
         </CardContent>
       </Card>

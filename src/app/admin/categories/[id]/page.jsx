@@ -319,7 +319,7 @@ export default async function EditCategoryPage({ params }) {
                   <select
                     name="movieId"
                     required
-                    className="w-full h-9 rounded-md border border-input bg-transparent px-3 text-sm"
+                    className="w-full h-9 rounded-md border border-input select-dark px-3 text-sm"
                   >
                     <option value="">Select a movie...</option>
                     {availableMovies.map((m) => (
@@ -334,7 +334,7 @@ export default async function EditCategoryPage({ params }) {
                   <select
                     name="rank"
                     required
-                    className="w-full h-9 rounded-md border border-input bg-transparent px-3 text-sm"
+                    className="w-full h-9 rounded-md border border-input select-dark px-3 text-sm"
                   >
                     {availableRanks.map((r) => (
                       <option key={r} value={r}>
@@ -412,7 +412,7 @@ export default async function EditCategoryPage({ params }) {
                   <select
                     name="movieId"
                     required
-                    className="w-full h-9 rounded-md border border-input bg-transparent px-3 text-sm"
+                    className="w-full h-9 rounded-md border border-input select-dark px-3 text-sm"
                   >
                     <option value="">Select a movie...</option>
                     {availableMovies.map((m) => (

@@ -56,7 +56,7 @@ export function MovieCard({
         <CardTitle className="line-clamp-1 text-lg">
           <Link
             href={movieUrl}
-            className="hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
+            className="inline-block rounded-sm transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-ring hover:underline hover:decoration-primary hover:decoration-2 hover:underline-offset-4"
           >
             {movie.title}
           </Link>
