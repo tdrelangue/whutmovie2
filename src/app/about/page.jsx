@@ -10,7 +10,7 @@ export default function AboutPage() {
     {
       title: "Dark UX",
       description:
-        "We embrace a dark-first design philosophy. Our interface is easy on the eyes, reduces eye strain during extended browsing, and creates a cinematic atmosphere that complements the movie-watching experience.",
+        "I embrace a dark-first design philosophy. Our interface is easy on the eyes, reduces eye strain during extended browsing, and creates a cinematic atmosphere that complements the movie-watching experience.",
     },
     {
       title: "Accessibility",
@@ -20,7 +20,7 @@ export default function AboutPage() {
     {
       title: "Minimalism",
       description:
-        "We believe in showing what matters. No cluttered interfaces, no overwhelming ads, no distracting animations. Just clean, focused content that helps you discover great films.",
+        "I believe in showing what matters. No cluttered interfaces, no overwhelming ads, no distracting animations. Just clean, focused content that helps you discover great films.",
     },
     {
       title: "Performance",
