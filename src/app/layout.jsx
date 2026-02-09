@@ -5,6 +5,9 @@ export const metadata = {
   title: "WhutMovie - Curated Film Recommendations",
   description: "Discover top-rated films and honorable mentions curated with care. Dark, minimal, and accessible movie recommendations.",
   creator: "Orig",
+  verification: {
+    google: "gm4FVRwBDl-tNVun0D1digU6fT-2pcCp02MiGnLxETI",
+  },
 };
 
 export default function RootLayout({ children }) {
