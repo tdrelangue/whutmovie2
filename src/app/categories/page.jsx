@@ -26,11 +26,7 @@ async function getCategories({ genreFilter, q }) {
     orderBy: { createdAt: "desc" },
     include: {
       assignments: {
-        where: {
-          // Only include ranked picks (not honorable mentions)
-          isHonorableMention: false,
-          rank: { not: null },
-        },
+        where: { isHonorableMention: false, rank: { not: null } },
         orderBy: { rank: "asc" },
         include: {
           movie: {
@@ -38,13 +34,16 @@ async function getCategories({ genreFilter, q }) {
               id: true,
               title: true,
               slug: true,
-              genres: {
-                select: {
-                  slug: true,
-                },
-              },
+              genres: { select: { slug: true } },
             },
           },
+        },
+      },
+      groupAssignments: {
+        where: { isHonorableMention: false },
+        orderBy: { rank: "asc" },
+        include: {
+          group: { select: { id: true, title: true } },
         },
       },
     },

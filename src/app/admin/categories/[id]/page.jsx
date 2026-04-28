@@ -82,12 +82,22 @@ async function saveCategory(formData) {
     return;
   }
 
-  // Update angle labels for all currently-assigned movies
+  // Update angle labels for movie assignments
   for (const [key, val] of formData.entries()) {
     if (!key.startsWith("angleLabel-")) continue;
     const movieId = key.slice("angleLabel-".length);
     await prisma.categoryAssignment.update({
       where: { movieId_categoryId: { movieId, categoryId: id } },
+      data: { angleLabel: val?.toString().trim() || null },
+    });
+  }
+
+  // Update angle labels for group assignments
+  for (const [key, val] of formData.entries()) {
+    if (!key.startsWith("groupAngleLabel-")) continue;
+    const gaId = key.slice("groupAngleLabel-".length);
+    await prisma.categoryGroupAssignment.update({
+      where: { id: gaId },
       data: { angleLabel: val?.toString().trim() || null },
     });
   }
@@ -332,6 +342,19 @@ export default async function EditCategoryPage({ params, searchParams }) {
                             <Button type="submit" variant="ghost" size="sm">Remove</Button>
                           </form>
                         </div>
+                        <div className="flex items-center gap-2">
+                          <label htmlFor={`gangle-${ga.id}`} className="text-xs text-muted-foreground whitespace-nowrap">
+                            Angle label:
+                          </label>
+                          <Input
+                            id={`gangle-${ga.id}`}
+                            form="category-form"
+                            name={`groupAngleLabel-${ga.id}`}
+                            defaultValue={ga.angleLabel || ""}
+                            placeholder="e.g., Action, Rom-com twist, Philosophical"
+                            className="h-8 text-sm"
+                          />
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -462,6 +485,19 @@ export default async function EditCategoryPage({ params, searchParams }) {
                             <input type="hidden" name="categoryId" value={category.id} />
                             <Button type="submit" variant="ghost" size="sm" className="h-7 px-2">Remove</Button>
                           </form>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <label htmlFor={`gangle-hm-${ga.id}`} className="text-xs text-muted-foreground whitespace-nowrap">
+                            Angle label:
+                          </label>
+                          <Input
+                            id={`gangle-hm-${ga.id}`}
+                            form="category-form"
+                            name={`groupAngleLabel-${ga.id}`}
+                            defaultValue={ga.angleLabel || ""}
+                            placeholder="e.g., Wildcard, Deep cut"
+                            className="h-8 text-sm"
+                          />
                         </div>
                       </div>
                     ))}

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { MovieCard } from "@/components/movie-card";
-import { MovieGroupSection } from "@/components/movie-group-section";
+import { GroupCard } from "@/components/group-card";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { isAuthenticated } from "@/lib/auth";
@@ -25,10 +25,9 @@ async function getCategory(slug) {
             include: {
               members: {
                 orderBy: { order: "asc" },
-                include: {
-                  movie: {
-                    include: { genres: true },
-                  },
+                select: {
+                  id: true,
+                  movie: { select: { posterUrl: true } },
                 },
               },
             },
@@ -199,9 +198,15 @@ export default async function CategoryDetailPage({ params, searchParams }) {
         <h2 className="text-2xl font-semibold mb-6">The Picks</h2>
         {isGroupCategory ? (
           rankedGroupPicks.length > 0 ? (
-            <div className="space-y-8">
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {rankedGroupPicks.map((ga) => (
-                <MovieGroupSection key={ga.id} group={ga.group} rank={ga.rank} fromUrl={currentPageUrl} />
+                <GroupCard
+                  key={ga.id}
+                  group={ga.group}
+                  rank={ga.rank}
+                  angleLabel={ga.angleLabel}
+                  fromUrl={currentPageUrl}
+                />
               ))}
             </div>
           ) : (
@@ -243,11 +248,19 @@ export default async function CategoryDetailPage({ params, searchParams }) {
       {/* Honorable Mentions (only if present) */}
       {isGroupCategory ? (
         honorableGroupMentions.length > 0 && (
-          <section className="space-y-8">
-            <h2 className="text-2xl font-semibold">Honorable Mentions</h2>
-            {honorableGroupMentions.map((ga) => (
-              <MovieGroupSection key={ga.id} group={ga.group} fromUrl={currentPageUrl} />
-            ))}
+          <section>
+            <h2 className="text-2xl font-semibold mb-6">Honorable Mentions</h2>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {honorableGroupMentions.map((ga) => (
+                <GroupCard
+                  key={ga.id}
+                  group={ga.group}
+                  angleLabel={ga.angleLabel}
+                  fromUrl={currentPageUrl}
+                  variant="secondary"
+                />
+              ))}
+            </div>
           </section>
         )
       ) : (

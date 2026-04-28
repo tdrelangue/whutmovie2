@@ -14,12 +14,19 @@ import { Badge } from "@/components/ui/badge";
  * @param {Object} props.category - Category object with title, slug, description, assignments
  */
 export function CategoryCard({ category }) {
-  // Get only ranked picks (not honorable mentions), sorted by rank
-  const picks = category.assignments
+  const isGroupCategory = category.categoryType === "GROUPS";
+
+  const moviePicks = !isGroupCategory && category.assignments
     ? [...category.assignments]
         .filter((a) => a.rank !== null && !a.isHonorableMention)
         .sort((a, b) => a.rank - b.rank)
     : [];
+
+  const groupPicks = isGroupCategory && category.groupAssignments
+    ? [...category.groupAssignments].sort((a, b) => (a.rank ?? 0) - (b.rank ?? 0))
+    : [];
+
+  const hasPicks = isGroupCategory ? groupPicks.length > 0 : moviePicks.length > 0;
 
   return (
     <Link
@@ -37,26 +44,33 @@ export function CategoryCard({ category }) {
         </CardHeader>
 
         <CardContent>
-          {/* Preview of the 3 picks */}
-          {picks.length > 0 ? (
+          {hasPicks ? (
             <div className="space-y-2">
               <p className="text-xs text-muted-foreground font-medium uppercase tracking-wide">
                 Top 3 Picks
               </p>
               <div className="space-y-1">
-                {picks.map((assignment) => (
-                  <div
-                    key={assignment.movieId}
-                    className="flex items-center gap-2"
-                  >
-                    <Badge variant="default" className="text-xs px-1.5 py-0">
-                      #{assignment.rank}
-                    </Badge>
-                    <span className="text-sm text-foreground truncate">
-                      {assignment.movie.title}
-                    </span>
-                  </div>
-                ))}
+                {isGroupCategory
+                  ? groupPicks.map((ga) => (
+                      <div key={ga.id} className="flex items-center gap-2">
+                        <Badge variant="default" className="text-xs px-1.5 py-0">
+                          #{ga.rank}
+                        </Badge>
+                        <span className="text-sm text-foreground truncate">
+                          {ga.group.title}
+                        </span>
+                      </div>
+                    ))
+                  : moviePicks.map((a) => (
+                      <div key={a.movieId} className="flex items-center gap-2">
+                        <Badge variant="default" className="text-xs px-1.5 py-0">
+                          #{a.rank}
+                        </Badge>
+                        <span className="text-sm text-foreground truncate">
+                          {a.movie.title}
+                        </span>
+                      </div>
+                    ))}
               </div>
             </div>
           ) : (
@@ -65,7 +79,6 @@ export function CategoryCard({ category }) {
             </p>
           )}
 
-          {/* View affordance - Bordeaux button with white text */}
           <div className="mt-4">
             <span className="inline-flex items-center gap-1 text-sm font-medium text-primary-foreground bg-primary rounded-md px-3 py-1.5 transition-all group-hover:bg-primary/90 group-hover:shadow-md">
               View category <span aria-hidden="true">&rarr;</span>

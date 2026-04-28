@@ -118,6 +118,7 @@ model CategoryGroupAssignment {
   groupId            String
   rank               Int?
   isHonorableMention Boolean @default(false)
+  angleLabel         String?
 
   category Category   @relation(fields: [categoryId], references: [id], onDelete: Cascade)
   group    MovieGroup @relation(fields: [groupId], references: [id], onDelete: Cascade)

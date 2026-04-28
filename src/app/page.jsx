@@ -14,12 +14,15 @@ async function getFeaturedCategories() {
         orderBy: { rank: "asc" },
         include: {
           movie: {
-            select: {
-              id: true,
-              title: true,
-              slug: true,
-            },
+            select: { id: true, title: true, slug: true },
           },
+        },
+      },
+      groupAssignments: {
+        where: { isHonorableMention: false },
+        orderBy: { rank: "asc" },
+        include: {
+          group: { select: { id: true, title: true } },
         },
       },
     },
