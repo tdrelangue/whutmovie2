@@ -44,14 +44,15 @@ model Genre {
 }
 
 model Category {
-  id          String               @id @default(cuid())
-  title       String               @unique
-  slug        String               @unique
-  description String               // The "over-explained" humorous category text
-  createdAt   DateTime             @default(now())
-  updatedAt   DateTime             @updatedAt
+  id           String               @id @default(cuid())
+  title        String               @unique
+  slug         String               @unique
+  description  String               // The "over-explained" humorous category text
+  categoryType String               @default("MOVIES") // "MOVIES" | "GROUPS"
+  createdAt    DateTime             @default(now())
+  updatedAt    DateTime             @updatedAt
 
-  assignments    CategoryAssignment[]
+  assignments      CategoryAssignment[]
   groupAssignments CategoryGroupAssignment[]
 }
 
@@ -112,14 +113,17 @@ model MovieGroupMember {
 }
 
 model CategoryGroupAssignment {
-  id         String @id @default(cuid())
-  categoryId String
-  groupId    String
+  id                 String  @id @default(cuid())
+  categoryId         String
+  groupId            String
+  rank               Int?    // 1, 2, 3 for ranked picks; null for honorable mention
+  isHonorableMention Boolean @default(false)
 
   category Category   @relation(fields: [categoryId], references: [id], onDelete: Cascade)
   group    MovieGroup @relation(fields: [groupId], references: [id], onDelete: Cascade)
 
   @@unique([categoryId, groupId])
+  @@unique([categoryId, rank])
   @@index([categoryId])
 }
 
