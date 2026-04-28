@@ -61,13 +61,28 @@ function GroupMemberCard({ member, fromUrl }) {
 }
 
 export function MovieGroupSection({ group, fromUrl }) {
+  const referencePoster = group.members.find((m) => m.movie.posterUrl)?.movie.posterUrl ?? null;
+
   return (
     <div className="space-y-4">
-      <div>
-        <h3 className="text-xl font-semibold">{group.title}</h3>
-        {group.description && (
-          <p className="text-sm text-muted-foreground mt-1">{group.description}</p>
+      <div className="flex items-center gap-4">
+        {referencePoster && (
+          <div className="relative w-12 shrink-0 aspect-[2/3] rounded overflow-hidden bg-muted">
+            <Image
+              src={referencePoster}
+              alt=""
+              fill
+              sizes="48px"
+              className="object-cover"
+            />
+          </div>
         )}
+        <div>
+          <h3 className="text-xl font-semibold">{group.title}</h3>
+          {group.description && (
+            <p className="text-sm text-muted-foreground mt-1">{group.description}</p>
+          )}
+        </div>
       </div>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {group.members.map((member) => (
