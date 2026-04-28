@@ -1,0 +1,2452 @@
+{
+  "exportedAt": "2026-04-28T14:28:17.959Z",
+  "stats": {
+    "movies": 125,
+    "categories": 30,
+    "genres": 17
+  },
+  "genres": [
+    {
+      "name": "Action",
+      "slug": "action"
+    },
+    {
+      "name": "Adventure",
+      "slug": "adventure"
+    },
+    {
+      "name": "Animation",
+      "slug": "animation"
+    },
+    {
+      "name": "Buddy movie",
+      "slug": "buddy-movie"
+    },
+    {
+      "name": "Christmas",
+      "slug": "christmas"
+    },
+    {
+      "name": "Comedy",
+      "slug": "comedy"
+    },
+    {
+      "name": "Crime",
+      "slug": "crime"
+    },
+    {
+      "name": "Documentary",
+      "slug": "documentary"
+    },
+    {
+      "name": "Drama",
+      "slug": "drama"
+    },
+    {
+      "name": "Fantasy",
+      "slug": "fantasy"
+    },
+    {
+      "name": "Feel-good",
+      "slug": "feel-good"
+    },
+    {
+      "name": "Horror",
+      "slug": "horror"
+    },
+    {
+      "name": "Mystery",
+      "slug": "mystery"
+    },
+    {
+      "name": "Romance",
+      "slug": "romance"
+    },
+    {
+      "name": "Sci-Fi",
+      "slug": "sci-fi"
+    },
+    {
+      "name": "Thriller",
+      "slug": "thriller"
+    },
+    {
+      "name": "Western",
+      "slug": "western"
+    }
+  ],
+  "movies": [
+    {
+      "title": "12 Dates of Christmas",
+      "slug": "12-dates-of-christmas",
+      "year": 2011,
+      "whutSummary": "A Hallmark-style Christmas rom-com with a Groundhog Day problem. Same parties, same conversations, same mistakes until repetition forces growth. It keeps the cozy Christmas vibes but adds a clever time-loop twist that makes the romance feel earned instead of automatic.",
+      "description": "A woman finds herself reliving Christmas Eve over and over again, slowly learning from her mistakes and discovering what really matters as she navigates love, family, and second chances.",
+      "tmdbId": null,
+      "genres": [
+        "romance",
+        "feel-good",
+        "christmas"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "12 Mighty Orphans",
+      "slug": "12-mighty-orphans",
+      "year": 2021,
+      "whutSummary": "Underdog football team from an orphanage goes against the world. It’s straightforward, sincere, and built for motivation.",
+      "description": "An orphanage football team rises through discipline and community support in Depression-era America.",
+      "tmdbId": null,
+      "genres": [
+        "drama"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "2001: A Space Odyssey",
+      "slug": "2001-a-space-odyssey",
+      "year": 1968,
+      "whutSummary": "A slow, hypnotic masterpiece that feels like watching the universe think. Not a plot, an experience. HAL is polite and terrifying.",
+      "description": "A space mission is disrupted by an AI as humanity confronts forces beyond comprehension.",
+      "tmdbId": null,
+      "genres": [
+        "mystery",
+        "sci-fi"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "8 Mile",
+      "slug": "8-mile",
+      "year": 2002,
+      "whutSummary": "Music as survival. Rap battles as identity. Raw, grounded, and surprisingly tight.",
+      "description": "A young rapper tries to find his voice and break out of his circumstances through battle rap.",
+      "tmdbId": null,
+      "genres": [
+        "drama"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "A Beautiful Life",
+      "slug": "a-beautiful-life",
+      "year": 2023,
+      "whutSummary": "Singer meets producer, talent meets life, romance meets reality. Pretty good songs. Warm, fuzzy, musical, and not afraid to be emotional.",
+      "description": "A young fisherman with a gift for singing is discovered and pulled into a new life where love and ambition collide.",
+      "tmdbId": null,
+      "genres": [
+        "drama",
+        "romance"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "A Beautiful Mind",
+      "slug": "a-beautiful-mind",
+      "year": 2001,
+      "whutSummary": "Genius isn’t the problem. The problem is what genius costs. Brilliant, heartbreaking, and not as simple as it looks.",
+      "description": "The life of mathematician John Nash and his struggle with mental illness and achievement.",
+      "tmdbId": null,
+      "genres": [
+        "drama"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "A Dog’s Purpose",
+      "slug": "a-dogs-purpose",
+      "year": 2017,
+      "whutSummary": "Reincarnation, but fluffy. If you are emotionally stable, this movie will test that claim.",
+      "description": "A dog is reborn across several lives and learns what his purpose is through the humans he loves.",
+      "tmdbId": null,
+      "genres": [
+        "drama",
+        "fantasy"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "A Man Called Otto",
+      "slug": "a-man-called-otto",
+      "year": 2022,
+      "whutSummary": "Grumpy man tries to be left alone but keeps accidentally becoming a decent human. The neighborhood refuses to let him self-destruct in peace.",
+      "description": "A stubborn widower’s life changes when new neighbors crash into his routines and his grief.",
+      "tmdbId": null,
+      "genres": [
+        "comedy",
+        "drama"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "About Time",
+      "slug": "about-time",
+      "year": 2013,
+      "whutSummary": "A man who can relive any moment slowly figures out that the whole point is to stop needing to. Romantic, warm, and quietly one of the most useful movies ever made about how to actually live.",
+      "description": "A young man discovers he can travel back in time and uses this ability to improve his life and relationships, only to learn what actually matters.",
+      "tmdbId": null,
+      "genres": [
+        "drama",
+        "romance",
+        "feel-good"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Ace Ventura: Pet Detective",
+      "slug": "ace-ventura-pet-detective",
+      "year": 1994,
+      "whutSummary": "A man who is basically a noise machine solves animal cases. Peak Carrey chaos. Not subtle. Never subtle.",
+      "description": "An eccentric pet detective investigates the disappearance of a football team’s mascot.",
+      "tmdbId": null,
+      "genres": [
+        "comedy",
+        "crime"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Anna vs Zombie Apocalypse",
+      "slug": "anna-vs-zombie-apocalypse",
+      "year": 2017,
+      "whutSummary": "Teen zombie Christmas musical chaos with a SUPERVILLAIN and ‘how is this real?’ energy. It’s weird, it’s fun, it belongs here.",
+      "description": "A teen navigates a zombie outbreak during the holidays and tries to survive with friends.",
+      "tmdbId": null,
+      "genres": [
+        "comedy",
+        "horror",
+        "christmas"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Astérix & Obélix: Mission Cleopatra",
+      "slug": "asterix-obelix-mission-cleopatra",
+      "year": 2002,
+      "whutSummary": "French comedy chaos with quotable lines for decades. A national monument disguised as a dumb movie.",
+      "description": "Astérix and Obélix help build a palace in Egypt while annoying Romans with style.",
+      "tmdbId": null,
+      "genres": [
+        "adventure",
+        "comedy"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Bienvenue chez les Ch’tis",
+      "slug": "bienvenue-chez-les-chtis",
+      "year": 2008,
+      "whutSummary": "A man fears the North of France, discovers humans live there. Comfort comedy with regional heart.",
+      "description": "A postal worker is transferred to Northern France and learns his prejudices were ridiculous.",
+      "tmdbId": null,
+      "genres": [
+        "comedy"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Billy Elliot",
+      "slug": "billy-elliot",
+      "year": 2000,
+      "whutSummary": "A kid chooses ballet in a world that wants him to choose anything else. It’s discipline, identity, and liberation in one package.",
+      "description": "A boy discovers a passion for ballet and confronts family and social expectations.",
+      "tmdbId": null,
+      "genres": [
+        "drama"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Birdemic: Shock and Terror",
+      "slug": "birdemic-shock-and-terror",
+      "year": 2010,
+      "whutSummary": "So bad it becomes performance art. Birds attack. CGI panics. Humans also attack acting.",
+      "description": "A small town faces an inexplicable bird attack in a film famous for its low-budget execution.",
+      "tmdbId": null,
+      "genres": [
+        "horror",
+        "romance"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "BlacKkKlansman",
+      "slug": "blackkklansman",
+      "year": 2018,
+      "whutSummary": "A Black detective infiltrates the KKK by phone, and his colleague does the in-person part. Funny until it’s not.",
+      "description": "An undercover investigation targets the Ku Klux Klan with an operation that becomes increasingly dangerous.",
+      "tmdbId": null,
+      "genres": [
+        "comedy",
+        "crime",
+        "drama"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Blade Runner",
+      "slug": "blade-runner",
+      "year": 1982,
+      "whutSummary": "Neon rain, existential dread, and the question ‘what counts as human?’ If you like vibes, this movie is a full meal.",
+      "description": "A blade runner hunts bioengineered beings while questioning what identity and humanity mean.",
+      "tmdbId": null,
+      "genres": [
+        "sci-fi",
+        "thriller"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Boss Level",
+      "slug": "boss-level",
+      "year": 2020,
+      "whutSummary": "Groundhog Day, but with assassins. Dying repeatedly becomes a strategy. Video game logic, surprisingly watchable.",
+      "description": "A retired soldier relives the day of his death and fights to escape a loop engineered against him.",
+      "tmdbId": null,
+      "genres": [
+        "action",
+        "sci-fi",
+        "thriller"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Brice de Nice",
+      "slug": "brice-de-nice",
+      "year": 2005,
+      "whutSummary": "A man whose entire personality is ‘surf’ despite living nowhere near surf. Pure idiocy. Somehow iconic.",
+      "description": "A spoiled beach-obsessed man chases meaning through vanity, accidents, and a lot of ‘cool’ poses.",
+      "tmdbId": null,
+      "genres": [
+        "comedy"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Brice de Nice 2",
+      "slug": "brice-de-nice-2",
+      "year": 2016,
+      "whutSummary": "More Brice. More delusion. If you liked the first, you know what you’re signing up for.",
+      "description": "Brice returns for more misguided adventures fueled by ego and accidental slapstick.",
+      "tmdbId": null,
+      "genres": [
+        "comedy"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Can’t Buy Me Love",
+      "slug": "cant-buy-me-love",
+      "year": 1987,
+      "whutSummary": "Teen pays a popular girl to pretend-date him and learns popularity is a scam. Classic ‘social status is fake’ rom-com energy.",
+      "description": "A high school outcast pays a popular girl to date him, leading to unexpected consequences.",
+      "tmdbId": null,
+      "genres": [
+        "comedy",
+        "romance"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Casino Royale",
+      "slug": "casino-royale",
+      "year": 2006,
+      "whutSummary": "Bond reboot where the punches hurt and the poker is life-or-death because cinema logic. Peak modern spy movie.",
+      "description": "James Bond takes on a high-stakes mission in a casino that becomes personal and brutal.",
+      "tmdbId": null,
+      "genres": [
+        "action",
+        "adventure",
+        "thriller"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Catch Me If You Can",
+      "slug": "catch-me-if-you-can",
+      "year": 2002,
+      "whutSummary": "A charming fraudster runs circles around the FBI. It’s crime, but with charisma, momentum, and surprisingly tender moments.",
+      "description": "A young con artist successfully forges and scams his way across the world while pursued by an FBI agent.",
+      "tmdbId": null,
+      "genres": [
+        "crime",
+        "drama"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Central Intelligence",
+      "slug": "central-intelligence",
+      "year": 2016,
+      "whutSummary": "High school reunion meets spy chaos. Comedy first, spying second. Exactly what it says on the tin.",
+      "description": "A mild accountant is dragged into an espionage mess by an old classmate turned CIA agent.",
+      "tmdbId": null,
+      "genres": [
+        "action",
+        "comedy",
+        "crime"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Chef",
+      "slug": "chef",
+      "year": 2014,
+      "whutSummary": "A burned-out chef loses everything, buys a food truck, and drives across America with his only remaining friend and the son he'd been too absent to actually know — turns out the kid is great, whoops. Jon Favreau wrote, directed, starred, and somehow wrote himself a sensual thing with Scarlett Johansson AND a marriage to Sofia Vergara. No notes. MY MAN!!!",
+      "description": "After a public fallout with his restaurant boss, a chef reinvents himself by launching a food truck with his best friend and his young son.",
+      "tmdbId": null,
+      "genres": [
+        "comedy",
+        "drama",
+        "feel-good"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Christmas Under Wraps",
+      "slug": "christmas-under-wraps",
+      "year": 2014,
+      "whutSummary": "Peak Hallmark setup, but with a quiet twist: the town doesn’t need saving, it already works. Snow, isolation, and Christmas rituals do most of the emotional work. The romance is predictable, but the focus stays on discovering a place that quietly knows exactly what it is.",
+      "description": "A big-city doctor is sent to work in a remote Alaskan town, where she slowly warms to the community, uncovers a local secret, and begins to rethink her priorities during the Christmas season.",
+      "tmdbId": null,
+      "genres": [
+        "mystery",
+        "romance",
+        "christmas"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Coach Carter",
+      "slug": "coach-carter",
+      "year": 2005,
+      "whutSummary": "Basketball movie that insists school matters and backs it up with consequences. Motivation with teeth.",
+      "description": "A coach demands discipline and academic commitment from his team, challenging the community’s priorities.",
+      "tmdbId": null,
+      "genres": [
+        "drama"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Crank (Hyper Tension)",
+      "slug": "crank-hyper-tension",
+      "year": 2006,
+      "whutSummary": "A man must keep his adrenaline up or die, so the movie becomes two hours of unhinged sprinting. Loud, dumb, and committed.",
+      "description": "A hitman is poisoned and must keep his heart rate up to stay alive while seeking revenge.",
+      "tmdbId": null,
+      "genres": [
+        "action",
+        "crime",
+        "thriller"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Dawn of the Dead",
+      "slug": "dawn-of-the-dead",
+      "year": 2004,
+      "whutSummary": "The mall becomes a fortress. The zombies are fast. The vibes are tense. Classic modern zombie chaos.",
+      "description": "Survivors take refuge in a shopping mall during a zombie outbreak and face escalating threats.",
+      "tmdbId": null,
+      "genres": [
+        "action",
+        "horror"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Deadpool",
+      "slug": "deadpool",
+      "year": 2016,
+      "whutSummary": "Superhero movie that hates superhero movies and narrates its own chaos. Violent, meta, and somehow heartfelt.",
+      "description": "A mercenary with accelerated healing becomes Deadpool and seeks revenge with maximum sarcasm.",
+      "tmdbId": null,
+      "genres": [
+        "action",
+        "comedy"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Delicatessen",
+      "slug": "delicatessen",
+      "year": 1991,
+      "whutSummary": "A clown takes a job as a handyman in an apartment building. The landlord is the butcher. The tenants eat well. The clown does not read the room. Jeunet's debut is beautiful, insane, and has no business being this funny about cannibalism.",
+      "description": "In a dystopian future where food is currency, a circus clown takes a job as a handyman in an apartment building, not knowing the landlord-butcher plans to kill and serve him to the tenants.",
+      "tmdbId": null,
+      "genres": [
+        "comedy",
+        "fantasy",
+        "horror"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Dr. No",
+      "slug": "dr-no",
+      "year": 1962,
+      "whutSummary": "Bond in the early days: simple mission, iconic vibe, and fewer cinematic-universe headaches. Clean spy comfort food.",
+      "description": "James Bond investigates a mysterious island plot that threatens global security.",
+      "tmdbId": null,
+      "genres": [
+        "action",
+        "adventure",
+        "thriller"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Dumb and Dumber",
+      "slug": "dumb-and-dumber",
+      "year": 1994,
+      "whutSummary": "Two idiots go on a road trip and lower the average IQ of every scene they enter. It’s disgusting. It’s classic.",
+      "description": "Two well-meaning but clueless friends travel cross-country and stumble into crime and chaos.",
+      "tmdbId": null,
+      "genres": [
+        "comedy"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Ed Wood",
+      "slug": "ed-wood",
+      "year": 1994,
+      "whutSummary": "A love letter to a man who made terrible movies with maximum passion. It’s weirdly wholesome: failure, but with style and friends.",
+      "description": "A filmmaker’s dedication to making movies persists despite a complete lack of conventional talent.",
+      "tmdbId": null,
+      "genres": [
+        "comedy",
+        "drama"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Eddie the Eagle",
+      "slug": "eddie-the-eagle",
+      "year": 2016,
+      "whutSummary": "Ski jumping underdog story. It’s pure stubborn joy with enough humiliation to feel earned. If you need motivation with a side of winter chaos, this is it.",
+      "description": "An unlikely British athlete pursues Olympic ski jumping despite lacking resources, experience, and basically every advantage.",
+      "tmdbId": null,
+      "genres": [
+        "comedy",
+        "drama"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Erin Brockovich",
+      "slug": "erin-brockovich",
+      "year": 2000,
+      "whutSummary": "No matter what you do DO NOT piss of a single mom. A woman with zero patience and maximum conviction takes on a corporation and wins. Pure ‘system vs stubborn human’ energy.",
+      "description": "A legal assistant helps bring down a utility company accused of polluting a town’s water supply.",
+      "tmdbId": null,
+      "genres": [
+        "drama"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Eternal Sunshine of the Spotless Mind",
+      "slug": "eternal-sunshine-of-the-spotless-mind",
+      "year": 2004,
+      "whutSummary": "You ever wished to forget your ex even existed... Breakup movie where the solution is deleting the relationship from your brain. Spoiler: the brain keeps receipts.",
+      "description": "After a painful breakup, a man undergoes a procedure to erase memories of his ex, and learns why that’s a terrible idea.",
+      "tmdbId": null,
+      "genres": [
+        "drama",
+        "romance",
+        "sci-fi"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Falling for Christmas",
+      "slug": "falling-for-christmas",
+      "year": 2022,
+      "whutSummary": "Classic Hallmark structure with a clean twist: the city girl doesn’t flee the city instead she forgets it. Snow, a struggling inn, a town worth saving, and Christmas doing its thing. It’s predictable, cozy, and knowingly sentimental, but the amnesia gimmick keeps it light, playful, and just different enough to stay enjoyable.",
+      "description": "After a spoiled hotel heiress loses her memory in an accident just before Christmas, she finds herself taken in by a lodge owner and his daughter, slowly discovering a simpler way of life and the importance of community.",
+      "tmdbId": null,
+      "genres": [
+        "romance",
+        "feel-good",
+        "christmas"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Footloose",
+      "slug": "footloose",
+      "year": 1984,
+      "whutSummary": "Dance as rebellion. Small-town pressure. Pure 80s energy. Nobody sings to advance the plot. They just move.",
+      "description": "A teen challenges a town’s ban on dancing and brings music back into people’s lives.",
+      "tmdbId": null,
+      "genres": [
+        "drama"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Ford v Ferrari",
+      "slug": "ford-v-ferrari",
+      "year": 2019,
+      "whutSummary": "Car racing movie that turns engineering obsession into cinema. You will care about Le Mans even if you don’t know what Le Mans is.",
+      "description": "An American team builds a revolutionary race car to challenge Ferrari at Le Mans.",
+      "tmdbId": null,
+      "genres": [
+        "action",
+        "drama"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Forever My Girl",
+      "slug": "forever-my-girl",
+      "year": 2018,
+      "whutSummary": "Deadbeat country star dad returns home to face the consequences of leaving. In his defence he didn't know he had a kid but still a dick move. Oh and Brian Cranston is there but no cancer yet. Romance + guilt + small-town emotional cleanup.",
+      "description": "A musician returns to his hometown and reconnects with the woman he left behind.",
+      "tmdbId": null,
+      "genres": [
+        "drama",
+        "romance"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Freedom Writers",
+      "slug": "freedom-writers",
+      "year": 2007,
+      "whutSummary": "Teacher fights chaos with notebooks and empathy. A bit idealized, but it lands if you’re in the mood for hope with a side of anger. Plus it actually is a tru  story.",
+      "description": "A teacher inspires her students to tell their stories and overcome violence and division through writing.",
+      "tmdbId": null,
+      "genres": [
+        "crime",
+        "drama"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Gattaca",
+      "slug": "gattaca",
+      "year": 1997,
+      "whutSummary": "A world where your DNA is your resume. One guy fakes his genetics and tries not to get caught by people who can literally test your eyelashes. It's like having sex with your neighbour on live telly and expecting your spouse not to hear about it.",
+      "description": "A man with inferior genetics assumes another identity to pursue his dream of space travel.",
+      "tmdbId": null,
+      "genres": [
+        "drama",
+        "sci-fi",
+        "thriller"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Good Will Hunting",
+      "slug": "good-will-hunting",
+      "year": 1997,
+      "whutSummary": "Genius janitor meets therapist and learns that being smart doesn’t fix being scared. ‘It’s not your fault’ becomes a weapon.",
+      "description": "A gifted but troubled man is pushed to confront his past and potential through therapy and mentorship.",
+      "tmdbId": null,
+      "genres": [
+        "drama",
+        "romance"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Groundhog Day",
+      "slug": "groundhog-day",
+      "year": 1993,
+      "whutSummary": "An absolute c*nt of a man relives the same day until he becomes a better person. It’s therapy, but with a time loop and way more snow.",
+      "description": "A cynical weatherman is trapped repeating the same day in a small town until he changes himself.",
+      "tmdbId": null,
+      "genres": [
+        "comedy",
+        "fantasy",
+        "romance"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Hancock",
+      "slug": "hancock",
+      "year": 2008,
+      "whutSummary": "A superhero with zero PR skills tries to become a decent person. Messy, funny, and refreshingly not sacred about heroism.",
+      "description": "A troubled superhero seeks redemption with the help of a public relations expert.",
+      "tmdbId": null,
+      "genres": [
+        "action",
+        "comedy",
+        "drama"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Hiroshima mon amour",
+      "slug": "hiroshima-mon-amour",
+      "year": 1959,
+      "whutSummary": "Love, memory, and trauma in dialogue form. It doesn’t hold your hand. It asks you to sit with the weight.",
+      "description": "A brief relationship in Hiroshima becomes a meditation on memory, loss, and history.",
+      "tmdbId": null,
+      "genres": [
+        "drama",
+        "romance"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Hitch",
+      "slug": "hitch",
+      "year": 2005,
+      "whutSummary": "Dating coach who knows everything about love discovers he knows nothing about love. Smooth, easy, and weirdly rewatchable.",
+      "description": "A dating consultant falls for a journalist while helping a shy client pursue romance.",
+      "tmdbId": null,
+      "genres": [
+        "comedy",
+        "romance"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "How the Grinch Stole Christmas",
+      "slug": "how-the-grinch-stole-christmas",
+      "year": 2000,
+      "whutSummary": "Green hater tries to cancel Christmas, learns feelings exist. Jim Carrey’s face does things no face should do.",
+      "description": "A bitter creature attempts to ruin Christmas for a town, but gets emotionally compromised.",
+      "tmdbId": null,
+      "genres": [
+        "comedy",
+        "fantasy",
+        "christmas"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "I Love You, Man",
+      "slug": "i-love-you-man",
+      "year": 2009,
+      "whutSummary": "A movie that straight-up admits adult friendship is hard, weird, and emotional.\r\nThe romance exists, but the movie knows exactly what it’s about and it’s not the wedding.",
+      "description": "A man about to get married realizes he has no close male friends and sets out to fix that, accidentally forming an intense and awkward friendship in the process.",
+      "tmdbId": null,
+      "genres": [
+        "comedy",
+        "buddy-movie"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "I, Tonya",
+      "slug": "i-tonya",
+      "year": 2017,
+      "whutSummary": "Figure skating meets chaos. Darkly funny, brutally human, and allergic to polite biopic storytelling.",
+      "description": "A controversial figure skater’s rise and scandal unfold through an unflinching, darkly comedic lens.",
+      "tmdbId": null,
+      "genres": [
+        "comedy",
+        "drama"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Inception",
+      "slug": "inception",
+      "year": 2010,
+      "whutSummary": "Dream heist movie that spends 40 minutes teaching rules, then speedruns breaking them. You will either love the ending or argue about a spinning top for years.",
+      "description": "A professional thief who steals secrets from dreams is offered a chance to clear his past by planting an idea inside a target’s mind.",
+      "tmdbId": null,
+      "genres": [
+        "action",
+        "sci-fi",
+        "thriller"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Interstellar",
+      "slug": "interstellar",
+      "year": 2014,
+      "whutSummary": "Space, time dilation, crying, and a soundtrack that makes your chest vibrate. The science is serious, the feelings are louder, and the ending is a philosophical jump-scare.",
+      "description": "A team of explorers travels through a wormhole in search of a new home for humanity as time and distance stop behaving politely.",
+      "tmdbId": null,
+      "genres": [
+        "adventure",
+        "drama",
+        "sci-fi"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Intouchables",
+      "slug": "intouchables",
+      "year": 2011,
+      "whutSummary": "Two men from different worlds become friends and accidentally re-teach each other how to live. Funny, warm, and annoyingly effective.",
+      "description": "A wealthy quadriplegic hires a caregiver from a very different background, and both lives change.",
+      "tmdbId": null,
+      "genres": [
+        "comedy",
+        "drama"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Iron Man",
+      "slug": "iron-man",
+      "year": 2008,
+      "whutSummary": "The one Marvel movie that works perfectly standalone. A rich guy builds a suit, gets humbled, and becomes weirdly lovable.",
+      "description": "A weapons manufacturer builds a powered suit and redefines himself as a hero.",
+      "tmdbId": null,
+      "genres": [
+        "action",
+        "adventure",
+        "sci-fi"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "John Wick",
+      "slug": "john-wick",
+      "year": 2014,
+      "whutSummary": "Why di they have to kill the dog ? Stop killing dogs people! A man goes on a revenge rampage and reveals an entire underworld with rules, hotels, and professionalism. Assassin mafia, basically.",
+      "description": "A retired hitman returns to action to avenge a loss and collides with the criminal underworld.",
+      "tmdbId": null,
+      "genres": [
+        "action",
+        "crime",
+        "thriller"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Jurassic Park (Trilogy)",
+      "slug": "jurassic-park-trilogy",
+      "year": 1993,
+      "whutSummary": "Dinosaurs + humans being overconfident. It’s the franchise where science says ‘don’t’ and business says ‘do it anyway’.",
+      "description": "A compiled entry representing the Jurassic Park trilogy viewing experience.",
+      "tmdbId": null,
+      "genres": [
+        "adventure",
+        "sci-fi",
+        "thriller"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Kingsman: The Secret Service",
+      "slug": "kingsman-the-secret-service",
+      "year": 2014,
+      "whutSummary": "Spy movie with style turned up to 11. Suit violence, umbrella violence, british word violence and a church scene that made people pause the movie.",
+      "description": "A street kid is recruited into a secret spy organization and thrown into absurdly stylish chaos.",
+      "tmdbId": null,
+      "genres": [
+        "action",
+        "adventure",
+        "comedy",
+        "thriller"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "La Cité de la Peur",
+      "slug": "la-cite-de-la-peur",
+      "year": 1994,
+      "whutSummary": "Meta parody, deadpan stupidity, and jokes that shouldn’t work but do. Cult status earned.",
+      "description": "A series of murders during a film festival becomes the excuse for nonstop parody and absurd investigation.",
+      "tmdbId": null,
+      "genres": [
+        "comedy",
+        "crime"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "La Septième Compagnie",
+      "slug": "la-septieme-compagnie",
+      "year": 1973,
+      "whutSummary": "War comedy where incompetence is the strategy. Lightweight, but remarkably effective at being charming.",
+      "description": "A group of soldiers stumbles through WWII with mishaps and accidental heroism.",
+      "tmdbId": null,
+      "genres": [
+        "comedy"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Les Bronzés",
+      "slug": "les-bronzes",
+      "year": 1978,
+      "whutSummary": "Vacation comedy that captures group stupidity with surgical precision. The jokes are old, the cringe is eternal.",
+      "description": "Holidaymakers collide in misunderstandings, flirting, and social awkwardness at a vacation resort.",
+      "tmdbId": null,
+      "genres": [
+        "comedy"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Les Bronzés font du ski",
+      "slug": "les-bronzes-font-du-ski",
+      "year": 1979,
+      "whutSummary": "Same people, ski trip, even worse decisions. French comedy canon.",
+      "description": "A friend group goes skiing and turns basic survival into chaos.",
+      "tmdbId": null,
+      "genres": [
+        "comedy"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Looper",
+      "slug": "looper",
+      "year": 2012,
+      "whutSummary": "Time travel crime movie where the worst assignment is ‘kill your future self’. Clean premise, messy consequences, great vibes.",
+      "description": "A hitman who kills targets sent from the future is forced to confront his older self.",
+      "tmdbId": null,
+      "genres": [
+        "action",
+        "crime",
+        "sci-fi",
+        "thriller"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Me, Myself & Irene",
+      "slug": "me-myself-irene",
+      "year": 2000,
+      "whutSummary": "Jim Carrey plays a man whose repressed rage has developed its own personality and its own dating strategy. Absolutely unhinged from start to finish.",
+      "description": "A mild-mannered man with split personalities goes on the run with a woman and chaos follows.",
+      "tmdbId": null,
+      "genres": [
+        "comedy",
+        "romance"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Meet Joe Black",
+      "slug": "meet-joe-black",
+      "year": 1998,
+      "whutSummary": "Death itself decide to go on holyday. Does it go to the Bahamas like any basic bitch? Nope! Maybe Cabo like like every other primordial concept that rule existance? Niet! Death borrows Brad Pitt’s face and learns about love, life, and peanut butter. Slow, romantic, weirdly sincere.",
+      "description": "Death takes human form and spends time with a family while questioning what living really means.",
+      "tmdbId": null,
+      "genres": [
+        "drama",
+        "fantasy",
+        "romance"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Men in Black",
+      "slug": "men-in-black",
+      "year": 1997,
+      "whutSummary": "Secret agency but with aliens, memory wipes, and the best deadpan partner dynamic. Sci-fi comedy that still works.",
+      "description": "A street-smart recruit joins a secret organization policing extraterrestrials on Earth.",
+      "tmdbId": null,
+      "genres": [
+        "action",
+        "adventure",
+        "comedy",
+        "sci-fi"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Moneyball",
+      "slug": "moneyball",
+      "year": 2011,
+      "whutSummary": "Baseball, but the real sport is fighting tradition with spreadsheets. If you like strategy, this is a thriller in disguise.",
+      "description": "A baseball manager uses data analytics to build a competitive team on a limited budget.",
+      "tmdbId": null,
+      "genres": [
+        "drama"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Mr. & Mrs. Smith",
+      "slug": "mr-and-mrs-smith",
+      "year": 2005,
+      "whutSummary": "Married couple discovers they’re both assassins hired to kill each other. They handle it like adults: with gunfights and flirting.",
+      "description": "A bored married couple learns they’re rival assassins and their relationship becomes a literal battleground.",
+      "tmdbId": null,
+      "genres": [
+        "action",
+        "comedy",
+        "romance",
+        "thriller"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Night of the Living Dead",
+      "slug": "night-of-the-living-dead",
+      "year": 1968,
+      "whutSummary": "The zombie blueprint. Low-budget, high impact, and still uncomfortable in the best way.",
+      "description": "A group of people hides in a farmhouse while the dead rise and society collapses outside.",
+      "tmdbId": null,
+      "genres": [
+        "horror"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Notting Hill",
+      "slug": "notting-hill",
+      "year": 1999,
+      "whutSummary": "A boring guy meets a famous actress and somehow it stays charming instead of unbearable. Peak comfort rom-com.",
+      "description": "A bookstore owner’s life flips when he falls for a world-famous actress.",
+      "tmdbId": null,
+      "genres": [
+        "comedy",
+        "drama",
+        "romance"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "OSS 117: Cairo, Nest of Spies",
+      "slug": "oss-117-cairo-nest-of-spies",
+      "year": 2006,
+      "whutSummary": "A spy who is confidently wrong about everything. Elegant stupidity, perfectly executed.",
+      "description": "A clueless French spy is sent to Cairo and causes maximum damage with maximum confidence.",
+      "tmdbId": null,
+      "genres": [
+        "comedy"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "OSS 117: Lost in Rio",
+      "slug": "oss-117-lost-in-rio",
+      "year": 2009,
+      "whutSummary": "Same spy. Same arrogance. New continent. Still a disaster. Still hilarious.",
+      "description": "OSS 117 heads to South America and continues being a beautifully useless agent of chaos.",
+      "tmdbId": null,
+      "genres": [
+        "comedy"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Palm Springs",
+      "slug": "palm-springs",
+      "year": 2020,
+      "whutSummary": "Time loop rom-com where the loop is not the problem. The problem is being yourself forever. Somehow hilarious.",
+      "description": "Two wedding guests get stuck reliving the same day and decide to make it everyone else’s problem too.",
+      "tmdbId": null,
+      "genres": [
+        "comedy",
+        "romance",
+        "sci-fi"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Pay It Forward",
+      "slug": "pay-it-forward",
+      "year": 2000,
+      "whutSummary": "A kid invents ‘be nice to people’ as a social system and the movie dares you not to cry about it. Emotional damage, but purposeful.",
+      "description": "A boy’s school project inspires a chain of kindness that spreads far beyond his town.",
+      "tmdbId": null,
+      "genres": [
+        "drama"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Pretty Woman",
+      "slug": "pretty-woman",
+      "year": 1990,
+      "whutSummary": "Rich guy hires a woman for a week and accidentally falls in love. And people still think women are the ones who can't have sex without catching feelings. It’s glossy, iconic, and absolutely not subtle.",
+      "description": "A businessman and a woman from very different worlds form an unlikely bond over a week in Los Angeles.",
+      "tmdbId": null,
+      "genres": [
+        "comedy",
+        "romance"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Pulp Fiction",
+      "slug": "pulp-fiction",
+      "year": 1994,
+      "whutSummary": "Crime anthology presented out of order because Tarantino. Contains a dance scene, a mystery briefcase, and a suspicious amount of philosophical hamburger talk.",
+      "description": "Interwoven stories of criminals and accidents collide in stylized violence, dark comedy, and strange redemption arcs.",
+      "tmdbId": null,
+      "genres": [
+        "crime",
+        "drama",
+        "thriller"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Puppy Love",
+      "slug": "puppy-love",
+      "year": 2023,
+      "whutSummary": "Two disasters have a bad first date and then their dogs force them into a second chance. Dogs are better matchmakers than humans.",
+      "description": "After a disastrous first date, two people keep running into each other because their dogs refuse to cooperate.",
+      "tmdbId": null,
+      "genres": [
+        "comedy",
+        "romance"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Qu’est-ce qu’on a encore fait au Bon Dieu ?",
+      "slug": "quest-ce-quon-a-encore-fait-au-bon-dieu",
+      "year": 2019,
+      "whutSummary": "Same family, new chaos. It doubles down on the ‘everyone is uncomfortable’ engine.",
+      "description": "The family faces new tensions and misunderstandings as life changes around them.",
+      "tmdbId": null,
+      "genres": [
+        "comedy"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Qu’est-ce qu’on a fait au Bon Dieu ?",
+      "slug": "quest-ce-quon-a-fait-au-bon-dieu",
+      "year": 2014,
+      "whutSummary": "A family comedy that pokes at stereotypes and social tension with a big mainstream smile. It lands more often than it misses.",
+      "description": "A couple’s daughters marry men from different backgrounds, forcing everyone to confront their biases.",
+      "tmdbId": null,
+      "genres": [
+        "comedy"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "RRRrrrr!!!",
+      "slug": "rrrrrrr",
+      "year": 2004,
+      "whutSummary": "Prehistoric murder mystery with jokes so dumb they loop back to genius. French absurdity at full power.",
+      "description": "Two rival tribes face a mysterious ‘crime’ in prehistoric times with maximum nonsense.",
+      "tmdbId": null,
+      "genres": [
+        "comedy"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Racewalkers",
+      "slug": "racewalkers",
+      "year": 2025,
+      "whutSummary": "Racewalking sounds ridiculous until two guys take it deadly seriously. An overlooked coach and a washed-up athlete bond over a sport nobody respects, and somehow turn it into a matter of pride. You start by laughing at the sport. You end up respecting the effort.",
+      "description": "Racewalkers is a Canadian sports comedy about Will, a man with dwarfism who dreams of becoming a respected track-and-field coach but struggles to be taken seriously. His chance comes when he meets Matt, a washed-up former baseball player searching for a new purpose. Together, they enter the unlikely world of competitive racewalking, with Will training Matt to compete at a serious level. As they prepare for competition, they must face an aggressively competitive father-son duo, forcing both men to confront their insecurities, ambitions, and what it really means to be taken seriously.",
+      "tmdbId": null,
+      "genres": [
+        "comedy",
+        "buddy-movie"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Rasta Rockets (Cool Runnings)",
+      "slug": "rasta-rockets-cool-runnings",
+      "year": 1993,
+      "whutSummary": "Jamaican bobsleigh team decides gravity is optional. You come for the laughs, you stay for the surprisingly real heart.",
+      "description": "A group of Jamaican athletes trains to compete in Olympic bobsleigh against all expectations.",
+      "tmdbId": null,
+      "genres": [
+        "comedy"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Schindler’s List",
+      "slug": "schindlers-list",
+      "year": 1993,
+      "whutSummary": "A film so heavy it changes the air in the room. Not ‘fun’, not ‘easy’, but essential if you want your humanity to stay calibrated.",
+      "description": "During WWII, Oskar Schindler saves more than a thousand Jewish refugees by employing them in his factories.",
+      "tmdbId": null,
+      "genres": [
+        "drama"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "School of Rock",
+      "slug": "school-of-rock",
+      "year": 2003,
+      "whutSummary": "Jack Black weaponizes rock music to teach kids confidence. It’s loud, joyful, and weirdly wholesome.",
+      "description": "A struggling musician becomes a substitute teacher and turns his class into a rock band.",
+      "tmdbId": null,
+      "genres": [
+        "comedy"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Scout’s Guide to the Zombie Apocalypse",
+      "slug": "scouts-guide-to-the-zombie-apocalypse",
+      "year": 2015,
+      "whutSummary": "Teen zombie comedy that knows exactly what it is. Dumb, energetic, and surprisingly committed.",
+      "description": "Three scouts team up to survive a zombie outbreak and rescue their town.",
+      "tmdbId": null,
+      "genres": [
+        "comedy",
+        "horror"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Shaun of the Dead",
+      "slug": "shaun-of-the-dead",
+      "year": 2004,
+      "whutSummary": "A zombie movie that’s funny, then smart, then unexpectedly sincere. Edgar Wright flexes both comedy and craft. Plus the camera work is heavenly, if you want to nerd out about thought out camera shots this is the one.",
+      "description": "A man tries to fix his life during a zombie outbreak while protecting friends and family.",
+      "tmdbId": null,
+      "genres": [
+        "comedy",
+        "horror"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Stand and Deliver",
+      "slug": "stand-and-deliver",
+      "year": 1988,
+      "whutSummary": "Math teacher goes to war with low expectations and wins. It’s not magic. It’s math. That’s why it hits.",
+      "description": "A dedicated teacher pushes his underprivileged students to succeed in advanced math against all odds.",
+      "tmdbId": null,
+      "genres": [
+        "drama"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Star Wars (Original Trilogy)",
+      "slug": "star-wars-original-trilogy",
+      "year": 1977,
+      "whutSummary": "The pop myth trilogy. Lasers, family drama, and the blueprint for modern blockbuster culture. Watch it in release order and enjoy.",
+      "description": "A compiled entry representing Episodes IV–VI as a single trilogy viewing experience.",
+      "tmdbId": null,
+      "genres": [
+        "adventure",
+        "sci-fi"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Step Up",
+      "slug": "step-up",
+      "year": 2006,
+      "whutSummary": "Dance movie with zero shame. Training, rhythm, and social bridge-building through movement. It earns its place.",
+      "description": "A troublemaker finds purpose after joining a dance school and training for a showcase.",
+      "tmdbId": null,
+      "genres": [
+        "crime",
+        "drama",
+        "romance"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Superhero Movie (satirical)",
+      "slug": "superhero-movie-satirical",
+      "year": 2008,
+      "whutSummary": "Parody that exists to bully superhero tropes. Stupid on purpose. Sometimes that’s the point.",
+      "description": "A spoof comedy that riffs on popular superhero film tropes and clichés.",
+      "tmdbId": null,
+      "genres": [
+        "comedy"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Tag",
+      "slug": "tag",
+      "year": 2018,
+      "whutSummary": "Friendship so committed it turns into cardio and mild property damage.\r\nRidiculous, energetic, and surprisingly sincere.",
+      "description": "A group of lifelong friends maintain a decades-long game of tag, pushing themselves to absurd lengths to keep the tradition alive.",
+      "tmdbId": null,
+      "genres": [
+        "action",
+        "comedy",
+        "buddy-movie"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Tampopo",
+      "slug": "tampopo",
+      "year": 1985,
+      "whutSummary": "A woman decides her ramen is not good enough and refuses to accept that. An entire team of strangers shows up to help her fix it, because that's apparently what happens when you care about something enough. Absurd, warm, and weirdly erotic in places. You will leave hungry.",
+      "description": "A pair of truck drivers help a struggling noodle shop owner perfect her ramen recipe, interspersed with surreal vignettes about the relationship between food and desire.",
+      "tmdbId": null,
+      "genres": [
+        "comedy",
+        "drama"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Tenet",
+      "slug": "tenet",
+      "year": 2020,
+      "whutSummary": "Time inversion spy action where the soundtrack is a panic attack and the plot is a puzzle box. Don’t try to ‘get it’. Let it happen.",
+      "description": "An operative fights a threat beyond time itself using inversion technology and global espionage.",
+      "tmdbId": null,
+      "genres": [
+        "action",
+        "sci-fi",
+        "thriller"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "The Adam Project",
+      "slug": "the-adam-project",
+      "year": 2022,
+      "whutSummary": "Time travel, family trauma, and Ryan Reynolds being Ryan Reynolds. It’s a hug wrapped in sci-fi.",
+      "description": "A time-traveling pilot teams up with his younger self to confront the past and save the future.",
+      "tmdbId": null,
+      "genres": [
+        "action",
+        "adventure",
+        "comedy",
+        "sci-fi"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "The Before Trilogy",
+      "slug": "the-before-trilogy",
+      "year": 1995,
+      "whutSummary": "Three snapshots of the same relationship, nine years apart each time. Love at the beginning is terrifying and electric and fleeting. Love in the middle is complicated and loaded with everything you didn't say. Love later is hard and unglamorous and a choice you make out loud. This trilogy will wreck you in a different way each time.\r\n\r\n'The second and third summaries contain spoilers for the first. Once you've watched all three, there's a fact about this trilogy at the bottom you'll want to read.\r\n\r\nBefore Sunrise (1995): Two strangers meet on a train, get off in Vienna, and spend one night walking and talking before going their separate ways forever. It sounds simple. It is not simple. You will feel it for days.\r\n\r\nBefore Sunset (2004): Nine years later. He wrote a book about that night. She shows up at his reading in Paris. He has a life. She has a life. Neither life is the one they wanted. Someone is about to make a decision they probably shouldn't — and you're going to root for them anyway.\r\n\r\nBefore Midnight (2013): They're together now. It's real, it's lived-in, and it's hard. This is not the romance film. This is what comes after the romance film — a long argument in a hotel room that will make you deeply uncomfortable because it's too accurate. Still worth it.\r\n\r\nThe fact: Before Sunrise was inspired by a real night Linklater spent with a woman named Amy Lehrhaupt in Philadelphia in 1989. He made the film partly hoping she'd see it and find him. She never showed up at a screening. Years later, while working on Before Sunset — where Jesse writes a book hoping Céline will find him — a friend of hers contacted Linklater to tell him she had died in a motorcycle accident in 1994, weeks before the first film came out. She never knew the movie existed. Before Midnight is dedicated to her.",
+      "description": "Three films following Jesse and Céline across three decades - one night in Vienna, one afternoon in Paris, one day in Greece.",
+      "tmdbId": null,
+      "genres": [
+        "drama",
+        "romance"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "The Big Blue",
+      "slug": "the-big-blue",
+      "year": 1988,
+      "whutSummary": "Two divers obsess over the ocean like it’s a religion. Beautiful, melancholic, and aggressively blue.",
+      "description": "A lifelong rivalry and friendship unfolds around free diving and the call of the sea.",
+      "tmdbId": null,
+      "genres": [
+        "drama",
+        "romance"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "The Big Short",
+      "slug": "the-big-short",
+      "year": 2015,
+      "whutSummary": "Financial crisis explained like a heist movie, except the heist is legal and everyone gets away with it. You will learn and you will get angry.",
+      "description": "A group of outsiders predicts the housing bubble collapse and bets against the market.",
+      "tmdbId": null,
+      "genres": [
+        "comedy",
+        "drama"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "The Blind Side",
+      "slug": "the-blind-side",
+      "year": 2009,
+      "whutSummary": "A family supports a kid with huge potential and the movie turns that into a feel-good sports arc. Effective, if a bit polished.",
+      "description": "A teenager’s life changes when he is taken in by a family who helps him succeed in football and life.",
+      "tmdbId": null,
+      "genres": [
+        "drama"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "The Cornetto Trilogy",
+      "slug": "the-cornetto-trilogy",
+      "year": 2004,
+      "whutSummary": "Trilogy summary: Three comedies that feel like pure chaos and are secretly immaculate. Watch them once for the jokes. Then ask yourself why they're called the Cornetto trilogy. Then watch them again. Keep going. You'll keep finding things.\r\n\r\nShaun of the Dead (2004): A man so stuck in his routine that he doesn't notice the zombie apocalypse until it's already on his doorstep. Genuinely funny, genuinely scary, and genuinely a movie about growing up - the zombies are almost beside the point.\r\n\r\nHot Fuzz (2007): An overachieving London cop gets transferred to the quietest village in England, which is not quiet. Somehow both a loving tribute to action movies and a better action movie than most action movies. The third act goes completely insane and earns every second of it.\r\n\r\nThe World's End (2013): Five childhood friends reunite to finish a pub crawl they never completed. One of them needs it way more than the others. The sci-fi plot is real but it's not the point - this one is about addiction and nostalgia and refusing to grow up, and it hits harder than you'd expect from a movie about pubs.",
+      "description": "Three standalone genre comedies by Edgar Wright and Simon Pegg, loosely connected by themes of arrested development, male friendship, and a Cornetto.",
+      "tmdbId": null,
+      "genres": [
+        "action",
+        "comedy",
+        "horror",
+        "sci-fi"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "The Curious Case of Benjamin Button",
+      "slug": "benjamin-button",
+      "year": 2008,
+      "whutSummary": "A man ages backwards, and the movie quietly asks what ‘a life’ even means when time refuses to cooperate.",
+      "description": "A man experiences life aging in reverse, complicating love, identity, and meaning over decades.",
+      "tmdbId": null,
+      "genres": [
+        "drama",
+        "fantasy",
+        "romance"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "The Dark Knight",
+      "slug": "the-dark-knight",
+      "year": 2008,
+      "whutSummary": "Batman vs Joker, but filmed like a crime epic. It’s the superhero movie people cite when they want to sound serious. Fair enough.",
+      "description": "Batman faces the Joker, who turns Gotham into a moral experiment with explosive consequences.",
+      "tmdbId": null,
+      "genres": [
+        "action",
+        "crime",
+        "drama",
+        "thriller"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "The Family Plan",
+      "slug": "the-family-plan",
+      "year": 2023,
+      "whutSummary": "Family road trip, except dad used to be lethal. It’s the classic contradiction between parents forbidding fun and the shit they did when they were your age.",
+      "description": "A former assassin’s quiet family life unravels and turns into a high-speed escape.",
+      "tmdbId": null,
+      "genres": [
+        "action",
+        "comedy"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "The Girl Next Door",
+      "slug": "the-girl-next-door",
+      "year": 2004,
+      "whutSummary": "Teen thinks he found the perfect girl next door, then learns adulthood is complicated. Trashy? A bit. Fun? Also yes.",
+      "description": "A straight-laced teen’s life changes when he falls for his new neighbor with a secret past.",
+      "tmdbId": null,
+      "genres": [
+        "comedy",
+        "romance"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "The Godfather",
+      "slug": "the-godfather",
+      "year": 1972,
+      "whutSummary": "The mafia movie that became the mafia blueprint. Family, power, and the slow realization that everyone is trapped in the code.",
+      "description": "The aging patriarch of a crime dynasty transfers control to his reluctant son.",
+      "tmdbId": null,
+      "genres": [
+        "crime",
+        "drama"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "The Gray Man",
+      "slug": "the-gray-man",
+      "year": 2022,
+      "whutSummary": "Two extremely attractive people sprint through explosions for two hours. Plot exists. Mostly it’s running and gunfire.",
+      "description": "A CIA operative becomes a target after uncovering secrets and is hunted across the globe.",
+      "tmdbId": null,
+      "genres": [
+        "action",
+        "thriller"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "The Green Mile",
+      "slug": "the-green-mile",
+      "year": 1999,
+      "whutSummary": "Prison drama that gently convinces you everything is unfair, then finishes the job. You will not be the same after the final scene. It's the story of the hero we will never diserve.",
+      "description": "A death row guard encounters a prisoner with a mysterious gift and a tragic fate.",
+      "tmdbId": null,
+      "genres": [
+        "crime",
+        "drama",
+        "fantasy"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "The Imitation Game",
+      "slug": "the-imitation-game",
+      "year": 2014,
+      "whutSummary": "Codebreaking, war pressure, and a man who changed history while being punished by the same society he saved. Infuriating and necessary.",
+      "description": "Alan Turing’s work to crack the Enigma code and the personal consequences that followed.",
+      "tmdbId": null,
+      "genres": [
+        "drama",
+        "thriller"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "The Intern",
+      "slug": "the-intern",
+      "year": 2015,
+      "whutSummary": "An unlikely friendship forms between a retired widower and an overworked startup CEO. This is a calm, comforting movie about mentorship, mutual respect, and learning from someone who’s lived a little more. No romance driving the plot, just two people making each other’s lives better.",
+      "description": "A retired widower becomes an intern at an online fashion company, forming an unexpected bond with its founder.",
+      "tmdbId": null,
+      "genres": [
+        "comedy",
+        "drama"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "The Lake House",
+      "slug": "the-lake-house",
+      "year": 2006,
+      "whutSummary": "Two people fall in love through a mailbox that refuses linear time. It’s romantic sci-fi, but gentle and strangely calming.",
+      "description": "A doctor and an architect communicate through a mysterious mailbox that connects them across time.",
+      "tmdbId": null,
+      "genres": [
+        "drama",
+        "fantasy",
+        "romance"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "The Lord of the Rings (Trilogy)",
+      "slug": "the-lord-of-the-rings-trilogy",
+      "year": 2001,
+      "whutSummary": "One of the only trilogies that feels like a single, coherent epic film. You will commit a full weekend and you will not regret it. But for heaven sake don't forget to pause the movie to say that Viggo Mortensen actually broke his foot kicking the helmet! The gold standard of \"we are doing this all weekend.\" There is no casual watch - you commit, and it commits back harder.",
+      "description": "A compiled entry representing the full Lord of the Rings trilogy viewing experience.",
+      "tmdbId": null,
+      "genres": [
+        "adventure",
+        "fantasy"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "The Mask",
+      "slug": "the-mask",
+      "year": 1994,
+      "whutSummary": "A magical mask turns a shy guy into a cartoon tornado. The physics are illegal and that’s why it works.",
+      "description": "A man finds a mask that transforms him into an unpredictable, superhuman trickster.",
+      "tmdbId": null,
+      "genres": [
+        "comedy",
+        "crime",
+        "fantasy"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "The Perks of Being a Wallflower",
+      "slug": "the-perks-of-being-a-wallflower",
+      "year": 2012,
+      "whutSummary": "Teen movie that looks soft, then punches you in the childhood, guts your trust in people and makes you realise one or two individuals might still be worth living. Friendship, trauma, healing, and a soundtrack that hurts in the best way.",
+      "description": "An introverted teen navigates friendship, love, and trauma during his first year of high school.",
+      "tmdbId": null,
+      "genres": [
+        "drama",
+        "romance"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "The Proposal",
+      "slug": "the-proposal",
+      "year": 2009,
+      "whutSummary": "Fake engagement, real feelings, Ryan Reynolds doing his thing. Completely predictable and somehow still works every time.",
+      "description": "In order to avoid deportation to Canada, Margaret, the editor of a publishing firm, convinces her assistant Andrew to marry her. However, a trip to Andrew's hometown leads to unexpected consequences.",
+      "tmdbId": null,
+      "genres": [
+        "comedy",
+        "romance"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "The Shawshank Redemption",
+      "slug": "the-shawshank-redemption",
+      "year": 1994,
+      "whutSummary": "A man goes to prison for a crime he may or may not have commited and responds with patience, friendship, and the most satisfying long game ever filmed.",
+      "description": "Two prisoners form a lasting friendship as one quietly builds a path toward freedom and meaning.",
+      "tmdbId": null,
+      "genres": [
+        "drama"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "The Terminal",
+      "slug": "the-terminal",
+      "year": 2004,
+      "whutSummary": "Man gets stuck in an airport and responds by building a life out of snacks, friendships, and pure persistence. Surprisingly warm.",
+      "description": "A traveler is stranded in an airport terminal and must survive while his country’s status is unresolved.",
+      "tmdbId": null,
+      "genres": [
+        "comedy",
+        "drama",
+        "romance"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "The Theory of Everything",
+      "slug": "the-theory-of-everything",
+      "year": 2014,
+      "whutSummary": "Love story wearing a physics coat. It’s about time, illness, stubbornness, and the price of brilliance.",
+      "description": "The relationship of Stephen Hawking and Jane Wilde unfolds alongside his scientific work and illness.",
+      "tmdbId": null,
+      "genres": [
+        "drama",
+        "romance"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "The Tourist",
+      "slug": "the-tourist",
+      "year": 2010,
+      "whutSummary": "Vacation accidentally becomes spy nonsense. Pretty locations, light intrigue, and vibes doing most of the work.",
+      "description": "A tourist is pulled into a web of intrigue after meeting a mysterious woman in Europe.",
+      "tmdbId": null,
+      "genres": [
+        "action",
+        "romance",
+        "thriller"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "The Truman Show",
+      "slug": "the-truman-show",
+      "year": 1998,
+      "whutSummary": "Man discovers his entire life is a TV show. It’s funny until it isn’t, then it’s terrifying, then it’s inspiring. Jim Carrey in serious mode.",
+      "description": "A man raised inside a giant TV set begins to suspect the world around him is staged.",
+      "tmdbId": null,
+      "genres": [
+        "comedy",
+        "drama",
+        "sci-fi"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "The VelociPastor",
+      "slug": "the-velocipastor",
+      "year": 2018,
+      "whutSummary": "A pastor turns into a dinosaur and fights crime. If you accept that sentence, you will enjoy the movie.",
+      "description": "A priest gains the ability to transform into a dinosaur and uses it to fight criminals.",
+      "tmdbId": null,
+      "genres": [
+        "comedy",
+        "horror"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Tinker Tailor Soldier Spy",
+      "slug": "tinker-tailor-soldier-spy",
+      "year": 2011,
+      "whutSummary": "Spying without gadgets, explosions, or charisma bonuses. Everyone is tired, suspicious, and lying to everyone else. If James Bond is fantasy, this is the paperwork.",
+      "description": "In the bleak world of Cold War espionage, a retired intelligence officer is tasked with uncovering a Soviet mole hiding at the top of British Intelligence.",
+      "tmdbId": null,
+      "genres": [
+        "drama",
+        "mystery",
+        "thriller"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "When Harry Met Sally",
+      "slug": "when-harry-met-sally",
+      "year": 1989,
+      "whutSummary": "Two people spend twelve years being wrong about each other. The dialogue is so good you almost don't notice it's basically a feature-length argument.",
+      "description": "After a cross-country drive together, Harry and Sally maintain an on-and-off friendship over the years while debating whether men and women can ever just be friends.",
+      "tmdbId": null,
+      "genres": [
+        "comedy",
+        "romance"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Whiplash",
+      "slug": "whiplash",
+      "year": 2014,
+      "whutSummary": "Jazz as violence. Practice as obsession. The drum solo is basically a fistfight with time.",
+      "description": "A young drummer is pushed to extremes by an abusive instructor in pursuit of greatness.",
+      "tmdbId": null,
+      "genres": [
+        "drama"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Yes Man",
+      "slug": "yes-man",
+      "year": 2008,
+      "whutSummary": "Man says yes to everything and accidentally becomes alive again. It’s a self-help book, but funnier and with fewer scams.",
+      "description": "A man adopts a philosophy of saying yes to opportunities, changing his life in chaotic ways.",
+      "tmdbId": null,
+      "genres": [
+        "comedy",
+        "romance"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Zombieland",
+      "slug": "zombieland",
+      "year": 2009,
+      "whutSummary": "Zombie apocalypse road trip with rules, jokes, and weirdly sweet character arcs. Comedy first, survival second.",
+      "description": "A group of survivors travels across the U.S. and tries not to die while arguing about snacks.",
+      "tmdbId": null,
+      "genres": [
+        "comedy",
+        "horror"
+      ],
+      "streamingLinks": []
+    },
+    {
+      "title": "Zombinladen: The Axis of Evil Dead",
+      "slug": "zombinladen-the-axis-of-evil-dead",
+      "year": 2011,
+      "whutSummary": "It’s a fake movie trailer. 5 mins of pure joy that will stay you forever. It's a masterpiece and it’s already more honest than some full films. It counts as a joke and that’s the point.\r\n\r\nGo check it out : https://youtu.be/IgV1AVSz8jw?si=3lkNmXOq8OC5Su2q",
+      "description": "A notorious fake trailer reference. Included as a cultural artifact, not a real watch list item.",
+      "tmdbId": null,
+      "genres": [
+        "comedy"
+      ],
+      "streamingLinks": []
+    }
+  ],
+  "categories": [
+    {
+      "title": "Are you the double agent or am I",
+      "slug": "spy-movies",
+      "description": "Suits. Gadgets. Lies. One-liners. The joy of watching professionals do illegal things with excellent posture.\n\nThese are the spy movies that hit different tones: classic, modern, and stylishly ridiculous.\n\nPick your flavor. Keep your alibi.",
+      "picks": [
+        {
+          "movieSlug": "dr-no",
+          "rank": 1
+        },
+        {
+          "movieSlug": "kingsman-the-secret-service",
+          "rank": 2
+        },
+        {
+          "movieSlug": "tinker-tailor-soldier-spy",
+          "rank": 3
+        }
+      ],
+      "honorableMentions": [
+        {
+          "movieSlug": "the-gray-man"
+        },
+        {
+          "movieSlug": "the-tourist"
+        },
+        {
+          "movieSlug": "casino-royale"
+        }
+      ]
+    },
+    {
+      "title": "Classics That Don’t Need a Category",
+      "slug": "classics-that-dont-need-a-category",
+      "description": "Some movies don’t need a label. They just exist on the shelf like “yeah, obviously”.\n\nThis category is for classics that aren’t trying to be clever about their place in cinema. They’re just solid, memorable, and worth keeping around.\n\nYou get it i haven't found a name for the categorie yet, sue me (please don't i am broke).",
+      "picks": [],
+      "honorableMentions": []
+    },
+    {
+      "title": "Criminal Underworld Codes",
+      "slug": "criminal-underworld-codes",
+      "description": "Crime stories where the real plot is the rules.\n\nSome are old-school mafia. Some are modern assassin guilds with hotel policies. But the theme is the same: there is a code, and breaking it costs blood.\n\nIf you like your violence organized and your loyalty expensive, you’re home.",
+      "picks": [
+        {
+          "movieSlug": "the-godfather",
+          "rank": 1
+        },
+        {
+          "movieSlug": "john-wick",
+          "rank": 2
+        },
+        {
+          "movieSlug": "catch-me-if-you-can",
+          "rank": 3
+        }
+      ],
+      "honorableMentions": [
+        {
+          "movieSlug": "blackkklansman"
+        }
+      ]
+    },
+    {
+      "title": "Deliciously good",
+      "slug": "deliciously-good",
+      "description": "Look, some movies just make you hungry. You're sitting there watching someone assemble the perfect bowl of ramen or grill a Cuban sandwich at 11pm and suddenly you hate yourself for not having planned better. So here's the idea: pick one of these, make the food, eat while you watch. A proper eat-along.\r\n\r\nChef is obvious. Tampopo is a commitment but absolutely worth it. And Delicatessen... Actually. Maybe have a light snack for that one.\r\n\r\nThese are three movies where food is the whole point. Not the backdrop, not a metaphor the director is very proud of. The actual point. One is warm and funny. One is obsessive and strange. And one is a French post-apocalyptic black comedy about a butcher who is very good at keeping his tenants fed.\r\n\r\nBon appétit.",
+      "picks": [
+        {
+          "movieSlug": "tampopo",
+          "rank": 1
+        },
+        {
+          "movieSlug": "chef",
+          "rank": 2
+        },
+        {
+          "movieSlug": "delicatessen",
+          "rank": 3
+        }
+      ],
+      "honorableMentions": []
+    },
+    {
+      "title": "French Humour (Dumb as Fuck)",
+      "slug": "french-humour-dumb-as-fuck",
+      "description": "French comedy where intelligence is optional and commitment is mandatory.\r\n\r\nThese movies are dumb on purpose, and they execute the dumbness with craftsmanship. Plus it's french so of course we'll make fun of it!\r\n\r\nIf you’ve never laughed at something stupid with pride, welcome.",
+      "picks": [
+        {
+          "movieSlug": "oss-117-cairo-nest-of-spies",
+          "rank": 1
+        },
+        {
+          "movieSlug": "asterix-obelix-mission-cleopatra",
+          "rank": 2
+        },
+        {
+          "movieSlug": "la-cite-de-la-peur",
+          "rank": 3
+        }
+      ],
+      "honorableMentions": [
+        {
+          "movieSlug": "brice-de-nice"
+        },
+        {
+          "movieSlug": "rrrrrrr"
+        }
+      ]
+    },
+    {
+      "title": "French Humour (smart)",
+      "slug": "french-humour-smart",
+      "description": "Same country, different weapon: social observation.\n\nThese are the comedies that are funny because they’re accurate. They don’t need explosions. They just need people being people, badly.\n\nIf you like humor with teeth, pick here.",
+      "picks": [
+        {
+          "movieSlug": "quest-ce-quon-a-fait-au-bon-dieu",
+          "rank": 1
+        },
+        {
+          "movieSlug": "les-bronzes",
+          "rank": 2
+        },
+        {
+          "movieSlug": "la-septieme-compagnie",
+          "rank": 3
+        }
+      ],
+      "honorableMentions": [
+        {
+          "movieSlug": "bienvenue-chez-les-chtis"
+        }
+      ]
+    },
+    {
+      "title": "French Movies that are surprisingly good",
+      "slug": "french-movies-not-primarily-comedy",
+      "description": "France is not only jokes. Sometimes it’s melancholy, memory, and the sea calling you personally.\n\nThese are good French films with mood. Slow burn. Texture. Aftertaste.\n\nWatch when you want cinema, not dopamine.",
+      "picks": [
+        {
+          "movieSlug": "intouchables",
+          "rank": 1
+        },
+        {
+          "movieSlug": "the-big-blue",
+          "rank": 2
+        },
+        {
+          "movieSlug": "hiroshima-mon-amour",
+          "rank": 3
+        }
+      ],
+      "honorableMentions": []
+    },
+    {
+      "title": "Fuck Romance, All Hail Bromance",
+      "slug": "fuck-romance-all-hail-bromance",
+      "description": "Are you sick of every single movie trying to push a love interest into the plot because they fail to make their film interesting without it?\r\n\r\nNot because love is bad. Love is cool. Romance can be great. But it’s become the default shortcut — the easy solution when a movie doesn’t trust its story to stand on its own. Action, comedy, drama… somehow it all bends until it fits a couple by the end.\r\n\r\nMe? I like friendship. Friendship is cool too. Movies about people who stick around, grow together, and matter to each other without everything turning into a romance.\r\nAnd if that sounds refreshing, you’re in the right place.",
+      "picks": [
+        {
+          "movieSlug": "a-man-called-otto",
+          "rank": 1
+        },
+        {
+          "movieSlug": "i-love-you-man",
+          "rank": 2
+        },
+        {
+          "movieSlug": "tag",
+          "rank": 3
+        }
+      ],
+      "honorableMentions": [
+        {
+          "movieSlug": "the-intern"
+        }
+      ]
+    },
+    {
+      "title": "Getting Hallmarked for Christmas",
+      "slug": "getting-hallmarked-for-christmas",
+      "description": "We all know the plot already.\r\nSnow. A small town that somehow exists only for Christmas. A career woman who hates Christmas (for no reason) but still has a fiancé waiting uselessly in the big city. A divorced or widowed man whose entire personality is “owns a flannel shirt and cuts down Christmas trees.”\r\n\r\nHe is, of course, the town’s hot stuff. He can’t date. He’s too busy being a dad. His daughter will absolutely play matchmaker. This is not subtle. Hot chocolate will be consumed. Christmas cookies will solve a municipal crisis. The town will be saved. Love will occur exactly on schedule.\r\n\r\nNothing bad will happen. Nothing surprising will happen. If your brain is tired and your expectations are on the floor, this is the warm beige blanket you’re looking for.\r\nThat said, in this selection, I deliberately picked movies that add a small twist to the overused Hallmark formula. Nothing revolutionary - still good old feel-good Christmas comfort - but with that tiny extra something. The smidge of nutmeg in your usual cinnamon hot chocolate.\r\n\r\nWatch these when you want vibes, not stakes. Hot chocolate, not plot.",
+      "picks": [
+        {
+          "movieSlug": "12-dates-of-christmas",
+          "rank": 1
+        },
+        {
+          "movieSlug": "christmas-under-wraps",
+          "rank": 2
+        },
+        {
+          "movieSlug": "falling-for-christmas",
+          "rank": 3
+        }
+      ],
+      "honorableMentions": []
+    },
+    {
+      "title": "Movies Everyone Says Are Perfect",
+      "slug": "movies-everyone-says-are-perfect",
+      "description": "You know those movies that always end up on “best of all time” lists? The ones people mention with a serious face like they’re reciting scripture?\n\nYeah. Annoyingly, they deserve it.\n\nThese are the films that somehow live up to the hype. If you haven’t seen them, you’re missing out on being able to nod wisely when someone references them at dinner.",
+      "picks": [
+        {
+          "movieSlug": "the-shawshank-redemption",
+          "rank": 1
+        },
+        {
+          "movieSlug": "pulp-fiction",
+          "rank": 2
+        },
+        {
+          "movieSlug": "schindlers-list",
+          "rank": 3
+        }
+      ],
+      "honorableMentions": []
+    },
+    {
+      "title": "Movies That Will Destroy You",
+      "slug": "movies-that-will-destroy-you",
+      "description": "You are not “watching a movie” here. You are consenting to emotional implosion.\n\nThis category is for films that take something tender, press on it, and refuse to stop until you feel things you didn’t schedule for tonight.\n\nIf you’re already fragile, pick carefully. If you’re numb, this is medicine.",
+      "picks": [
+        {
+          "movieSlug": "the-green-mile",
+          "rank": 1
+        },
+        {
+          "movieSlug": "the-perks-of-being-a-wallflower",
+          "rank": 2
+        },
+        {
+          "movieSlug": "good-will-hunting",
+          "rank": 3
+        }
+      ],
+      "honorableMentions": [
+        {
+          "movieSlug": "pay-it-forward"
+        },
+        {
+          "movieSlug": "meet-joe-black"
+        }
+      ]
+    },
+    {
+      "title": "Movies That Will Make You Think (Too Much)",
+      "slug": "movies-that-will-make-you-think-too-much",
+      "description": "Sometimes you want to watch a movie and then immediately go to sleep. These are not those movies.\n\nThese are the films that make your brain keep running after the credits. You will stare at the ceiling. You will Google one thing “just to be sure”. You will become the person who says “but what does it MEAN though?” in a group chat.\n\nIf you wanted ‘easy’, you took a wrong turn. If you wanted ‘good’, you’re exactly where you should be.",
+      "picks": [
+        {
+          "movieSlug": "inception",
+          "rank": 1
+        },
+        {
+          "movieSlug": "interstellar",
+          "rank": 2
+        },
+        {
+          "movieSlug": "eternal-sunshine-of-the-spotless-mind",
+          "rank": 3
+        }
+      ],
+      "honorableMentions": []
+    },
+    {
+      "title": "Movies with a fuck ton of songs but is NOT a musical",
+      "slug": "movies-with-a-fuck-ton-of-songs-but-is-not-a-musical",
+      "description": "Musicals are when characters sing to advance the story.\n\nThis is not that.\n\nThis is music everywhere because the world is loud: rehearsals, performances, dance floors, stages, garages. You’ll leave with songs stuck in your head without ever watching a “musical number”.",
+      "picks": [
+        {
+          "movieSlug": "footloose",
+          "rank": 1
+        },
+        {
+          "movieSlug": "8-mile",
+          "rank": 2
+        },
+        {
+          "movieSlug": "school-of-rock",
+          "rank": 3
+        }
+      ],
+      "honorableMentions": [
+        {
+          "movieSlug": "whiplash"
+        },
+        {
+          "movieSlug": "step-up"
+        }
+      ]
+    },
+    {
+      "title": "No Baggage Just Feelings",
+      "slug": "no-baggage-just-feelings",
+      "description": "Rom coms have a problem. Not the falling in love part, that's fine. The problem is the detour. You know the one. One half of the couple is already with someone, meets someone else, spends 90 minutes emotionally checked out while the audience is supposed to root for them. And somehow by the end, the original partner is the villain for not being perfect enough.\r\n\r\nI like romance. I don't like being asked to celebrate someone stringing two people along and calling it a love story.\r\n\r\nThe movies in this category skipped that whole arc. The obstacle isn't a partner standing in the way. It's time, fear, circumstance, ego, or just the terrifying fact that feelings are complicated. That's more than enough. It always was.\r\n\r\nThese are rom coms where the drama is real, nobody gets cheated on, and the love actually means something when it lands.",
+      "picks": [
+        {
+          "movieSlug": "about-time",
+          "rank": 1
+        },
+        {
+          "movieSlug": "when-harry-met-sally",
+          "rank": 2
+        },
+        {
+          "movieSlug": "me-myself-irene",
+          "rank": 3
+        }
+      ],
+      "honorableMentions": [
+        {
+          "movieSlug": "the-proposal"
+        }
+      ]
+    },
+    {
+      "title": "Real-world Systems Are Rotten so fuck the free world",
+      "slug": "real-world-systems-are-rotten-so-fuck-the-free-world",
+      "description": "This category is for when you want to watch something and get furious at the fact it’s real.\n\nFraud. Corruption. “Legal” disasters. Systems built to protect themselves.\n\nGreat movies. Terrible reassurance.",
+      "picks": [
+        {
+          "movieSlug": "blackkklansman",
+          "rank": 1
+        },
+        {
+          "movieSlug": "the-big-short",
+          "rank": 2
+        },
+        {
+          "movieSlug": "erin-brockovich",
+          "rank": 3
+        }
+      ],
+      "honorableMentions": []
+    },
+    {
+      "title": "Reality Is Not What You Think It Is",
+      "slug": "reality-is-not-what-you-think-it-is",
+      "description": "These movies look like reality for about five minutes. Then they politely remove the floor.\r\n\r\nSimulation. Identity. “What if everything you know is staged?” It’s the category for people who enjoy that specific kind of existential itch.\r\n\r\nAlso a great way to ruin your ability to trust your own perception. Enjoy.",
+      "picks": [
+        {
+          "movieSlug": "the-truman-show",
+          "rank": 1
+        },
+        {
+          "movieSlug": "blade-runner",
+          "rank": 2
+        },
+        {
+          "movieSlug": "gattaca",
+          "rank": 3
+        }
+      ],
+      "honorableMentions": [
+        {
+          "movieSlug": "2001-a-space-odyssey"
+        }
+      ]
+    },
+    {
+      "title": "Rom-com Snack Pack",
+      "slug": "rom-com-snack-pack",
+      "description": "Sometimes you don’t want emotional complexity. You want charm, jokes, and a guaranteed happy landing.\n\nThis category is for when your brain is tired and your standards are still alive, but flexible.\n\nIt’s not “trash”. It’s “efficient.”",
+      "picks": [
+        {
+          "movieSlug": "hitch",
+          "rank": 1
+        },
+        {
+          "movieSlug": "puppy-love",
+          "rank": 2
+        },
+        {
+          "movieSlug": "the-girl-next-door",
+          "rank": 3
+        }
+      ],
+      "honorableMentions": [
+        {
+          "movieSlug": "a-beautiful-life"
+        }
+      ]
+    },
+    {
+      "title": "Rom-coms (but with problems)",
+      "slug": "rom-coms-but-with-problems",
+      "description": "Yes, it’s romance. No, it’s not simple.\n\nSometimes the problem is existential. Sometimes the problem is time travel. Sometimes the problem is that they’re literally trying to kill each other.\n\nThe point is: love is great. Life is messy. These movies don’t pretend otherwise.",
+      "picks": [
+        {
+          "movieSlug": "notting-hill",
+          "rank": 1
+        },
+        {
+          "movieSlug": "mr-and-mrs-smith",
+          "rank": 3
+        }
+      ],
+      "honorableMentions": [
+        {
+          "movieSlug": "cant-buy-me-love"
+        },
+        {
+          "movieSlug": "forever-my-girl"
+        },
+        {
+          "movieSlug": "pretty-woman"
+        }
+      ]
+    },
+    {
+      "title": "Smart People, Big Brains, Big Problems",
+      "slug": "smart-people-big-brains-big-problems",
+      "description": "Genius is not a vibe. It’s a burden.\r\n\r\nThese are the biopics where intelligence changes history, but also breaks people. Expect brilliance, pressure, and consequences.\r\n\r\nYou will feel both impressed and uncomfortable. Correct. After you'll be like me: proud of your own stupidity.",
+      "picks": [
+        {
+          "movieSlug": "a-beautiful-mind",
+          "rank": 1
+        },
+        {
+          "movieSlug": "the-theory-of-everything",
+          "rank": 2
+        },
+        {
+          "movieSlug": "the-imitation-game",
+          "rank": 3
+        }
+      ],
+      "honorableMentions": [
+        {
+          "movieSlug": "ed-wood"
+        }
+      ]
+    },
+    {
+      "title": "So Bad It Becomes a Sport",
+      "slug": "so-bad-it-becomes-a-sport",
+      "description": "These movies are not “good”. They are “an event”.\r\n\r\nYou don’t watch them quietly. You watch them with friends, snacks, and the understanding that you are here to witness chaos.\r\n\r\nYou will laugh. You will suffer. You will quote lines you shouldn’t.",
+      "picks": [
+        {
+          "movieSlug": "anna-vs-zombie-apocalypse",
+          "rank": 1
+        },
+        {
+          "movieSlug": "the-velocipastor",
+          "rank": 2
+        },
+        {
+          "movieSlug": "birdemic-shock-and-terror",
+          "rank": 3
+        }
+      ],
+      "honorableMentions": [
+        {
+          "movieSlug": "crank-hyper-tension"
+        },
+        {
+          "movieSlug": "zombinladen-the-axis-of-evil-dead"
+        }
+      ]
+    },
+    {
+      "title": "Sports Movies That Actually Motivate",
+      "slug": "sports-movies-that-actually-motivate",
+      "description": "Not “sports are fun”. Not “teamwork makes the dream work”.\n\nThese are the sports movies that make you stand up, reset your life, and maybe run two kilometers out of spite.\n\nDifferent sports. Same outcome: you feel like doing something hard.",
+      "picks": [
+        {
+          "movieSlug": "coach-carter",
+          "rank": 1
+        },
+        {
+          "movieSlug": "moneyball",
+          "rank": 2
+        },
+        {
+          "movieSlug": "ford-v-ferrari",
+          "rank": 3
+        }
+      ],
+      "honorableMentions": [
+        {
+          "movieSlug": "12-mighty-orphans"
+        },
+        {
+          "movieSlug": "the-blind-side"
+        }
+      ]
+    },
+    {
+      "title": "Spy Movies (but goofy / family / off-brand)",
+      "slug": "spy-movies-goofy-family-off-brand",
+      "description": "Spy energy, but not spy seriousness.\n\nThis is the category for “I want chases and secrets, but I also want to laugh and not take anything personally.”\n\nIt’s espionage, but with snacks.",
+      "picks": [
+        {
+          "movieSlug": "men-in-black",
+          "rank": 1
+        },
+        {
+          "movieSlug": "the-family-plan",
+          "rank": 2
+        },
+        {
+          "movieSlug": "central-intelligence",
+          "rank": 3
+        }
+      ],
+      "honorableMentions": []
+    },
+    {
+      "title": "Superhero Movies With No Homework",
+      "slug": "superhero-movies-with-no-homework",
+      "description": "Capes, powers, explosions. No syllabus.\n\nNo cinematic-universe spreadsheet. No “you need to watch these 14 things first”. You can just press play and enjoy the concept: a person is super, and the movie commits to that.\n\nThat’s it. That’s the dream.",
+      "picks": [
+        {
+          "movieSlug": "the-dark-knight",
+          "rank": 1
+        },
+        {
+          "movieSlug": "iron-man",
+          "rank": 2
+        },
+        {
+          "movieSlug": "hancock",
+          "rank": 3
+        }
+      ],
+      "honorableMentions": [
+        {
+          "movieSlug": "deadpool"
+        },
+        {
+          "movieSlug": "superhero-movie-satirical"
+        }
+      ]
+    },
+    {
+      "title": "The Jim FUCKING Carrey Category",
+      "slug": "the-jim-fucking-carrey-category",
+      "description": "Some actors act. Jim Carrey commits crimes against subtlety.\r\n\r\nThis category is for when you want elastic-face chaos, emotional whiplash, and jokes that should not work but do.\r\n\r\nHe is so good I can't choose \"only 3 movies\". He is the main reason for the presence of \"Honorable Mentions\" on this website. \r\n\r\nHe is a genre. Deal with it.",
+      "picks": [
+        {
+          "movieSlug": "eternal-sunshine-of-the-spotless-mind",
+          "rank": 1
+        },
+        {
+          "movieSlug": "the-mask",
+          "rank": 2
+        },
+        {
+          "movieSlug": "how-the-grinch-stole-christmas",
+          "rank": 3
+        }
+      ],
+      "honorableMentions": [
+        {
+          "movieSlug": "me-myself-irene"
+        },
+        {
+          "movieSlug": "yes-man"
+        },
+        {
+          "movieSlug": "dumb-and-dumber"
+        },
+        {
+          "movieSlug": "ace-ventura-pet-detective"
+        }
+      ]
+    },
+    {
+      "title": "The Marathon You're Ready For",
+      "slug": "the-marathon-youre-ready-for",
+      "description": "A marathon sounds like a commitment. It sounds like you need to clear your weekend, stock the fridge, and mentally prepare. And honestly? You do. But not in the way you think.\r\n\r\nThese aren't trilogies you watch because they're famous. They're trilogies you watch because they were built to be watched together. Three films that form one complete thing - where finishing the last one feels like putting down a book you didn't want to end.\r\n\r\nThe difference between a trilogy and three movies that happen to share characters is massive. These ones have an arc. A real one. The kind where rewatching the first film after the third one hits completely differently.\r\n\r\nSo clear your weekend. Make the snacks. You're ready.",
+      "picks": [
+        {
+          "movieSlug": "the-lord-of-the-rings-trilogy",
+          "rank": 1
+        },
+        {
+          "movieSlug": "the-cornetto-trilogy",
+          "rank": 2
+        },
+        {
+          "movieSlug": "the-before-trilogy",
+          "rank": 3
+        }
+      ],
+      "honorableMentions": [
+        {
+          "movieSlug": "star-wars-original-trilogy"
+        },
+        {
+          "movieSlug": "jurassic-park-trilogy"
+        }
+      ]
+    },
+    {
+      "title": "The sports you never hear about",
+      "slug": "the-sports-you-never-hear-about",
+      "description": "Some sports are relatively rare.\r\nNot because they don’t exist, but because nobody ever talks about them.\r\n\r\nThis category isn’t about football, basketball, or anything you already know the rules of by accident. It’s about movies that throw you into a sport you’ve barely heard of (or never considered interesting) and somehow make you care anyway.\r\n\r\nYou don’t watch these movies because you love the sport.\r\nYou watch them because the movie does the hard work for you: explaining the rules, the culture, the obsession, and why it matters to the people involved.\r\n\r\nBy the end, you’re emotionally invested in something you didn’t even know existed two hours ago.\r\nAnd honestly, that’s kind of the point.",
+      "picks": [
+        {
+          "movieSlug": "rasta-rockets-cool-runnings",
+          "rank": 1
+        },
+        {
+          "movieSlug": "i-tonya",
+          "rank": 2
+        },
+        {
+          "movieSlug": "racewalkers",
+          "rank": 3
+        }
+      ],
+      "honorableMentions": [
+        {
+          "movieSlug": "eddie-the-eagle"
+        }
+      ]
+    },
+    {
+      "title": "Time Does Weird Things",
+      "slug": "time-does-weird-things",
+      "description": "Not time travel. Not time loops. Just… time behaving like it’s drunk.\n\nThese movies treat time as mood, metaphor, or emotional weapon. You’ll understand the feeling even when you don’t understand the math.",
+      "picks": [
+        {
+          "movieSlug": "benjamin-button",
+          "rank": 1
+        },
+        {
+          "movieSlug": "the-lake-house",
+          "rank": 2
+        },
+        {
+          "movieSlug": "tenet",
+          "rank": 3
+        }
+      ],
+      "honorableMentions": []
+    },
+    {
+      "title": "Time Is a Lie",
+      "slug": "time-is-a-lie",
+      "description": "In normal life, time is linear. In these movies, time is a suggestion.\n\nLoops. Jumps. Bad decisions repeated until someone learns something. Or until someone stops learning and starts panicking.\n\nIf you like neat timelines and clean causality, this category will disrespect you.",
+      "picks": [
+        {
+          "movieSlug": "groundhog-day",
+          "rank": 1
+        },
+        {
+          "movieSlug": "looper",
+          "rank": 2
+        },
+        {
+          "movieSlug": "a-dogs-purpose",
+          "rank": 3
+        }
+      ],
+      "honorableMentions": [
+        {
+          "movieSlug": "palm-springs"
+        },
+        {
+          "movieSlug": "the-adam-project"
+        },
+        {
+          "movieSlug": "boss-level"
+        }
+      ]
+    },
+    {
+      "title": "Watch Me When Humanity Seems Hopeless",
+      "slug": "watch-me-when-humanity-seems-hopeless",
+      "description": "This is the category for days when you’ve had enough of people.\n\nThese movies won’t lie to you about the world being hard. They just insist that small decency still exists, and that it still matters.\n\nIt’s not optimism. It’s recovery.",
+      "picks": [
+        {
+          "movieSlug": "pay-it-forward",
+          "rank": 1
+        },
+        {
+          "movieSlug": "stand-and-deliver",
+          "rank": 2
+        },
+        {
+          "movieSlug": "a-man-called-otto",
+          "rank": 3
+        }
+      ],
+      "honorableMentions": [
+        {
+          "movieSlug": "intouchables"
+        },
+        {
+          "movieSlug": "freedom-writers"
+        },
+        {
+          "movieSlug": "the-terminal"
+        }
+      ]
+    },
+    {
+      "title": "Zombies, But Make It Fun",
+      "slug": "zombies-but-make-it-fun",
+      "description": "Zombies are already stressful. So we add jokes.\r\n\r\nThis category is the sweet spot: comedy, horror, and surprisingly solid filmmaking. Pick based on vibe: clever, classic chaos, or pure entertainment.\r\n\r\nYes, the apocalypse can be funny.",
+      "picks": [
+        {
+          "movieSlug": "shaun-of-the-dead",
+          "rank": 1
+        },
+        {
+          "movieSlug": "dawn-of-the-dead",
+          "rank": 2
+        },
+        {
+          "movieSlug": "zombieland",
+          "rank": 3
+        }
+      ],
+      "honorableMentions": [
+        {
+          "movieSlug": "scouts-guide-to-the-zombie-apocalypse"
+        },
+        {
+          "movieSlug": "night-of-the-living-dead"
+        }
+      ]
+    }
+  ]
+}

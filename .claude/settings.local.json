@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx prisma migrate dev --name add_tmdb_sync_fields)",
+      "Bash(git push *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git checkout *)",
+      "Bash(git merge *)",
+      "Bash(git cherry-pick *)",
+      "Bash(git branch *)",
+      "Bash(git diff *)",
+      "Bash(npx prisma *)"
+    ]
+  }
+}
