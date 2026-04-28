@@ -60,7 +60,7 @@ function GroupMemberCard({ member, fromUrl }) {
   );
 }
 
-export function MovieGroupSection({ group, fromUrl }) {
+export function MovieGroupSection({ group, fromUrl, rank }) {
   const referencePoster = group.members.find((m) => m.movie.posterUrl)?.movie.posterUrl ?? null;
 
   return (
@@ -78,7 +78,12 @@ export function MovieGroupSection({ group, fromUrl }) {
           </div>
         )}
         <div>
-          <h3 className="text-xl font-semibold">{group.title}</h3>
+          <div className="flex items-center gap-2">
+            {rank != null && (
+              <Badge className="w-8 justify-center shrink-0">#{rank}</Badge>
+            )}
+            <h3 className="text-xl font-semibold">{group.title}</h3>
+          </div>
           {group.description && (
             <p className="text-sm text-muted-foreground mt-1">{group.description}</p>
           )}

@@ -19,6 +19,7 @@ async function getCategory(slug) {
         },
       },
       groupAssignments: {
+        orderBy: [{ isHonorableMention: "asc" }, { rank: "asc" }],
         include: {
           group: {
             include: {
@@ -72,6 +73,8 @@ export default async function CategoryDetailPage({ params, searchParams }) {
 
   const isAdmin = await isAuthenticated();
 
+  const isGroupCategory = category.categoryType === "GROUPS";
+
   // Separate ranked picks from honorable mentions
   const allAssignments = category.assignments;
 
@@ -93,10 +96,14 @@ export default async function CategoryDetailPage({ params, searchParams }) {
     .sort((a, b) => a.movie.title.localeCompare(b.movie.title))
     .filter(matchesGenre);
 
+  // Group picks / mentions (for GROUPS categoryType)
+  const rankedGroupPicks = category.groupAssignments.filter((ga) => !ga.isHonorableMention);
+  const honorableGroupMentions = category.groupAssignments.filter((ga) => ga.isHonorableMention);
+
   // Count unfiltered ranked picks for admin notice
-  const totalRankedPicks = allAssignments.filter(
-    (a) => a.rank !== null && !a.isHonorableMention
-  ).length;
+  const totalRankedPicks = isGroupCategory
+    ? rankedGroupPicks.length
+    : allAssignments.filter((a) => a.rank !== null && !a.isHonorableMention).length;
   const hasAllPicks = totalRankedPicks >= 3;
 
   // Build URL for filtering
@@ -134,42 +141,44 @@ export default async function CategoryDetailPage({ params, searchParams }) {
         </p>
       </section>
 
-      {/* Genre Filter */}
-      <section className="space-y-2">
-        <label className="block text-sm font-medium" id="genre-filter-label">
-          Filter by Genre
-        </label>
-        <div
-          className="flex flex-wrap gap-2"
-          role="group"
-          aria-labelledby="genre-filter-label"
-        >
-          <Button
-            asChild
-            variant={!genreFilter ? "default" : "outline"}
-            size="sm"
+      {/* Genre Filter — only for movie categories */}
+      {!isGroupCategory && (
+        <section className="space-y-2">
+          <label className="block text-sm font-medium" id="genre-filter-label">
+            Filter by Genre
+          </label>
+          <div
+            className="flex flex-wrap gap-2"
+            role="group"
+            aria-labelledby="genre-filter-label"
           >
-            <Link href={buildUrl({ genre: null })}>All</Link>
-          </Button>
-          {genres.map((g) => (
             <Button
-              key={g.id}
               asChild
-              variant={genreFilter === g.slug ? "default" : "outline"}
+              variant={!genreFilter ? "default" : "outline"}
               size="sm"
             >
-              <Link href={buildUrl({ genre: g.slug })}>{g.name}</Link>
+              <Link href={buildUrl({ genre: null })}>All</Link>
             </Button>
-          ))}
-        </div>
-        {genreFilter && (
-          <div className="pt-2">
-            <Button asChild variant="ghost" size="sm">
-              <Link href={buildUrl({ genre: null })}>Clear filter</Link>
-            </Button>
+            {genres.map((g) => (
+              <Button
+                key={g.id}
+                asChild
+                variant={genreFilter === g.slug ? "default" : "outline"}
+                size="sm"
+              >
+                <Link href={buildUrl({ genre: g.slug })}>{g.name}</Link>
+              </Button>
+            ))}
           </div>
-        )}
-      </section>
+          {genreFilter && (
+            <div className="pt-2">
+              <Button asChild variant="ghost" size="sm">
+                <Link href={buildUrl({ genre: null })}>Clear filter</Link>
+              </Button>
+            </div>
+          )}
+        </section>
+      )}
 
       {/* Admin warning if missing picks */}
       {isAdmin && !hasAllPicks && (
@@ -185,64 +194,81 @@ export default async function CategoryDetailPage({ params, searchParams }) {
         </Card>
       )}
 
-      {/* The 3 ranked movie picks */}
+      {/* The Picks */}
       <section>
         <h2 className="text-2xl font-semibold mb-6">The Picks</h2>
-        {rankedPicks.length > 0 ? (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {rankedPicks.map((assignment) => (
-              <MovieCard
-                key={assignment.movieId}
-                movie={assignment.movie}
-                rank={assignment.rank}
-                angleLabel={assignment.angleLabel}
-                showOfficialSynopsis={true}
-                showGenres={true}
-                fromUrl={currentPageUrl}
-              />
-            ))}
-          </div>
+        {isGroupCategory ? (
+          rankedGroupPicks.length > 0 ? (
+            <div className="space-y-8">
+              {rankedGroupPicks.map((ga) => (
+                <MovieGroupSection key={ga.id} group={ga.group} rank={ga.rank} fromUrl={currentPageUrl} />
+              ))}
+            </div>
+          ) : (
+            <Card>
+              <CardContent className="py-8 text-center text-muted-foreground">
+                <p>No picks assigned to this category yet.</p>
+              </CardContent>
+            </Card>
+          )
         ) : (
-          <Card>
-            <CardContent className="py-8 text-center text-muted-foreground">
-              <p>
-                {genreFilter
-                  ? "No picks match the selected genre."
-                  : "No picks assigned to this category yet."}
-              </p>
-            </CardContent>
-          </Card>
+          rankedPicks.length > 0 ? (
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {rankedPicks.map((assignment) => (
+                <MovieCard
+                  key={assignment.movieId}
+                  movie={assignment.movie}
+                  rank={assignment.rank}
+                  angleLabel={assignment.angleLabel}
+                  showOfficialSynopsis={true}
+                  showGenres={true}
+                  fromUrl={currentPageUrl}
+                />
+              ))}
+            </div>
+          ) : (
+            <Card>
+              <CardContent className="py-8 text-center text-muted-foreground">
+                <p>
+                  {genreFilter
+                    ? "No picks match the selected genre."
+                    : "No picks assigned to this category yet."}
+                </p>
+              </CardContent>
+            </Card>
+          )
         )}
       </section>
 
       {/* Honorable Mentions (only if present) */}
-      {honorableMentions.length > 0 && (
-        <section>
-          <h2 className="text-2xl font-semibold mb-6">Honorable Mentions</h2>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {honorableMentions.map((assignment) => (
-              <MovieCard
-                key={assignment.movieId}
-                movie={assignment.movie}
-                angleLabel={assignment.angleLabel}
-                showOfficialSynopsis={true}
-                showGenres={true}
-                fromUrl={currentPageUrl}
-                variant="secondary"
-              />
+      {isGroupCategory ? (
+        honorableGroupMentions.length > 0 && (
+          <section className="space-y-8">
+            <h2 className="text-2xl font-semibold">Honorable Mentions</h2>
+            {honorableGroupMentions.map((ga) => (
+              <MovieGroupSection key={ga.id} group={ga.group} fromUrl={currentPageUrl} />
             ))}
-          </div>
-        </section>
-      )}
-
-      {/* Movie Groups */}
-      {category.groupAssignments.length > 0 && (
-        <section className="space-y-8">
-          <h2 className="text-2xl font-semibold">Movie Groups</h2>
-          {category.groupAssignments.map(({ group }) => (
-            <MovieGroupSection key={group.id} group={group} fromUrl={currentPageUrl} />
-          ))}
-        </section>
+          </section>
+        )
+      ) : (
+        honorableMentions.length > 0 && (
+          <section>
+            <h2 className="text-2xl font-semibold mb-6">Honorable Mentions</h2>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {honorableMentions.map((assignment) => (
+                <MovieCard
+                  key={assignment.movieId}
+                  movie={assignment.movie}
+                  angleLabel={assignment.angleLabel}
+                  showOfficialSynopsis={true}
+                  showGenres={true}
+                  fromUrl={currentPageUrl}
+                  variant="secondary"
+                />
+              ))}
+            </div>
+          </section>
+        )
       )}
 
       {/* Metadata */}
