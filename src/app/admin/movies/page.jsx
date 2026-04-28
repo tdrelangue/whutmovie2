@@ -7,9 +7,9 @@ import { slugify } from "@/lib/slugify";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { MoviesList } from "@/components/admin/movies-list";
+import { NewMovieForm } from "@/components/admin/new-movie-form";
 
 export const metadata = {
   title: "Manage Movies - WhutMovie Admin",
@@ -41,6 +41,9 @@ async function createMovie(formData) {
   const description = formData.get("description")?.toString().trim() || null;
   const yearStr = formData.get("year")?.toString().trim();
   const year = yearStr ? parseInt(yearStr) : null;
+  const tmdbIdStr = formData.get("tmdbId")?.toString().trim();
+  const tmdbId = tmdbIdStr ? parseInt(tmdbIdStr) : null;
+  const posterUrl = formData.get("posterUrl")?.toString().trim() || null;
   const genreIds = formData.getAll("genres").map((g) => g.toString());
 
   if (!title || !whutSummary) return;
@@ -55,6 +58,8 @@ async function createMovie(formData) {
         whutSummary,
         description,
         year,
+        tmdbId,
+        posterUrl,
         genres: { connect: genreIds.map((id) => ({ id })) },
       },
     });
@@ -146,87 +151,7 @@ export default async function AdminMoviesPage() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form action={createMovie} className="space-y-4">
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div className="space-y-2">
-                <label htmlFor="title" className="block text-sm font-medium">
-                  Title *
-                </label>
-                <Input
-                  id="title"
-                  name="title"
-                  required
-                  placeholder="Movie title"
-                />
-              </div>
-              <div className="space-y-2">
-                <label htmlFor="year" className="block text-sm font-medium">
-                  Year
-                </label>
-                <Input
-                  id="year"
-                  name="year"
-                  type="number"
-                  min="1900"
-                  max="2100"
-                  placeholder="2024"
-                />
-              </div>
-            </div>
-
-            <div className="space-y-2">
-              <label
-                htmlFor="whutSummary"
-                className="block text-sm font-medium"
-              >
-                WhutSummary * (your funny take)
-              </label>
-              <Textarea
-                id="whutSummary"
-                name="whutSummary"
-                required
-                rows={3}
-                placeholder="Your blunt, funny summary of what this movie is actually about..."
-              />
-            </div>
-
-            <div className="space-y-2">
-              <label
-                htmlFor="description"
-                className="block text-sm font-medium"
-              >
-                Official Synopsis (optional)
-              </label>
-              <Textarea
-                id="description"
-                name="description"
-                rows={2}
-                placeholder="The boring IMDb-style description (optional)"
-              />
-            </div>
-
-            <div className="space-y-2">
-              <label className="block text-sm font-medium">Genres</label>
-              <div className="flex flex-wrap gap-3">
-                {genres.map((g) => (
-                  <label
-                    key={g.id}
-                    className="flex items-center gap-2 cursor-pointer"
-                  >
-                    <input
-                      type="checkbox"
-                      name="genres"
-                      value={g.id}
-                      className="rounded"
-                    />
-                    <span className="text-sm">{g.name}</span>
-                  </label>
-                ))}
-              </div>
-            </div>
-
-            <Button type="submit">Add Movie</Button>
-          </form>
+          <NewMovieForm createAction={createMovie} genres={genres} />
         </CardContent>
       </Card>
 
