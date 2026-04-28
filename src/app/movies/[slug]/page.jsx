@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { StreamingAvailability } from "@/components/streaming-availability";
 
 async function getMovie(slug) {
   return prisma.movie.findUnique({
@@ -14,6 +15,9 @@ async function getMovie(slug) {
         include: {
           category: true,
         },
+      },
+      streamingLinks: {
+        orderBy: { createdAt: "asc" },
       },
     },
   });
@@ -161,6 +165,9 @@ export default async function MovieDetailPage({ params, searchParams }) {
           </div>
         </section>
       )}
+
+      {/* Streaming Availability — "Où regarder" */}
+      <StreamingAvailability streamingLinks={movie.streamingLinks} />
 
       {/* Category Assignments - Where this movie appears */}
       {movie.categories.length > 0 && (

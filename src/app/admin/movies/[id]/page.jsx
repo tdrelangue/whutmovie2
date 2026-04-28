@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
+import { STREAMING_PLATFORMS, STREAMING_REGIONS } from "@/lib/streaming-platforms";
 
 export const metadata = {
   title: "Edit Movie - WhutMovie Admin",
@@ -23,6 +24,9 @@ async function getMovie(id) {
         include: {
           category: { select: { id: true, title: true, slug: true } },
         },
+      },
+      streamingLinks: {
+        orderBy: { createdAt: "asc" },
       },
     },
   });
@@ -41,6 +45,8 @@ async function updateMovie(formData) {
   const description = formData.get("description")?.toString().trim() || null;
   const yearStr = formData.get("year")?.toString().trim();
   const year = yearStr ? parseInt(yearStr) : null;
+  const tmdbIdStr = formData.get("tmdbId")?.toString().trim();
+  const tmdbId = tmdbIdStr ? parseInt(tmdbIdStr) : null;
   const genreIds = formData.getAll("genres").map((g) => g.toString());
 
   if (!id || !title || !whutSummary) {
@@ -58,6 +64,7 @@ async function updateMovie(formData) {
         whutSummary,
         description,
         year,
+        tmdbId,
         genres: {
           set: genreIds.map((gid) => ({ id: gid })),
         },
@@ -89,6 +96,35 @@ async function deleteMovie(formData) {
   revalidatePath("/");
 
   redirect("/admin/movies");
+}
+
+async function addStreamingLink(formData) {
+  "use server";
+
+  const movieId = formData.get("movieId")?.toString();
+  const platform = formData.get("platform")?.toString();
+  const region = formData.get("region")?.toString();
+  const url = formData.get("url")?.toString().trim();
+
+  if (!movieId || !platform || !region || !url) return;
+  if (!url.startsWith("https://")) return;
+
+  await prisma.streamingLink.create({ data: { movieId, platform, region, url } });
+  revalidatePath(`/admin/movies/${movieId}`);
+  revalidatePath("/movies");
+}
+
+async function deleteStreamingLink(formData) {
+  "use server";
+
+  const id = formData.get("id")?.toString();
+  const movieId = formData.get("movieId")?.toString();
+
+  if (!id || !movieId) return;
+
+  await prisma.streamingLink.delete({ where: { id } });
+  revalidatePath(`/admin/movies/${movieId}`);
+  revalidatePath("/movies");
 }
 
 export default async function EditMoviePage({ params }) {
@@ -126,7 +162,7 @@ export default async function EditMoviePage({ params }) {
           <form action={updateMovie} className="space-y-4">
             <input type="hidden" name="id" value={movie.id} />
 
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               <div className="space-y-2">
                 <label htmlFor="title" className="block text-sm font-medium">
                   Title *
@@ -151,6 +187,18 @@ export default async function EditMoviePage({ params }) {
                   max="2100"
                   defaultValue={movie.year || ""}
                   placeholder="2024"
+                />
+              </div>
+              <div className="space-y-2">
+                <label htmlFor="tmdbId" className="block text-sm font-medium">
+                  TMDB ID <span className="text-muted-foreground font-normal">(for streaming sync)</span>
+                </label>
+                <Input
+                  id="tmdbId"
+                  name="tmdbId"
+                  type="number"
+                  defaultValue={movie.tmdbId || ""}
+                  placeholder="e.g. 496243"
                 />
               </div>
             </div>
@@ -235,6 +283,96 @@ export default async function EditMoviePage({ params }) {
           </CardContent>
         </Card>
       )}
+
+      {/* Streaming Links */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Streaming Links</CardTitle>
+          <CardDescription>Where to watch this movie</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {/* Existing links */}
+          {movie.streamingLinks.length === 0 ? (
+            <p className="text-sm text-muted-foreground">No streaming links yet.</p>
+          ) : (
+            <ul className="space-y-2">
+              {movie.streamingLinks.map((link) => {
+                const platform = STREAMING_PLATFORMS.find((p) => p.id === link.platform);
+                const region = STREAMING_REGIONS.find((r) => r.id === link.region);
+                return (
+                  <li key={link.id} className="flex items-center gap-3">
+                    <Badge variant="default" style={{ backgroundColor: platform?.hex ?? "#555" }}>
+                      {platform?.label ?? link.platform}
+                    </Badge>
+                    <Badge variant="outline">{region?.label ?? link.region}</Badge>
+                    <a
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-muted-foreground underline truncate max-w-xs hover:text-foreground transition-colors"
+                    >
+                      {link.url}
+                    </a>
+                    <form action={deleteStreamingLink} className="ml-auto">
+                      <input type="hidden" name="id" value={link.id} />
+                      <input type="hidden" name="movieId" value={movie.id} />
+                      <Button type="submit" variant="ghost" size="sm" className="text-destructive hover:text-destructive">
+                        Remove
+                      </Button>
+                    </form>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+
+          {/* Add link form */}
+          <form action={addStreamingLink} className="space-y-3 border-t border-border pt-4">
+            <input type="hidden" name="movieId" value={movie.id} />
+            <div className="grid gap-3 sm:grid-cols-3">
+              <div className="space-y-1">
+                <label htmlFor="sl-platform" className="block text-sm font-medium">
+                  Platform
+                </label>
+                <select id="sl-platform" name="platform" required className="select-dark w-full">
+                  {STREAMING_PLATFORMS.map((p) => (
+                    <option key={p.id} value={p.id}>
+                      {p.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="space-y-1">
+                <label htmlFor="sl-region" className="block text-sm font-medium">
+                  Region
+                </label>
+                <select id="sl-region" name="region" required className="select-dark w-full">
+                  {STREAMING_REGIONS.map((r) => (
+                    <option key={r.id} value={r.id}>
+                      {r.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="space-y-1">
+                <label htmlFor="sl-url" className="block text-sm font-medium">
+                  URL (https://)
+                </label>
+                <Input
+                  id="sl-url"
+                  name="url"
+                  type="url"
+                  required
+                  placeholder="https://www.netflix.com/..."
+                />
+              </div>
+            </div>
+            <Button type="submit" size="sm">
+              Add Link
+            </Button>
+          </form>
+        </CardContent>
+      </Card>
 
       {/* Danger Zone */}
       <Card className="border-destructive">

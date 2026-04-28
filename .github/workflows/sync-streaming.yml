@@ -1,0 +1,38 @@
+name: Sync Streaming Availability
+
+on:
+  schedule:
+    # Every Monday at 3:00 AM UTC
+    - cron: "0 3 * * 1"
+  # Also allows manual trigger from GitHub Actions UI
+  workflow_dispatch:
+
+jobs:
+  sync:
+    name: Sync streaming links from TMDB
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate Prisma client
+        run: npx prisma generate
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
+      - name: Run sync script
+        run: node scripts/sync-streaming.mjs
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DIRECT_URL: ${{ secrets.DIRECT_URL }}
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
