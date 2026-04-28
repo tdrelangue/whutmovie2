@@ -20,7 +20,7 @@ export async function GET(request) {
     const q = encodeURIComponent(title);
     const yearParam = year ? `&year=${year}` : "";
     const res = await fetch(
-      `${TMDB_BASE}/search/movie?query=${q}${yearParam}&language=fr-FR&api_key=${key}`
+      `${TMDB_BASE}/search/movie?query=${q}${yearParam}&language=en-US&api_key=${key}`
     );
     const data = await res.json();
     const first = data.results?.[0];
@@ -28,7 +28,7 @@ export async function GET(request) {
     tmdbId = first.id;
   }
 
-  const res = await fetch(`${TMDB_BASE}/movie/${tmdbId}?language=fr-FR&api_key=${key}`);
+  const res = await fetch(`${TMDB_BASE}/movie/${tmdbId}?language=en-US&api_key=${key}`);
   if (!res.ok) return NextResponse.json({ error: "TMDB request failed" }, { status: 502 });
   const data = await res.json();
 

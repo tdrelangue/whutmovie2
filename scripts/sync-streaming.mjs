@@ -93,7 +93,7 @@ async function main() {
     if (!tmdbId) {
       const query = encodeURIComponent(movie.title);
       const yearParam = movie.year ? `&year=${movie.year}` : "";
-      const searchData = await tmdb(`/search/movie?query=${query}${yearParam}&language=fr-FR`);
+      const searchData = await tmdb(`/search/movie?query=${query}${yearParam}&language=en-US`);
       const firstResult = searchData.results?.[0];
 
       if (!firstResult) {
@@ -109,7 +109,7 @@ async function main() {
 
     // 2. Fetch movie details + watch providers in one call (append_to_response)
     const movieData = await tmdb(
-      `/movie/${tmdbId}?append_to_response=watch%2Fproviders&language=fr-FR`
+      `/movie/${tmdbId}?append_to_response=watch%2Fproviders&language=en-US`
     );
     const results = movieData["watch/providers"]?.results ?? {};
 
