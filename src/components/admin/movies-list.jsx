@@ -9,19 +9,36 @@ import { Badge } from "@/components/ui/badge";
 
 export function MoviesList({ movies, deleteAction }) {
   const [query, setQuery] = useState("");
+  const [missingTmdb, setMissingTmdb] = useState(false);
 
-  const filtered = query.trim()
-    ? movies.filter((m) =>
-        m.title.toLowerCase().includes(query.toLowerCase())
-      )
-    : movies;
+  const missingCount = movies.filter((m) => !m.tmdbId).length;
+
+  let filtered = missingTmdb ? movies.filter((m) => !m.tmdbId) : movies;
+  if (query.trim()) {
+    filtered = filtered.filter((m) =>
+      m.title.toLowerCase().includes(query.toLowerCase())
+    );
+  }
 
   return (
     <section>
       <div className="flex items-center justify-between mb-4 gap-4 flex-wrap">
-        <h2 className="text-xl font-semibold">
-          All Movies ({movies.length})
-        </h2>
+        <div className="flex items-center gap-3 flex-wrap">
+          <h2 className="text-xl font-semibold">
+            All Movies ({movies.length})
+          </h2>
+          <button
+            type="button"
+            onClick={() => setMissingTmdb((v) => !v)}
+            className={`text-xs px-2.5 py-1 rounded-full border transition-colors ${
+              missingTmdb
+                ? "bg-destructive text-destructive-foreground border-destructive"
+                : "border-border text-muted-foreground hover:border-foreground hover:text-foreground"
+            }`}
+          >
+            {missingCount} missing TMDB ID
+          </button>
+        </div>
         <Input
           type="search"
           placeholder="Search by title…"
@@ -72,6 +89,15 @@ export function MoviesList({ movies, deleteAction }) {
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-1">
+                  {movie.tmdbId ? (
+                    <Badge variant="outline" className="text-xs text-muted-foreground">
+                      TMDB #{movie.tmdbId}
+                    </Badge>
+                  ) : (
+                    <Badge variant="destructive" className="text-xs">
+                      No TMDB ID
+                    </Badge>
+                  )}
                   {movie.genres.map((g) => (
                     <Badge key={g.id} variant="outline">
                       {g.name}
