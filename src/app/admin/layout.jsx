@@ -34,6 +34,13 @@ export default async function AdminLayout({ children }) {
         >
           Categories
         </Link>
+        <span className="text-border">/</span>
+        <Link
+          href="/admin/data"
+          className="font-medium text-muted-foreground hover:text-foreground transition-colors"
+        >
+          Data
+        </Link>
         {user && (
           <span className="ml-auto text-xs text-muted-foreground">
             @{user.username}
