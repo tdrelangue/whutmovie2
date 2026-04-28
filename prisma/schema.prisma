@@ -17,6 +17,7 @@ model Movie {
   whutSummary String   // Our funny/blunt summary (required)
   year        Int?
   tmdbId      Int?     // TMDB movie ID — cached by sync script, can be set manually in admin
+  posterUrl   String?  // TMDB poster image URL (w500), populated by sync script
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 

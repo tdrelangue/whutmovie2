@@ -1,9 +1,9 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { StreamingAvailability } from "@/components/streaming-availability";
 
 async function getMovie(slug) {
@@ -102,23 +102,52 @@ export default async function MovieDetailPage({ params, searchParams }) {
         </Button>
       </nav>
 
-      {/* Header */}
-      <header className="space-y-4">
-        <h1 className="text-4xl font-bold tracking-tight">{movie.title}</h1>
-        {movie.year && (
-          <p className="text-xl text-muted-foreground">{movie.year}</p>
-        )}
-      </header>
-
-      {/* Poster Placeholder */}
-      <Card className="aspect-video">
-        <CardContent className="h-full flex items-center justify-center text-muted-foreground">
-          <div className="text-center">
-            <div className="text-6xl mb-4">🎬</div>
-            <p className="text-sm">Poster coming soon</p>
+      {/* Hero: poster + title side by side */}
+      <header className="flex flex-col sm:flex-row gap-6 sm:gap-8">
+        {/* Poster */}
+        <div className="shrink-0 w-full sm:w-44 md:w-56">
+          <div className="relative aspect-[2/3] rounded-lg overflow-hidden bg-muted shadow-lg">
+            {movie.posterUrl ? (
+              <Image
+                src={movie.posterUrl}
+                alt={`${movie.title} poster`}
+                fill
+                sizes="(max-width: 640px) 100vw, 224px"
+                className="object-cover"
+                priority
+              />
+            ) : (
+              <div className="absolute inset-0 flex items-center justify-center text-muted-foreground text-5xl">
+                🎬
+              </div>
+            )}
           </div>
-        </CardContent>
-      </Card>
+        </div>
+
+        {/* Title + meta */}
+        <div className="flex flex-col justify-end space-y-3">
+          <h1 className="text-4xl font-bold tracking-tight leading-tight">
+            {movie.title}
+          </h1>
+          {movie.year && (
+            <p className="text-xl text-muted-foreground">{movie.year}</p>
+          )}
+          {movie.genres.length > 0 && (
+            <div className="flex flex-wrap gap-2">
+              {movie.genres.map((genre) => (
+                <Badge key={genre.id} variant="outline" className="text-sm py-1 px-3">
+                  <Link
+                    href={`/movies?genre=${genre.slug}`}
+                    className="hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
+                  >
+                    {genre.name}
+                  </Link>
+                </Badge>
+              ))}
+            </div>
+          )}
+        </div>
+      </header>
 
       {/* WhutSummary - Our funny summary (PRIMARY) */}
       {movie.whutSummary && (
@@ -144,25 +173,6 @@ export default async function MovieDetailPage({ params, searchParams }) {
               </p>
             </div>
           </details>
-        </section>
-      )}
-
-      {/* Genres */}
-      {movie.genres.length > 0 && (
-        <section>
-          <h2 className="text-xl font-semibold mb-3">Genres</h2>
-          <div className="flex flex-wrap gap-2">
-            {movie.genres.map((genre) => (
-              <Badge key={genre.id} variant="outline" className="text-sm py-1 px-3">
-                <Link
-                  href={`/movies?genre=${genre.slug}`}
-                  className="hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
-                >
-                  {genre.name}
-                </Link>
-              </Badge>
-            ))}
-          </div>
         </section>
       )}
 

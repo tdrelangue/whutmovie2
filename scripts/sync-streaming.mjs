@@ -1,10 +1,15 @@
 /**
  * scripts/sync-streaming.mjs
  *
- * Fetches streaming availability from TMDB Watch Providers API for every movie
- * in the database and upserts StreamingLink rows (source = "TMDB").
+ * Fetches streaming availability AND poster images from TMDB for every movie
+ * in the database.
  *
- * Manually-added links (source = "MANUAL") are never touched.
+ * What it syncs per movie:
+ *   - posterUrl  — stored directly on Movie (https://image.tmdb.org/t/p/w500/...)
+ *   - StreamingLink rows (source = "TMDB") for FR and BE flatrate providers
+ *
+ * Manually-added streaming links (source = "MANUAL") are never touched.
+ * Uses append_to_response to fetch poster + providers in a single API call.
  *
  * Usage:
  *   node scripts/sync-streaming.mjs
@@ -102,11 +107,23 @@ async function main() {
       console.log(`   🔍 Matched "${movie.title}" → TMDB #${tmdbId} (${firstResult.title}, ${firstResult.release_date?.slice(0, 4) ?? "?"})`);
     }
 
-    // 2. Fetch watch providers
-    const providersData = await tmdb(`/movie/${tmdbId}/watch/providers`);
-    const results = providersData.results ?? {};
+    // 2. Fetch movie details + watch providers in one call (append_to_response)
+    const movieData = await tmdb(
+      `/movie/${tmdbId}?append_to_response=watch%2Fproviders&language=fr-FR`
+    );
+    const results = movieData["watch/providers"]?.results ?? {};
 
-    // 3. Build new TMDB-sourced links
+    // 3. Store poster URL
+    const posterPath = movieData.poster_path;
+    const posterUrl = posterPath
+      ? `https://image.tmdb.org/t/p/w500${posterPath}`
+      : null;
+
+    if (posterUrl) {
+      await prisma.movie.update({ where: { id: movie.id }, data: { posterUrl } });
+    }
+
+    // 4. Build new TMDB-sourced streaming links
     const newLinks = [];
     for (const region of REGIONS) {
       const countryData = results[region];
@@ -128,17 +145,18 @@ async function main() {
       }
     }
 
-    // 4. Replace old TMDB links with fresh ones (manual links untouched)
+    // 5. Replace old TMDB links with fresh ones (manual links untouched)
     await prisma.$transaction([
       prisma.streamingLink.deleteMany({ where: { movieId: movie.id, source: "TMDB" } }),
       ...(newLinks.length > 0 ? [prisma.streamingLink.createMany({ data: newLinks })] : []),
     ]);
 
-    const summary = newLinks.length > 0
+    const posterMark = posterUrl ? "🖼" : "·";
+    const streamingSummary = newLinks.length > 0
       ? newLinks.map((l) => `${l.platform} (${l.region})`).join(", ")
       : "no subscription providers found";
 
-    console.log(`✓  ${movie.title} — ${summary}`);
+    console.log(`${posterMark} ✓  ${movie.title} — ${streamingSummary}`);
     synced++;
   }
 

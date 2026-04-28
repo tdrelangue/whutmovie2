@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import {
   Card,
@@ -11,13 +12,13 @@ import { Badge } from "@/components/ui/badge";
 /**
  * MovieCard component - displays a movie in card format
  * @param {Object} props
- * @param {Object} props.movie - Movie object with title, slug, whutSummary, description, year, genres
+ * @param {Object} props.movie - Movie object
  * @param {number} [props.rank] - Optional rank badge (1, 2, or 3)
- * @param {string} [props.angleLabel] - Optional angle label (e.g., "Action", "Rom-com twist") per category assignment
+ * @param {string} [props.angleLabel] - Optional angle label per category assignment
  * @param {boolean} [props.showOfficialSynopsis] - Whether to show official synopsis under details
  * @param {boolean} [props.showGenres] - Whether to show genre badges (default: true)
  * @param {string} [props.fromUrl] - Optional URL for context-aware back navigation
- * @param {string} [props.variant] - Optional variant: "default" | "secondary" (for honorable mentions)
+ * @param {string} [props.variant] - "default" | "secondary" (for honorable mentions)
  */
 export function MovieCard({
   movie,
@@ -28,7 +29,6 @@ export function MovieCard({
   fromUrl,
   variant = "default",
 }) {
-  // Build movie detail URL with optional "from" param
   const movieUrl = fromUrl
     ? `/movies/${movie.slug}?from=${encodeURIComponent(fromUrl)}`
     : `/movies/${movie.slug}`;
@@ -37,7 +37,7 @@ export function MovieCard({
 
   return (
     <Card
-      className={`transition-colors relative ${
+      className={`transition-colors relative overflow-hidden flex flex-col ${
         isSecondary
           ? "hover:border-muted-foreground/50 opacity-90"
           : "hover:border-primary/50"
@@ -45,23 +45,40 @@ export function MovieCard({
     >
       {/* Rank Badge */}
       {rank && (
-        <div className="absolute -top-3 -right-3 z-10">
+        <div className="absolute top-2 right-2 z-10">
           <div className="bg-primary text-primary-foreground w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm shadow-lg">
             #{rank}
           </div>
         </div>
       )}
 
-      <CardHeader>
-        <CardTitle className="line-clamp-1 text-lg">
+      {/* Poster */}
+      <Link href={movieUrl} className="block relative aspect-[2/3] bg-muted shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset">
+        {movie.posterUrl ? (
+          <Image
+            src={movie.posterUrl}
+            alt={`${movie.title} poster`}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+            className="object-cover"
+          />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center text-muted-foreground text-5xl">
+            🎬
+          </div>
+        )}
+      </Link>
+
+      <CardHeader className="pb-2">
+        <CardTitle className="line-clamp-1 text-base leading-tight">
           <Link
             href={movieUrl}
-            className="inline-block rounded-sm transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-ring hover:underline hover:decoration-primary hover:decoration-2 hover:underline-offset-4"
+            className="hover:underline hover:decoration-primary hover:decoration-2 hover:underline-offset-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
           >
             {movie.title}
           </Link>
         </CardTitle>
-        <CardDescription className="flex items-center gap-2">
+        <CardDescription className="flex items-center gap-2 flex-wrap">
           {movie.year && <span>{movie.year}</span>}
           {angleLabel && (
             <Badge variant="secondary" className="text-xs">
@@ -71,17 +88,17 @@ export function MovieCard({
         </CardDescription>
       </CardHeader>
 
-      <CardContent>
-        {/* WhutSummary - our funny summary (primary) */}
+      <CardContent className="pt-0 flex-1 flex flex-col justify-between">
+        {/* WhutSummary */}
         {movie.whutSummary && (
-          <p className="text-sm text-muted-foreground line-clamp-3 mb-4">
+          <p className="text-sm text-muted-foreground line-clamp-3 mb-3">
             {movie.whutSummary}
           </p>
         )}
 
         {/* Official Synopsis (collapsed) */}
         {showOfficialSynopsis && movie.description && (
-          <details className="mb-4">
+          <details className="mb-3">
             <summary className="text-xs text-muted-foreground cursor-pointer hover:text-foreground transition-colors">
               Official synopsis
             </summary>
@@ -93,9 +110,9 @@ export function MovieCard({
 
         {/* Genre badges */}
         {showGenres && movie.genres && movie.genres.length > 0 && (
-          <div className="flex flex-wrap gap-1">
+          <div className="flex flex-wrap gap-1 mt-auto">
             {movie.genres.map((genre) => (
-              <Badge key={genre.id} variant="outline">
+              <Badge key={genre.id} variant="outline" className="text-xs">
                 {genre.name}
               </Badge>
             ))}
