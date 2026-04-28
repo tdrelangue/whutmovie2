@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { MovieCard } from "@/components/movie-card";
+import { MovieGroupSection } from "@/components/movie-group-section";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { isAuthenticated } from "@/lib/auth";
@@ -13,8 +14,22 @@ async function getCategory(slug) {
       assignments: {
         include: {
           movie: {
+            include: { genres: true },
+          },
+        },
+      },
+      groupAssignments: {
+        include: {
+          group: {
             include: {
-              genres: true,
+              members: {
+                orderBy: { order: "asc" },
+                include: {
+                  movie: {
+                    include: { genres: true },
+                  },
+                },
+              },
             },
           },
         },
@@ -217,6 +232,16 @@ export default async function CategoryDetailPage({ params, searchParams }) {
               />
             ))}
           </div>
+        </section>
+      )}
+
+      {/* Movie Groups */}
+      {category.groupAssignments.length > 0 && (
+        <section className="space-y-8">
+          <h2 className="text-2xl font-semibold">Movie Groups</h2>
+          {category.groupAssignments.map(({ group }) => (
+            <MovieGroupSection key={group.id} group={group} fromUrl={currentPageUrl} />
+          ))}
         </section>
       )}
 

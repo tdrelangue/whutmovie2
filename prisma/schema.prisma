@@ -29,6 +29,9 @@ model Movie {
 
   // streaming availability links
   streamingLinks StreamingLink[]
+
+  // movie group memberships
+  groupMemberships MovieGroupMember[]
 }
 
 model Genre {
@@ -48,7 +51,8 @@ model Category {
   createdAt   DateTime             @default(now())
   updatedAt   DateTime             @updatedAt
 
-  assignments CategoryAssignment[]
+  assignments    CategoryAssignment[]
+  groupAssignments CategoryGroupAssignment[]
 }
 
 model CategoryAssignment {
@@ -79,6 +83,44 @@ model StreamingLink {
   movie Movie @relation(fields: [movieId], references: [id], onDelete: Cascade)
 
   @@index([movieId])
+}
+
+model MovieGroup {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  members        MovieGroupMember[]
+  categoryGroups CategoryGroupAssignment[]
+}
+
+model MovieGroupMember {
+  id            String  @id @default(cuid())
+  groupId       String
+  movieId       String
+  order         Int     @default(0)
+  spoilerHidden Boolean @default(false)
+
+  group MovieGroup @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  movie Movie      @relation(fields: [movieId], references: [id], onDelete: Cascade)
+
+  @@unique([groupId, movieId])
+  @@index([groupId])
+}
+
+model CategoryGroupAssignment {
+  id         String @id @default(cuid())
+  categoryId String
+  groupId    String
+
+  category Category   @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  group    MovieGroup @relation(fields: [groupId], references: [id], onDelete: Cascade)
+
+  @@unique([categoryId, groupId])
+  @@index([categoryId])
 }
 
 model AdminUser {

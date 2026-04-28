@@ -36,6 +36,13 @@ export default async function AdminLayout({ children }) {
         </Link>
         <span className="text-border">/</span>
         <Link
+          href="/admin/groups"
+          className="font-medium text-muted-foreground hover:text-foreground transition-colors"
+        >
+          Groups
+        </Link>
+        <span className="text-border">/</span>
+        <Link
           href="/admin/data"
           className="font-medium text-muted-foreground hover:text-foreground transition-colors"
         >

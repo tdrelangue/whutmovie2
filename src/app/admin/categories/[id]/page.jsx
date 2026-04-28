@@ -25,6 +25,17 @@ async function getCategory(id) {
           movie: { select: { id: true, title: true, year: true } },
         },
       },
+      groupAssignments: {
+        include: {
+          group: {
+            select: {
+              id: true,
+              title: true,
+              members: { select: { id: true }, orderBy: { order: "asc" } },
+            },
+          },
+        },
+      },
     },
   });
 }
@@ -33,6 +44,13 @@ async function getMovies() {
   return prisma.movie.findMany({
     orderBy: { title: "asc" },
     select: { id: true, title: true, year: true },
+  });
+}
+
+async function getGroups() {
+  return prisma.movieGroup.findMany({
+    orderBy: { title: "asc" },
+    select: { id: true, title: true },
   });
 }
 
@@ -123,6 +141,31 @@ async function removePick(formData) {
   revalidatePath("/");
 }
 
+async function assignGroup(formData) {
+  "use server";
+  const categoryId = formData.get("categoryId")?.toString();
+  const groupId = formData.get("groupId")?.toString();
+  if (!categoryId || !groupId) return;
+  try {
+    await prisma.categoryGroupAssignment.create({ data: { categoryId, groupId } });
+  } catch (e) {
+    if (e.code !== "P2002") throw e;
+    return;
+  }
+  revalidatePath(`/admin/categories/${categoryId}`);
+  revalidatePath("/categories");
+}
+
+async function removeGroup(formData) {
+  "use server";
+  const id = formData.get("id")?.toString();
+  const categoryId = formData.get("categoryId")?.toString();
+  if (!id) return;
+  await prisma.categoryGroupAssignment.delete({ where: { id } });
+  revalidatePath(`/admin/categories/${categoryId}`);
+  revalidatePath("/categories");
+}
+
 async function deleteCategory(formData) {
   "use server";
 
@@ -145,7 +188,11 @@ export default async function EditCategoryPage({ params, searchParams }) {
   const resolvedSearch = await searchParams;
   const saved = resolvedSearch?.saved === "1";
 
-  const [category, movies] = await Promise.all([getCategory(id), getMovies()]);
+  const [category, movies, groups] = await Promise.all([
+    getCategory(id),
+    getMovies(),
+    getGroups(),
+  ]);
   if (!category) notFound();
 
   const rankedPicks = category.assignments.filter((a) => !a.isHonorableMention);
@@ -154,6 +201,9 @@ export default async function EditCategoryPage({ params, searchParams }) {
   const availableMovies = movies.filter((m) => !assignedMovieIds.includes(m.id));
   const usedRanks = rankedPicks.map((a) => a.rank);
   const availableRanks = [1, 2, 3].filter((r) => !usedRanks.includes(r));
+
+  const assignedGroupIds = category.groupAssignments.map((ga) => ga.groupId);
+  const availableGroups = groups.filter((g) => !assignedGroupIds.includes(g.id));
 
   return (
     <>
@@ -402,6 +452,75 @@ export default async function EditCategoryPage({ params, searchParams }) {
                   </div>
                   <Button type="submit" size="sm">
                     Add Mention
+                  </Button>
+                </form>
+              </div>
+            )}
+          </CardContent>
+        </Card>
+
+        {/* Movie Groups */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Movie Groups</CardTitle>
+            <CardDescription>
+              Trilogies, sagas, or series assigned to this category
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {category.groupAssignments.length > 0 ? (
+              <div className="space-y-2">
+                {category.groupAssignments.map((ga) => (
+                  <div
+                    key={ga.id}
+                    className="flex items-center gap-3 p-3 bg-muted rounded flex-wrap"
+                  >
+                    <span className="flex-1 font-medium min-w-0">
+                      {ga.group.title}
+                      <span className="text-muted-foreground ml-1 text-sm font-normal">
+                        ({ga.group.members.length} film{ga.group.members.length !== 1 ? "s" : ""})
+                      </span>
+                    </span>
+                    <div className="flex gap-2 shrink-0">
+                      <Button asChild variant="outline" size="sm">
+                        <a href={`/admin/groups/${ga.groupId}`}>Edit group</a>
+                      </Button>
+                      <form action={removeGroup}>
+                        <input type="hidden" name="id" value={ga.id} />
+                        <input type="hidden" name="categoryId" value={category.id} />
+                        <Button type="submit" variant="ghost" size="sm">
+                          Remove
+                        </Button>
+                      </form>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-sm text-muted-foreground italic">No groups assigned yet.</p>
+            )}
+
+            {availableGroups.length > 0 && (
+              <div className="border-t pt-4">
+                <p className="text-sm font-medium mb-2">Assign a group:</p>
+                <form action={assignGroup} className="flex gap-2 items-end flex-wrap">
+                  <input type="hidden" name="categoryId" value={category.id} />
+                  <div className="flex-1 min-w-[200px]">
+                    <select
+                      name="groupId"
+                      required
+                      className="w-full h-9 rounded-md border border-input px-3 text-sm bg-background"
+                    >
+                      <option value="">Select a group…</option>
+                      {availableGroups.map((g) => (
+                        <option key={g.id} value={g.id}>
+                          {g.title}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <Button type="submit" size="sm">
+                    Assign Group
                   </Button>
                 </form>
               </div>
