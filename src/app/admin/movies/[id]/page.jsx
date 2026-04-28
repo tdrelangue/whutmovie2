@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { STREAMING_PLATFORMS, STREAMING_REGIONS } from "@/lib/streaming-platforms";
+import { TmdbFetchPanel } from "@/components/admin/tmdb-fetch-panel";
 
 export const metadata = {
   title: "Edit Movie - WhutMovie Admin",
@@ -47,6 +48,7 @@ async function updateMovie(formData) {
   const year = yearStr ? parseInt(yearStr) : null;
   const tmdbIdStr = formData.get("tmdbId")?.toString().trim();
   const tmdbId = tmdbIdStr ? parseInt(tmdbIdStr) : null;
+  const posterUrl = formData.get("posterUrl")?.toString().trim() || null;
   const genreIds = formData.getAll("genres").map((g) => g.toString());
 
   if (!id || !title || !whutSummary) {
@@ -65,6 +67,7 @@ async function updateMovie(formData) {
         description,
         year,
         tmdbId,
+        ...(posterUrl !== null && { posterUrl }),
         genres: {
           set: genreIds.map((gid) => ({ id: gid })),
         },
@@ -189,18 +192,6 @@ export default async function EditMoviePage({ params }) {
                   placeholder="2024"
                 />
               </div>
-              <div className="space-y-2">
-                <label htmlFor="tmdbId" className="block text-sm font-medium">
-                  TMDB ID <span className="text-muted-foreground font-normal">(for streaming sync)</span>
-                </label>
-                <Input
-                  id="tmdbId"
-                  name="tmdbId"
-                  type="number"
-                  defaultValue={movie.tmdbId || ""}
-                  placeholder="e.g. 496243"
-                />
-              </div>
             </div>
 
             <div className="space-y-2">
@@ -217,18 +208,13 @@ export default async function EditMoviePage({ params }) {
               />
             </div>
 
-            <div className="space-y-2">
-              <label htmlFor="description" className="block text-sm font-medium">
-                Official Synopsis (optional)
-              </label>
-              <Textarea
-                id="description"
-                name="description"
-                rows={3}
-                defaultValue={movie.description || ""}
-                placeholder="The boring IMDb-style description (optional)"
-              />
-            </div>
+            <TmdbFetchPanel
+              movieTitle={movie.title}
+              movieYear={movie.year}
+              initialTmdbId={movie.tmdbId ? String(movie.tmdbId) : ""}
+              initialDescription={movie.description || ""}
+              initialPosterUrl={movie.posterUrl || ""}
+            />
 
             <div className="space-y-2">
               <label className="block text-sm font-medium">Genres</label>
