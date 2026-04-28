@@ -54,9 +54,8 @@ export function NewMovieForm({ createAction, genres }) {
   return (
     <form action={createAction} className="space-y-4">
       <input type="hidden" name="posterUrl" value={posterUrl} />
-      <input type="hidden" name="tmdbId" value={tmdbId} />
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-4 sm:grid-cols-3">
         <div className="space-y-2">
           <label htmlFor="title" className="block text-sm font-medium">Title *</label>
           <Input
@@ -79,6 +78,19 @@ export function NewMovieForm({ createAction, genres }) {
             placeholder="2024"
             value={year}
             onChange={(e) => setYear(e.target.value)}
+          />
+        </div>
+        <div className="space-y-2">
+          <label htmlFor="tmdbId" className="block text-sm font-medium">
+            TMDB ID <span className="text-muted-foreground font-normal">(optional)</span>
+          </label>
+          <Input
+            id="tmdbId"
+            name="tmdbId"
+            type="number"
+            placeholder="e.g. 496243"
+            value={tmdbId}
+            onChange={(e) => setTmdbId(e.target.value)}
           />
         </div>
       </div>

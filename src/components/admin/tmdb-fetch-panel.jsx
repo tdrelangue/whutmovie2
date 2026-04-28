@@ -62,9 +62,25 @@ export function TmdbFetchPanel({
 
   return (
     <>
-      {/* Hidden inputs so the form picks up poster + tmdbId overrides */}
+      {/* Hidden input so the form picks up posterUrl */}
       <input type="hidden" name="posterUrl" value={posterUrl} />
-      <input type="hidden" name="tmdbId" value={tmdbId} />
+
+      {/* TMDB ID — visible so it can be set manually */}
+      <div className="space-y-2">
+        <label htmlFor="tmdbId" className="block text-sm font-medium">
+          TMDB ID{" "}
+          <span className="text-muted-foreground font-normal">(for streaming sync)</span>
+        </label>
+        <input
+          id="tmdbId"
+          name="tmdbId"
+          type="number"
+          value={tmdbId}
+          onChange={(e) => setTmdbId(e.target.value)}
+          placeholder="e.g. 496243"
+          className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+        />
+      </div>
 
       {/* Official Synopsis field */}
       <div className="space-y-2">
