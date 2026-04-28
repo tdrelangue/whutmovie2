@@ -1,73 +1,105 @@
-import { getPlatformById, STREAMING_REGIONS } from "@/lib/streaming-platforms";
+import { getPlatformById, STREAMING_PLATFORMS, STREAMING_REGIONS } from "@/lib/streaming-platforms";
 
 /**
- * StreamingAvailability — public-facing "Ou regarder" section.
+ * StreamingAvailability — availability table.
  *
- * Renders colored platform badges grouped by region (FR always first).
- * Each badge is a real <a> link opening the streaming platform in a new tab.
- * Returns null when there are no links so the section is completely invisible.
- *
- * @param {{ streamingLinks: Array<{id: string, platform: string, region: string, url: string}> }} props
+ * Rows = platforms this movie is on (at least one region).
+ * Columns = regions this movie has data for.
+ * Cell = linked ✓ if available, — if not.
  */
 export function StreamingAvailability({ streamingLinks }) {
   if (!streamingLinks || streamingLinks.length === 0) return null;
 
-  // Group links by region, preserving insertion order within each group
-  const byRegion = {};
+  // Build a lookup: platformId → regionId → link
+  const lookup = {};
   for (const link of streamingLinks) {
-    if (!byRegion[link.region]) byRegion[link.region] = [];
-    byRegion[link.region].push(link);
+    if (!lookup[link.platform]) lookup[link.platform] = {};
+    lookup[link.platform][link.region] = link;
   }
 
-  // FR first, then the rest alphabetically
-  const sortedRegions = Object.keys(byRegion).sort((a, b) => {
-    if (a === "FR") return -1;
-    if (b === "FR") return 1;
-    return a.localeCompare(b);
-  });
+  // Only show platforms and regions that appear in at least one link
+  const presentPlatformIds = STREAMING_PLATFORMS
+    .map((p) => p.id)
+    .filter((id) => lookup[id]);
+
+  const presentRegionIds = STREAMING_REGIONS
+    .map((r) => r.id)
+    .filter((id) => streamingLinks.some((l) => l.region === id));
+
+  if (presentPlatformIds.length === 0 || presentRegionIds.length === 0) return null;
+
+  const regions = STREAMING_REGIONS.filter((r) => presentRegionIds.includes(r.id));
+  const platforms = STREAMING_PLATFORMS.filter((p) => presentPlatformIds.includes(p.id));
 
   return (
     <section aria-labelledby="streaming-heading">
       <h2 id="streaming-heading" className="text-xl font-semibold mb-4">
-        Où regarder
+        Where to watch
       </h2>
 
-      <div className="space-y-4">
-        {sortedRegions.map((region) => {
-          const regionDef = STREAMING_REGIONS.find((r) => r.id === region);
-          const regionLabel = regionDef ? regionDef.label : region;
-
-          return (
-            <div key={region}>
-              <p className="text-xs text-muted-foreground mb-2 uppercase tracking-wide font-medium">
-                {regionLabel}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {byRegion[region].map((link) => {
-                  const platform = getPlatformById(link.platform);
-                  const label = platform?.label ?? link.platform;
-                  const hex = platform?.hex ?? "#444444";
-
+      <div className="overflow-x-auto rounded-lg border border-border">
+        <table className="w-full text-sm border-collapse">
+          <thead>
+            <tr className="border-b border-border bg-muted/50">
+              <th className="text-left px-4 py-3 font-medium text-muted-foreground w-36 min-w-[9rem]">
+                Platform
+              </th>
+              {regions.map((r) => (
+                <th
+                  key={r.id}
+                  className="px-3 py-3 text-center font-medium text-muted-foreground min-w-[4rem]"
+                >
+                  <span className="block text-base leading-none mb-0.5">{r.flag}</span>
+                  <span className="text-xs">{r.label}</span>
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {platforms.map((platform, i) => (
+              <tr
+                key={platform.id}
+                className={`border-b border-border last:border-0 ${
+                  i % 2 === 0 ? "" : "bg-muted/20"
+                }`}
+              >
+                <td className="px-4 py-2.5">
+                  <span
+                    className="inline-block px-2 py-0.5 rounded text-xs font-medium text-white"
+                    style={{ backgroundColor: platform.hex }}
+                  >
+                    {platform.label}
+                  </span>
+                </td>
+                {regions.map((region) => {
+                  const link = lookup[platform.id]?.[region.id];
                   return (
-                    <a
-                      key={link.id}
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`Regarder ${label}${link.url ? "" : " (lien non disponible)"}`}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium text-white transition-opacity hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                      style={{ backgroundColor: hex }}
-                    >
-                      {label}
-                      <span aria-hidden="true" className="text-xs opacity-70">↗</span>
-                    </a>
+                    <td key={region.id} className="px-3 py-2.5 text-center">
+                      {link ? (
+                        <a
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`Watch on ${platform.label} in ${region.label}`}
+                          className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                        >
+                          ✓
+                        </a>
+                      ) : (
+                        <span className="text-muted-foreground/40 select-none">—</span>
+                      )}
+                    </td>
                   );
                 })}
-              </div>
-            </div>
-          );
-        })}
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
+
+      <p className="text-xs text-muted-foreground mt-2">
+        Availability via subscription (flatrate) only · Data from TMDB
+      </p>
     </section>
   );
 }

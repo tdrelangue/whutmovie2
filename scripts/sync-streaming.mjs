@@ -55,7 +55,7 @@ if (!TMDB_KEY) {
   process.exit(1);
 }
 
-const REGIONS = ["FR", "BE"];
+const REGIONS = ["FR", "BE", "US", "GB", "CA", "AU", "DE", "ES"];
 const TMDB_BASE = "https://api.themoviedb.org/3";
 
 // ---------------------------------------------------------------------------
@@ -113,14 +113,23 @@ async function main() {
     );
     const results = movieData["watch/providers"]?.results ?? {};
 
-    // 3. Store poster URL
+    // 3. Store poster URL and official synopsis (only if not already set manually)
     const posterPath = movieData.poster_path;
     const posterUrl = posterPath
       ? `https://image.tmdb.org/t/p/w500${posterPath}`
       : null;
+    const overview = movieData.overview || null;
 
-    if (posterUrl) {
-      await prisma.movie.update({ where: { id: movie.id }, data: { posterUrl } });
+    const movieRecord = await prisma.movie.findUnique({
+      where: { id: movie.id },
+      select: { description: true },
+    });
+    const updateData = {};
+    if (posterUrl) updateData.posterUrl = posterUrl;
+    if (overview && !movieRecord.description) updateData.description = overview;
+
+    if (Object.keys(updateData).length > 0) {
+      await prisma.movie.update({ where: { id: movie.id }, data: updateData });
     }
 
     // 4. Build new TMDB-sourced streaming links
