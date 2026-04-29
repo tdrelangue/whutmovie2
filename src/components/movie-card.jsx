@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -10,7 +11,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { SpoilerSummary } from "@/components/spoiler-summary";
 
 /**
  * MovieCard component - displays a movie in card format
@@ -33,6 +33,8 @@ export function MovieCard({
   fromUrl,
   variant = "default",
 }) {
+  const [revealed, setRevealed] = useState(!spoilerHidden);
+
   const movieUrl = fromUrl
     ? `/movies/${movie.slug}?from=${encodeURIComponent(fromUrl)}`
     : `/movies/${movie.slug}`;
@@ -93,11 +95,29 @@ export function MovieCard({
       </CardHeader>
 
       <CardContent className="pt-0 flex-1 flex flex-col justify-between">
-        {/* WhutSummary — blurred with reveal button when spoilerHidden */}
-        <SpoilerSummary text={movie.whutSummary} hidden={spoilerHidden} />
+        {/* WhutSummary — blurred until revealed when spoilerHidden */}
+        {movie.whutSummary && (
+          revealed ? (
+            <p className="text-sm text-muted-foreground line-clamp-3 mb-3">
+              {movie.whutSummary}
+            </p>
+          ) : (
+            <div className="relative mb-3">
+              <p className="text-sm text-muted-foreground line-clamp-3 blur-sm select-none" aria-hidden="true">
+                {movie.whutSummary}
+              </p>
+              <button
+                onClick={() => setRevealed(true)}
+                className="absolute inset-0 flex items-center justify-center gap-1.5 text-xs font-medium bg-background/80 rounded-md hover:bg-background/95 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                <span>🔒</span> Reveal summary (spoiler)
+              </button>
+            </div>
+          )
+        )}
 
-        {/* Official synopsis hidden when spoilerHidden (plot details) */}
-        {!spoilerHidden && showOfficialSynopsis && movie.description && (
+        {/* Official synopsis — hidden until revealed when spoilerHidden */}
+        {revealed && showOfficialSynopsis && movie.description && (
           <details className="mb-3">
             <summary className="text-xs text-muted-foreground cursor-pointer hover:text-foreground transition-colors">
               Official synopsis
