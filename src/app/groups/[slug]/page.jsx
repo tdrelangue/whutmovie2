@@ -12,9 +12,7 @@ async function getGroup(slug) {
       members: {
         orderBy: { order: "asc" },
         include: {
-          movie: {
-            include: { genres: true },
-          },
+          movie: { include: { genres: true } },
         },
       },
     },
@@ -40,6 +38,7 @@ export default async function GroupDetailPage({ params, searchParams }) {
   if (!group) notFound();
 
   const backHref = fromUrl ?? "/categories";
+  const currentPageUrl = `/groups/${slug}`;
 
   return (
     <article className="max-w-4xl mx-auto space-y-8">
@@ -71,7 +70,7 @@ export default async function GroupDetailPage({ params, searchParams }) {
                 showOfficialSynopsis={true}
                 showGenres={true}
                 spoilerHidden={member.spoilerHidden}
-                fromUrl={`/groups/${slug}`}
+                fromUrl={currentPageUrl}
               />
             ))}
           </div>

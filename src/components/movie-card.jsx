@@ -8,6 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { SpoilerSummary } from "@/components/spoiler-summary";
 
 /**
  * MovieCard component - displays a movie in card format
@@ -26,6 +27,7 @@ export function MovieCard({
   angleLabel,
   showOfficialSynopsis = false,
   showGenres = true,
+  spoilerHidden = false,
   fromUrl,
   variant = "default",
 }) {
@@ -89,34 +91,33 @@ export function MovieCard({
       </CardHeader>
 
       <CardContent className="pt-0 flex-1 flex flex-col justify-between">
-        {/* WhutSummary */}
-        {movie.whutSummary && (
-          <p className="text-sm text-muted-foreground line-clamp-3 mb-3">
-            {movie.whutSummary}
-          </p>
-        )}
+        {/* WhutSummary — blurred when spoilerHidden */}
+        <SpoilerSummary text={movie.whutSummary} hidden={spoilerHidden} />
 
-        {/* Official Synopsis (collapsed) */}
-        {showOfficialSynopsis && movie.description && (
-          <details className="mb-3">
-            <summary className="text-xs text-muted-foreground cursor-pointer hover:text-foreground transition-colors">
-              Official synopsis
-            </summary>
-            <p className="text-xs text-muted-foreground mt-2 pl-2 border-l border-border">
-              {movie.description}
-            </p>
-          </details>
-        )}
+        {/* Official Synopsis and genres — hidden entirely when spoilerHidden */}
+        {!spoilerHidden && (
+          <>
+            {showOfficialSynopsis && movie.description && (
+              <details className="mb-3">
+                <summary className="text-xs text-muted-foreground cursor-pointer hover:text-foreground transition-colors">
+                  Official synopsis
+                </summary>
+                <p className="text-xs text-muted-foreground mt-2 pl-2 border-l border-border">
+                  {movie.description}
+                </p>
+              </details>
+            )}
 
-        {/* Genre badges */}
-        {showGenres && movie.genres && movie.genres.length > 0 && (
-          <div className="flex flex-wrap gap-1 mt-auto">
-            {movie.genres.map((genre) => (
-              <Badge key={genre.id} variant="outline" className="text-xs">
-                {genre.name}
-              </Badge>
-            ))}
-          </div>
+            {showGenres && movie.genres && movie.genres.length > 0 && (
+              <div className="flex flex-wrap gap-1 mt-auto">
+                {movie.genres.map((genre) => (
+                  <Badge key={genre.id} variant="outline" className="text-xs">
+                    {genre.name}
+                  </Badge>
+                ))}
+              </div>
+            )}
+          </>
         )}
       </CardContent>
     </Card>
