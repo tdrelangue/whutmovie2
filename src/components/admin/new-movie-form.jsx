@@ -1,35 +1,55 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
+const EMPTY_FIELDS = {
+  title: "",
+  year: "",
+  whutSummary: "",
+  description: "",
+  posterUrl: "",
+  tmdbId: "",
+};
+
 export function NewMovieForm({ createAction, genres }) {
-  const [title, setTitle] = useState("");
-  const [year, setYear] = useState("");
-  const [description, setDescription] = useState("");
-  const [posterUrl, setPosterUrl] = useState("");
-  const [tmdbId, setTmdbId] = useState("");
+  const [fields, setFields] = useState(EMPTY_FIELDS);
+  const [checkedGenres, setCheckedGenres] = useState({});
   const [preview, setPreview] = useState(null);
-  const [loading, setLoading] = useState(false);
   const [fetchError, setFetchError] = useState(null);
+  const [success, setSuccess] = useState(false);
+  const [isPending, startTransition] = useTransition();
+
+  function setField(key) {
+    return (e) => {
+      setFields((f) => ({ ...f, [key]: e.target.value }));
+      if (success) setSuccess(false);
+    };
+  }
+
+  function resetForm() {
+    setFields(EMPTY_FIELDS);
+    setCheckedGenres({});
+    setPreview(null);
+    setFetchError(null);
+  }
 
   async function fetchFromTmdb() {
-    if (!title.trim()) {
+    if (!fields.title.trim()) {
       setFetchError("Enter a title first");
       return;
     }
-    setLoading(true);
     setFetchError(null);
     setPreview(null);
     const params = new URLSearchParams();
-    if (tmdbId) {
-      params.set("tmdbId", tmdbId);
+    if (fields.tmdbId) {
+      params.set("tmdbId", fields.tmdbId);
     } else {
-      params.set("title", title.trim());
-      if (year) params.set("year", year);
+      params.set("title", fields.title.trim());
+      if (fields.year) params.set("year", fields.year);
     }
     try {
       const res = await fetch(`/api/admin/tmdb-fetch?${params}`);
@@ -38,22 +58,40 @@ export function NewMovieForm({ createAction, genres }) {
       setPreview(data);
     } catch {
       setFetchError("Network error");
-    } finally {
-      setLoading(false);
     }
   }
 
   function applyPreview() {
     if (!preview) return;
-    if (preview.description) setDescription(preview.description);
-    if (preview.posterUrl) setPosterUrl(preview.posterUrl);
-    if (preview.tmdbId) setTmdbId(String(preview.tmdbId));
+    setFields((f) => ({
+      ...f,
+      description: preview.description || f.description,
+      posterUrl: preview.posterUrl || f.posterUrl,
+      tmdbId: preview.tmdbId ? String(preview.tmdbId) : f.tmdbId,
+    }));
     setPreview(null);
   }
 
+  function handleSubmit(e) {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    startTransition(async () => {
+      await createAction(formData);
+      resetForm();
+      setSuccess(true);
+      setTimeout(() => setSuccess(false), 4000);
+    });
+  }
+
   return (
-    <form action={createAction} className="space-y-4">
-      <input type="hidden" name="posterUrl" value={posterUrl} />
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <input type="hidden" name="posterUrl" value={fields.posterUrl} />
+
+      {success && (
+        <div className="rounded-md bg-green-500/10 border border-green-500/30 px-4 py-3 text-sm text-green-400">
+          ✓ Movie added successfully!
+        </div>
+      )}
 
       <div className="grid gap-4 sm:grid-cols-3">
         <div className="space-y-2">
@@ -63,8 +101,8 @@ export function NewMovieForm({ createAction, genres }) {
             name="title"
             required
             placeholder="Movie title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            value={fields.title}
+            onChange={setField("title")}
           />
         </div>
         <div className="space-y-2">
@@ -76,8 +114,8 @@ export function NewMovieForm({ createAction, genres }) {
             min="1900"
             max="2100"
             placeholder="2024"
-            value={year}
-            onChange={(e) => setYear(e.target.value)}
+            value={fields.year}
+            onChange={setField("year")}
           />
         </div>
         <div className="space-y-2">
@@ -89,8 +127,8 @@ export function NewMovieForm({ createAction, genres }) {
             name="tmdbId"
             type="number"
             placeholder="e.g. 496243"
-            value={tmdbId}
-            onChange={(e) => setTmdbId(e.target.value)}
+            value={fields.tmdbId}
+            onChange={setField("tmdbId")}
           />
         </div>
       </div>
@@ -105,6 +143,8 @@ export function NewMovieForm({ createAction, genres }) {
           required
           rows={3}
           placeholder="Your blunt, funny summary of what this movie is actually about..."
+          value={fields.whutSummary}
+          onChange={setField("whutSummary")}
         />
       </div>
 
@@ -114,8 +154,8 @@ export function NewMovieForm({ createAction, genres }) {
           <label htmlFor="description" className="block text-sm font-medium">
             Official Synopsis (optional)
           </label>
-          <Button type="button" variant="outline" size="sm" onClick={fetchFromTmdb} disabled={loading}>
-            {loading ? "Fetching…" : "Fetch from TMDB"}
+          <Button type="button" variant="outline" size="sm" onClick={fetchFromTmdb} disabled={isPending}>
+            Fetch from TMDB
           </Button>
         </div>
         <Textarea
@@ -123,8 +163,8 @@ export function NewMovieForm({ createAction, genres }) {
           name="description"
           rows={2}
           placeholder="The boring IMDb-style description (optional)"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          value={fields.description}
+          onChange={setField("description")}
         />
         {fetchError && <p className="text-sm text-destructive">{fetchError}</p>}
       </div>
@@ -155,14 +195,18 @@ export function NewMovieForm({ createAction, genres }) {
       )}
 
       {/* Poster preview */}
-      {posterUrl && (
+      {fields.posterUrl && (
         <div className="flex items-center gap-3">
           <div className="relative w-10 shrink-0 aspect-[2/3] rounded overflow-hidden bg-muted">
-            <Image src={posterUrl} alt="poster preview" fill className="object-cover" sizes="40px" />
+            <Image src={fields.posterUrl} alt="poster preview" fill className="object-cover" sizes="40px" />
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-xs text-muted-foreground truncate">{posterUrl}</p>
-            <button type="button" onClick={() => setPosterUrl("")} className="text-xs text-destructive hover:underline">
+            <p className="text-xs text-muted-foreground truncate">{fields.posterUrl}</p>
+            <button
+              type="button"
+              onClick={() => setFields((f) => ({ ...f, posterUrl: "" }))}
+              className="text-xs text-destructive hover:underline"
+            >
               Clear poster
             </button>
           </div>
@@ -174,14 +218,25 @@ export function NewMovieForm({ createAction, genres }) {
         <div className="flex flex-wrap gap-3">
           {genres.map((g) => (
             <label key={g.id} className="flex items-center gap-2 cursor-pointer">
-              <input type="checkbox" name="genres" value={g.id} className="rounded" />
+              <input
+                type="checkbox"
+                name="genres"
+                value={g.id}
+                checked={!!checkedGenres[g.id]}
+                onChange={(e) =>
+                  setCheckedGenres((prev) => ({ ...prev, [g.id]: e.target.checked }))
+                }
+                className="rounded"
+              />
               <span className="text-sm">{g.name}</span>
             </label>
           ))}
         </div>
       </div>
 
-      <Button type="submit">Add Movie</Button>
+      <Button type="submit" disabled={isPending}>
+        {isPending ? "Adding…" : "Add Movie"}
+      </Button>
     </form>
   );
 }
