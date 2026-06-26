@@ -62,7 +62,7 @@ export default function ContactForm() {
         <div className="text-4xl">✓</div>
         <h3 className="text-lg font-semibold">Message Sent</h3>
         <p className="text-muted-foreground">
-          Thank you for reaching out. We&apos;ll get back to you soon.
+          Thank you for reaching out. I&apos;ll get back to you soon.
         </p>
         <Button onClick={() => setStatus("idle")} variant="outline">
           Send another message

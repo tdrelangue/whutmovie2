@@ -3,7 +3,7 @@ import ContactForm from "./contact-form";
 
 export const metadata = {
   title: "Contact - WhutMovie",
-  description: "Get in touch with the WhutMovie team. We'd love to hear from you.",
+  description: "Get in touch. I'd love to hear from you.",
 };
 
 export default function ContactPage() {
@@ -11,9 +11,9 @@ export default function ContactPage() {
     <div className="max-w-xl mx-auto">
       <Card>
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl">Contact Us</CardTitle>
+          <CardTitle className="text-2xl">Contact Me</CardTitle>
           <CardDescription>
-            Have a question, suggestion, or feedback? We&apos;d love to hear from you.
+            Have a question, suggestion, or feedback? I&apos;d love to hear from you.
           </CardDescription>
         </CardHeader>
         <CardContent>

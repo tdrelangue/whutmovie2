@@ -60,7 +60,7 @@ export default async function HomePage() {
             it&apos;s really about capitalism.&quot;
           </p>
           <p>
-            That&apos;s not us. I&apos;m the friend who actually watches movies and can tell you
+            That&apos;s not me. I&apos;m the friend who actually watches movies and can tell you
             which ones are worth your precious free time. Each category is a curated list of exactly
             3 films, ranked in order of &quot;you should definitely watch this&quot; to &quot;okay this
             one&apos;s pretty good too.&quot;
@@ -122,7 +122,7 @@ export default async function HomePage() {
           <div>
             <h2 className="text-2xl font-semibold">Latest Movies</h2>
             <p className="text-muted-foreground mt-1">
-              Recently added to our collection
+              Recently added to my collection
             </p>
           </div>
           <Button asChild variant="ghost">

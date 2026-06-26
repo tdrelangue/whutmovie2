@@ -52,7 +52,7 @@ async function getGenres() {
 
 export const metadata = {
   title: "Movies - WhutMovie",
-  description: "Browse our collection of movies. Filter by genre to find what you're looking for.",
+  description: "Browse my collection of movies. Filter by genre to find what you're looking for.",
 };
 
 export default async function MoviesPage({ searchParams }) {

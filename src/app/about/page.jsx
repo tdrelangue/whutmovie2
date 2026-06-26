@@ -10,12 +10,12 @@ export default function AboutPage() {
     {
       title: "Dark UX",
       description:
-        "I embrace a dark-first design philosophy. Our interface is easy on the eyes, reduces eye strain during extended browsing, and creates a cinematic atmosphere that complements the movie-watching experience.",
+        "I embrace a dark-first design philosophy. My interface is easy on the eyes, reduces eye strain during extended browsing, and creates a cinematic atmosphere that complements the movie-watching experience.",
     },
     {
       title: "Accessibility",
       description:
-        "Every user deserves equal access. We follow WCAG guidelines, ensure proper keyboard navigation, maintain readable contrast ratios, and use semantic HTML throughout. Focus states are always visible.",
+        "Every user deserves equal access. I follow WCAG guidelines, ensure proper keyboard navigation, maintain readable contrast ratios, and use semantic HTML throughout. Focus states are always visible.",
     },
     {
       title: "Minimalism",
@@ -25,7 +25,7 @@ export default function AboutPage() {
     {
       title: "Performance",
       description:
-        "Fast is a feature. We use server-side rendering, minimal JavaScript, and optimized data fetching to ensure the site loads quickly and responds instantly to your interactions.",
+        "Fast is a feature. I use server-side rendering, minimal JavaScript, and optimized data fetching to ensure the site loads quickly and responds instantly to your interactions.",
     },
   ];
 
@@ -41,7 +41,7 @@ export default function AboutPage() {
 
       {/* Story */}
       <section className="space-y-4">
-        <h2 className="text-2xl font-semibold">Our Mission</h2>
+        <h2 className="text-2xl font-semibold">My Mission</h2>
         <div className="prose prose-invert max-w-none">
           <p className="text-muted-foreground leading-relaxed">
             WhutMovie was born from a simple frustration: finding good movies shouldn&apos;t be hard.

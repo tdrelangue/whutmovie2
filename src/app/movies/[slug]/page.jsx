@@ -152,7 +152,7 @@ export default async function MovieDetailPage({ params, searchParams }) {
       {/* WhutSummary - Our funny summary (PRIMARY) */}
       {movie.whutSummary && (
         <section>
-          <h2 className="text-xl font-semibold mb-3">Our Take</h2>
+          <h2 className="text-xl font-semibold mb-3">My Take</h2>
           <p className="text-muted-foreground leading-relaxed text-lg">
             {movie.whutSummary}
           </p>
